@@ -1,0 +1,109 @@
+<!-- i-C-a -->
+<div data-role="page" id="poles">
+  <script src="js/slidebarwos.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnwos"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnwos"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnwos"></div></div>
+  <div class="infobtnholder"><div class="infobtnwos"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnwos"></div></div>
+  <div class="menubtnholder"><div class="menubtnwos"></div></div>
+  
+  <div class="navtitleholder" style="padding-top:14px;"><h1>Pole versus the Tropics</h1></div>
+  
+    <div data-role="content" class="kidzcontent">
+      <div class="nav-content">
+        <p>The world's oceans are influenced not just by depth of the water and sunlight, they are also influenced by how far they are from the Equator.  The equator is a line which represents 0° latitude and divides the Northern and Southern hemispheres.  Marine environments near the North and South Pole are very different to those in the tropics, near the Equator and much colder for swimming too!  You would need a very thick wetsuit if you went swimming near the North or South Pole, and a really hot bath afterwards!</p>
+        <p>There are also different environments in the regions between the Equator and the Poles.  We call these the temperate zones.  There are also lots of differences between the North and South Poles themselves too.  For example, there are no polar bears in the South, and no penguins in the North  except at zoos.  Can you think of why this is?
+</p>
+      
+      </div>
+        
+      <div class="navseabtn1">
+  <p><a href="sub-deep-blue-sea-bw-poles.html" data-transition="slide"><img src="css/images/9-12/bluesea/st.png"></a></p>
+      </div>
+      <div class="navseabtn3">
+        <p><a href="sub-deep-blue-sea-poles-apart.html" data-transition="slide" ><img src="css/images/9-12/bluesea/apart.png"></a></p>
+      </div>
+     
+    <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Wonders_of_Science/bottomhomewos.png"></a></div>
+    </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <div class="micbtnholder"><div class="micbtnwos" id="playstopmedieval"></div></div>
+    <div class="bwos"><div class="rwwos" id="polesaudiobbtn"></div></div>
+    <div class="plwos"><div class="plpswos" id="polesaudioplbtn"></div></div>
+    <div class="fwos"><div class="fwwos" id="polesaudiofbtn"></div></div>
+    <div id="actualaudio-" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    (function() {
+      playing = false;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-').html('<audio id="polesaudio" controls preload onpause="playbh()" onplay="pausebh()"><source src="http://deftsoft.info/appvendo/mw/audio/.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-deep-blue-sea.html", {transition: "slide", reverse: true });
+      bgsoundbh.pause();
+      bgsoundbh.currentTime = 0;
+      spacesoundbg.play();
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+    /* ******************** */
+    $("#playstoppoles").on('tap', function() {
+      if(!playing) {
+        polesaudio.play();
+        $('.micbtnwos').css('background-position-x', '-81px');
+        playing = true;
+      } else {
+        polesaudio.pause(); volcanoaudio.currentTime = 0;
+        $('.micbtnwos').css('background-position-x', '0px');
+        playing = false;
+      }
+    });
+    
+    $("#polesaudioplbtn").on('tap', function() {
+      if(!playing) {
+        polesaudio.play();
+      } else {
+        polesaudio.pause();
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#polesaudiofbtn").on('tap', function() {
+      var ctime = polesaudio.currentTime;
+      polesaudio.currentTime = ctime + 10;
+    });
+    
+    $("#polesaudiobbtn").on('tap', function() {
+      var ctime = polesaudio.currentTime;
+      polesaudio.currentTime = ctime - 10;
+    });
+    
+    $("#polesaudiopsbtn").on('tap', function() {
+     polesaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+    
+    $('.navbtn1').on('tap', function() { 
+      nav1Effects(); 
+    });
+  </script>
+</div> <!--//home-->

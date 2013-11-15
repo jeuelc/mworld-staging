@@ -1,0 +1,146 @@
+<!-- i-C-a -->
+<div data-role="page" id="inmountains">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebarnat.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnnat"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnnat"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnnat"></div></div>
+  <div class="infobtnholder"><div class="infobtnnat"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnnat"></div></div>
+  <div class="menubtnholder"><div class="menubtnnat"></div></div>
+  
+  <div class="bptitleholder-whatis" style="padding-top:14px;"><h1>Hiding in Mountains</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="mtfujilink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Finding_Volcanoes/mtfuji.jpg', 'Beautiful Mt Fuji in Japan!  Check out the amazing symmetrical profile of the volcano');">click here</a>
+        <a id="popolink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Finding_Volcanoes/popo.jpg', 'Popocatpetl in Mexico, erupting in 2013!');">click here</a>
+        <a id="mtsthelenslink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Finding_Volcanoes/mtsthelens.jpg', 'Dramatic Mt St Helens in the USA.  While relatively quiet at the moment, it is still active, famous for its eruption in 1980 which blew out the side and top of the volcano!');">click here</a>
+      
+        <div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Finding_Volcanoes/mtfujipol.jpg" alt="" />
+          </div>
+          <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Finding_Volcanoes/popopol.jpg" alt="" />
+          </div>
+          <div id="pol3"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Finding_Volcanoes/mtsthelenspol.jpg" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontent-whatis">
+        <p>What do Mt Fuji in Japan, Popocatépetl in Mexico and Mt St Helens in the United States of America all have in common?  They are active volcanoes on dry land!  They are also all stratovolcanoes, which are steep-sided volcanoes. </p>
+        <p>Did you know that the shape of a volcano gives volcanologists (people who study volcanoes) lots of information?  Such as what the magma was made up of, the way it erupted and how explosive it was!</p>
+        <p>Volcanoes on dry land usually form because they're on plates that are being pushed together, with one sliding below the other, known as subduction.  When a plate sinks down, bits come off it, like water.  The water can cause part of the overlying mantle to melt.  The magma then rises and erupts at the surface, forming a volcano!  These volcanoes often hide in the middle of a mountain range, like Mt St Helens volcano does within the Cascade Mountains in north-west USA.</p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Natural_World/bottomhomenat.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+  <!-- <div class="audiopanel"> -->
+    <!-- images are in slidebarnat.js 
+         note: change the ids to be able play the narration
+    -->
+    <div class="micbtnholder"><div class="micbtnnat" id="playstopinmountains"></div></div>
+    <div class="bnat"><div class="rwnat" id="inmountainsaudiobbtn"></div></div>
+    <div class="plnat"><div class="plpsnat" id="inmountainsaudioplbtn"></div></div>
+    <div class="fnat"><div class="fwnat" id="inmountainsaudiofbtn"></div></div>
+    <div id="actualaudio-inmountains" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      $('div#pol1').css("z-index", 3);
+      $('div#pol2').css("z-index", 2);
+      $('div#pol3').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#pol3 > img').css("-webkit-transform", "rotate(-3deg)");
+      
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-inmountains').html('<audio id="inmountainsaudio" controls preload onpause="playvol()" onplay="pausevol()"><source src="narrations/volcanoes_inmountains.mp3" type="audio/mpeg"></audio>');
+      } 
+
+      $("#inmountains").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundvol.pause(); bgsoundvol.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-naturalworld-volcanoes-findingvol.html", {transition: "slide", reverse: true });
+    }
+    
+    $("#pol1").on('tap', function() {
+      $('#mtfujilink')[0].click();
+    });
+    $("#pol2").on('tap', function() {
+      $('#popolink')[0].click();
+    });
+    $("#pol3").on('tap', function() {
+      $('#mtsthelenslink')[0].click();
+    }); 
+    
+    function pausedaudio() {
+      bgsoundvol.play();
+    }
+    
+    function pausebg() {
+      bgsoundvol.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopinmountains").on('tap', function() {
+      if(!playing) {
+        inmountainsaudio.play();
+        $('.micbtnnat').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        inmountainsaudio.pause(); inmountainsaudio.currentTime = 0;
+        $('.micbtnnat').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#inmountainsaudioplbtn").on('tap', function() {
+      if(!paused) {
+        inmountainsaudio.pause();
+        paused = true;
+      } else {
+        inmountainsaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#inmountainsaudiofbtn").on('tap', function() {
+      var ctime = inmountainsaudio.currentTime;
+      inmountainsaudio.currentTime = ctime + 10;
+    });
+    
+    $("#inmountainsaudiobbtn").on('tap', function() {
+      var ctime = inmountainsaudio.currentTime;
+      inmountainsaudio.currentTime = ctime - 10;
+    });
+    
+    $("#inmountainsaudiopsbtn").on('tap', function() {
+      inmountainsaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+  </script>
+  <script src="js/threecardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

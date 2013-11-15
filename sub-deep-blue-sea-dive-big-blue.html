@@ -1,0 +1,111 @@
+<!-- i-C-a -->
+<div data-role="page" id="bigblue">
+  <script src="js/slidebarwos.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnwos"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnwos"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnwos"></div></div>
+  <div class="infobtnholder"><div class="infobtnwos"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnwos"></div></div>
+  <div class="menubtnholder"><div class="menubtnwos"></div></div>
+  
+  <div class="navtitleholdervolcano" style="padding-top:14px;"><h1>The Big Blue</h1></div>
+  
+    <div data-role="content" class="kidzcontent">
+      <div class="navvolcanobig-content">
+         <p>It might look like a vast blue ocean with not much happening but there is an awful lot of stuff going on in there that we just can't see.  The ocean is divided into different zones, from the surface to the ocean floor, depending on the amount of light.  The top layer of water where light can reach is called the 'photic zone'.  This is also where most of the small algae live, known as phytoplankton.  They need the sunlight to 'photosynthesize' or make food and are really important as lots of fish feed on them!</p>
+        <p>During the day most marine animals choose to go deeper.  Why?  Well, the chance of being spotted and eaten by something bigger increases when you can be seen!  This is also why some marine animals that live in the photic zone are lighter-coloured on their bellies and darker on top.  This is called counter-shading and is a way for them to blend into their environment and avoid being eaten!</p>
+        <p>Every night the largest migration on Earth occurs, when the creatures of the deep, those that live about 200 to 1000 metres down, venture towards the surface in the hunt for foodBut they must return by morning, so they don't get eaten! 
+</p>						
+      </div>
+        
+      <div class="navvolcanobigbtn1">
+  <p><a href="sub-deep-blue-sea-dive-big-blue-krill.html" data-transition="slide"><img src="css/images/9-12/bluesea/krill.png"></a></p>
+      </div>
+      <div class="navvolcanobigbtn2">
+        <p><a href="sub-deep-blue-sea-dive-big-blue-hide.html" data-transition="slide" ><img src="css/images/9-12/bluesea/hide.png"></a></p>
+      </div>
+      <div class="navvolcanobigbtn3">
+        <p><a href="sub-deep-blue-sea-dive-big-blue-plants.html" data-transition="slide" ><img src="css/images/9-12/sleep_dreams/background2.png"></a></p>
+      </div>
+ <div class="botlogobigholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Wonders_of_Science/bottomhomewos.png"></a></div>
+    </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <div class="micbtnholder"><div class="micbtnwos" id="playstopbigblue"></div></div>
+    <div class="bwos"><div class="rwwos" id="bigblueaudiobbtn"></div></div>
+    <div class="plwos"><div class="plpswos" id="bigblueaudioplbtn"></div></div>
+    <div class="fwos"><div class="fwwos" id="bigblueaudiofbtn"></div></div>
+    <div id="actualaudio-bigblue" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    (function() {
+      playing = false;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-bigblue').html('<audio id="bigblueaudio" controls preload onpause="playbigblue()" onplay="pausebigblue()"><source src="http://back.uvmate.com/sites/default/files/subjectsaudio/RevisedIntro.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#bigblue").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-deep-blue-sea-dive-in.html", {transition: "slide", reverse: true });
+      bgsoundbh.pause();
+      bgsoundbh.currentTime = 0;
+      spacesoundbg.play();
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+    /* ******************** */
+    $("#playstopbigblue").on('tap', function() {
+      if(!playing) {
+        bigblueaudio.play();
+        $('.micbtnwos').css('background-position-x', '-81px');
+        playing = true;
+      } else {
+        bigblueaudio.pause(); bigblueaudio.currentTime = 0;
+        $('.micbtnwos').css('background-position-x', '0px');
+        playing = false;
+      }
+    });
+    
+    $("#bigblueaudioplbtn").on('tap', function() {
+      if(!playing) {
+        bigblueaudio.play();
+      } else {
+        bigblueaudio.pause();
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#bigblueaudiofbtn").on('tap', function() {
+      var ctime = bigblueaudio.currentTime;
+      bigblueaudio.currentTime = ctime + 10;
+    });
+    
+    $("#bigblueaudiobbtn").on('tap', function() {
+      var ctime = bigblueaudio.currentTime;
+      bigblueaudio.currentTime = ctime - 10;
+    });
+    
+    $("#bigblueaudiopsbtn").on('tap', function() {
+      bigblueaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+    
+    $('.navbigbluebigbtn1').on('tap', function() { 
+      nav1Effects(); 
+    });
+  </script>
+</div> <!--//home-->

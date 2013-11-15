@@ -1,0 +1,131 @@
+<!-- i-C-a -->
+<div data-role="page" id="hotspot">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebarnat.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnnat"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnnat"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnnat"></div></div>
+  <div class="infobtnholder"><div class="infobtnnat"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnnat"></div></div>
+  <div class="menubtnholder"><div class="menubtnnat"></div></div>
+  
+  <div class="bptitleholder-whatis" style="padding-top:14px;"><h1>Volcanoes on a Hotspot</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="hotspotschlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Finding_Volcanoes/hotspot.jpg', 'Formation of the Hawaiian Island chain from a magma hotspot.  Which one do you think is Big Island?');">click here</a>
+        <a id="napalilink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Finding_Volcanoes/napali.jpg', 'The stunning Na Pali coast, Kauai. Notice how the coast is made up of thin, steep, ridges and narrow valleys  this tells us that it has undergone a lot of erosion over its 5 million year history');">click here</a>
+        
+        <div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Finding_Volcanoes/hotspotpol.jpg" alt="" />
+          </div>
+          <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Finding_Volcanoes/napalipol.jpg" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontent-whatis">
+        <p>Ever wonder why the Hawaiian Islands are all alone in the middle of the Pacific Ocean?</p>
+        <p>These islands formed due to a random 'hot spot' or 'plume' of magma that rose from the deep and now sits beneath the crust.  One day, around 5 million years ago, the magma reached the surface and erupted as lava onto the sea floor.  Lava kept erupting, building a mound, which eventually was so tall that it broke through the waves and formed an island, called Kauai. </p>
+        <p>The magma chamber stayed in the same spot but over time the tectonic plate on top moved.  The magma supply to Kauai was stopped but a new lava pile started growing nearby.  As the plate kept moving, more islands formed and today the active volcano above the waves is Big Island.  Mauna Kea volcano on Big Island is the world's tallest mountain, about twice the height of Mt Everest... but is mostly under water!</p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Natural_World/bottomhomenat.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+  <div class="micbtnholder"><div class="micbtnnat" id="playstophotspot"></div></div>
+  <div class="bnat"><div class="rwnat" id="hotspotaudiobbtn"></div></div>
+  <div class="plnat"><div class="plpsnat" id="hotspotaudioplbtn"></div></div>
+  <div class="fnat"><div class="fwnat" id="hotspotaudiofbtn"></div></div>
+  <div id="actualaudio-hotspot" style="visibility:hidden;"></div>  
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      $('div#pol1').css("z-index", 2);
+      $('div#pol2').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-hotspot').html('<audio id="hotspotaudio" controls preload onpause="playvol()" onplay="pausevol()"><source src="narrations/volcanoes_hotspot.mp3" type="audio/mpeg"></audio>');
+      } 
+
+      $("#hotspot").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundvol.pause(); bgsoundvol.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-naturalworld-volcanoes-findingvol.html", {transition: "slide", reverse: true });
+    }
+    
+    $("#pol1").on('tap', function() {
+      $('#hotspotschlink')[0].click();
+    });
+    $("#pol2").on('tap', function() {
+      $('#napalilink')[0].click();
+    });
+    
+    function pausedaudio() {
+      bgsoundvol.play();
+    }
+    
+    function pausebg() {
+      bgsoundvol.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstophotspot").on('tap', function() {
+      if(!playing) {
+        hotspotaudio.play();
+        $('.micbtnnat').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        hotspotaudio.pause(); hotspotaudio.currentTime = 0;
+        $('.micbtnnat').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#hotspotaudioplbtn").on('tap', function() {
+      if(!paused) {
+        hotspotaudio.pause();
+        paused = true;
+      } else {
+        hotspotaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#hotspotaudiofbtn").on('tap', function() {
+      var ctime = hotspotaudio.currentTime;
+      hotspotaudio.currentTime = ctime + 10;
+    });
+    
+    $("#hotspotaudiobbtn").on('tap', function() {
+      var ctime = hotspotaudio.currentTime;
+      hotspotaudio.currentTime = ctime - 10;
+    });
+    
+    $("#hotspotaudiopsbtn").on('tap', function() {
+      hotspotaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+  </script>
+  <script src="js/twocardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

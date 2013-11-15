@@ -1,0 +1,128 @@
+<!-- i-C-a -->
+<div data-role="page" id="whatelse">
+  <script src="js/slidebarwos.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnwos"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnwos"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnwos"></div></div>
+  <div class="infobtnholder"><div class="infobtnwos"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnwos"></div></div>
+  <div class="menubtnholder"><div class="menubtnwos"></div></div>
+  
+  <div class="navtitleholderbh" style="padding-top:14px;"><h1>What else is out there?</h1></div>
+  
+    <div data-role="content" class="kidzcontent">
+      <div class="navbh-content">
+        <p>The particle zoo has many more things in it than the particles making up the atoms in the material 'stuff' around us. Light is something we see every day, but it's not made up of atoms. 
+            Instead, it's made from fuzzy lumps of light called photons. There are also special atoms, called anti-matter, found in the depths of space.
+            Anti-matter and other members of the particle zoo arrive as beams from outer space, called cosmic rays. There are some things so mysterious that we don't yet know what they're made of! These include dark matter and dark energy.  
+            Perhaps one day you will be the detective scientist who solves the mystery of dark matter and dark energy!
+        </p>
+      </div>
+        
+      <div class="navbtn1">
+        <p><a href="sub-wonderscience-invisibleworld-light.html" data-transition="slide"><img src="css/images/9-12/The_Wonders_of_Science/Invisible_World/What_Else_Is_Out_There/Light.png"></a></p>
+      </div>
+      <div class="navbtn2">
+        <p><a href="sub-wonderscience-invisibleworld-cosmicrays.html" data-transition="slide"><img src="css/images/9-12/The_Wonders_of_Science/Invisible_World/What_Else_Is_Out_There/Cosmic_Rays.png"></a></p>
+      </div>
+      <div class="navbtn3">
+        <p><a href="sub-wonderscience-invisibleworld-antimatter.html" data-transition="slide"><img src="css/images/9-12/The_Wonders_of_Science/Invisible_World/What_Else_Is_Out_There/Antimatter.png"></a></p>
+      </div>
+      <div class="navbtn4">
+        <p><a href="sub-wonderscience-invisibleworld-darkmatter.html" data-transition="slide"><img src="css/images/9-12/The_Wonders_of_Science/Invisible_World/What_Else_Is_Out_There/Dark_Matter_And_Dark_Energy.png"></a></p>
+      </div>
+        
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Wonders_of_Science/bottomhomewos.png"></a></div>
+    </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <div class="micbtnholder"><div class="micbtnwos" id="playstopbh"></div></div>
+    <div class="bwos"><div class="rwwos" id="bhaudiobbtn"></div></div>
+    <div class="plwos"><div class="plpswos" id="bhaudioplbtn"></div></div>
+    <div class="fwos"><div class="fwwos" id="bhaudiofbtn"></div></div>
+    <div id="actualaudio-bh" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    (function() {
+      playing = false;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-bh').html('<audio id="bhaudio" controls preload onpause="playbh()" onplay="pausebh()"><source src="http://back.uvmate.com/sites/default/files/subjectsaudio/RevisedIntro.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#whatelse").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-wonderscience-invisibleworld.html", {transition: "slide", reverse: true });
+      bgsoundbh.pause();
+      bgsoundbh.currentTime = 0;
+      spacesoundbg.play();
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+    /* ******************** */
+    $("#playstopbh").on('tap', function() {
+      if(!playing) {
+        bhaudio.play();
+        $('.micbtnwos').css('background-position-x', '-81px');
+        playing = true;
+      } else {
+        bhaudio.pause(); bhaudio.currentTime = 0;
+        $('.micbtnwos').css('background-position-x', '0px');
+        playing = false;
+      }
+    });
+    
+    $("#bhaudioplbtn").on('tap', function() {
+      if(!playing) {
+        bhaudio.play();
+      } else {
+        bhaudio.pause();
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#bhaudiofbtn").on('tap', function() {
+      var ctime = bhaudio.currentTime;
+      bhaudio.currentTime = ctime + 10;
+    });
+    
+    $("#bhaudiobbtn").on('tap', function() {
+      var ctime = bhaudio.currentTime;
+      bhaudio.currentTime = ctime - 10;
+    });
+    
+    $("#bhaudiopsbtn").on('tap', function() {
+      bhaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+    
+    $('.navbtn1').on('tap', function() { 
+      nav1Effects(); 
+    });
+    
+    $('.navbtn2').on('tap', function() { 
+      nav2Effects(); 
+    });
+    
+    $('.navbtn3').on('tap', function() { 
+      nav3Effects(); 
+    });
+    
+    $('.navbtn4').on('tap', function() { 
+      nav4Effects(); 
+    });
+  </script>
+</div> <!--//home-->

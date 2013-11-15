@@ -1,0 +1,106 @@
+<!-- i-C-a -->
+<div id="cominghome" data-role="page">	
+  <script src="js/hammer.js"></script>	
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebarbh.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><img class="homebtn" src="css/images/5-8/Ancient_Civilizations/Greece/homebtn.png"></div>
+  <div class="cpbtnholder"><img class="cpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/cpbtn.png"></div>
+  <div class="buildbtnholder"><img class="buildbtn" src="css/images/5-8/Ancient_Civilizations/Greece/buildbtn.png"></div>
+  <div class="mpbtnholder"><img class="mpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/mpbtn.png"></div>
+  <div class="menubtnholder"><img class="menubtn" src="css/images/5-8/Ancient_Civilizations/Greece/menubtn.png"></div>
+  <div class="bptitleholderbh" style="padding-top:14px;"><h1>Coming home</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+                <div id="rocket" style="float:left;position:absolute;height:350px;width:125px;overflow:hidden;top:250px;left:250px;z-index:998;">&nbsp;</div>
+
+      </div>
+      
+      <div class="bpcontentbh">
+        <p>Do astronauts stay on Mars or come home? The answer would appear to obviously be yes, but it's not so simple.</p>
+        <p>To get home, astronauts need rockets to get them from the surface of Mars and on their way home. How do you land an entire rocket on Mars? And how do you fuel it on Mars? This is a more difficult problem than returning astronauts from the Moon, as Mars is bigger than the Moon and Mars has an atmosphere.</p>
+        <p>Perhaps the first astronauts who travel to Mars will decide to take a one-way ticket. Perhaps it will be easier to live on Mars than to return home. Some people have even suggested that Mars could be a "lifeboat", keeping the human race alive if some tragedy were to happen here on Earth.</p>
+      </div>
+      
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/5-8/bottomhomebh.png"></a></div>
+    </div><!--end of content-->
+  </div><!--/spacechar-->
+  <div class="audiopanel">
+    <div class="bbh"><img id="wibhaudiobbtn" src="css/images/audio/audio-back.png"></div>
+    <div class="plbh"><img id="wibhaudioplbtn" src="css/images/audio/audio-play.png"></div>
+    <div class="psbh"><img id="wibhaudiopsbtn" src="css/images/audio/audio-pause.png"></div>
+    <div class="fbh"><img id="wibhaudiofbtn" src="css/images/audio/audio-forw.png"></div>
+    <div id="actualaudio-wibh" style="visibility:hidden;"></div>
+  </div>
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    (function() {			
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");      
+      $('div#pol1').css("z-index", 1);      
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");      
+      
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-wibh').html('<audio id="wibhaudio" controls preload onpause="playbh()" onplay="pausebh()"><source src="audio/mmpmComing.mp3" type="audio/mpeg"></audio>');
+      } 
+
+      $("#cominghome").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-space-mm-pm.html");
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+    
+    $("#pol1").on('tap', function() {
+      $.mobile.changePage("sub-space-bh-gravity.html", { transition: "slide" });
+    });
+    $("#pol2").on('tap', function() {
+      $("#eatinggasholder").css({"visibility":"visible", "z-index":10});
+      $("#eatinggas").css({"z-index":9});
+      bgsoundbh.pause();
+      eatinggas.play();
+    });
+    /* ******************** */
+    $("#wibhaudioplbtn").on('tap', function() {
+      wibhaudio.play();
+      $(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#wibhaudiofbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime + 10;
+    });
+    
+    $("#wibhaudiobbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime - 10;
+    });
+    
+    $("#wibhaudiopsbtn").on('tap', function() {
+      wibhaudio.pause();
+      $(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+
+    function rocket() {
+      $('#rocket').css('background-position', '0px center');
+      setTimeout(function() {$('#rocket').css('background-position', '-125px center');},  100);
+      setTimeout(function() {$('#rocket').css('background-position', '-251px center');}, 200);
+      setTimeout(function() {$('#rocket').css('background-position', '-376px center');}, 300);
+      animaterocket = setTimeout(rocket, 400);
+    }
+    rocket();
+  </script>
+  <script src="js/twocardLogic.js"></script>
+</div>

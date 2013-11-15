@@ -1,0 +1,96 @@
+<!-- i-C-a -->
+<div id="dangerousplace" data-role="page">	
+  <script src="js/hammer.js"></script>	
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebarbh.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><img class="homebtn" src="css/images/5-8/Ancient_Civilizations/Greece/homebtn.png"></div>
+  <div class="cpbtnholder"><img class="cpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/cpbtn.png"></div>
+  <div class="buildbtnholder"><img class="buildbtn" src="css/images/5-8/Ancient_Civilizations/Greece/buildbtn.png"></div>
+  <div class="mpbtnholder"><img class="mpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/mpbtn.png"></div>
+  <div class="menubtnholder"><img class="menubtn" src="css/images/5-8/Ancient_Civilizations/Greece/menubtn.png"></div>
+  <div class="bptitleholderbh" style="padding-top:14px;"><h1>A dangerous place?</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/5-8/Space/Mission_Mars/People_on_Mars/centrifuge.png" alt="" />
+          </div>
+          <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+            <img src="css/images/5-8/Space/Mission_Mars/People_on_Mars/treadmill.png" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentbh">
+        <p>On Earth we are shielded from the harmful radiation emitted by solar storms by Earth's strong magnetic field. However, neither Mars nor spacecraft travelling to Mars will have such a magnetic shield.</p>
+        <p>Spacecraft travelling to Mars may need safe havens, shielded by metal, where astronauts can live when radiation levels are high. Bases on Mars may need to be buried underground, with the soil helping to protect astronauts from radiation.</p>
+        <p>Weightlessness and low gravity may not be healthy life choices. Muscle mass and bone density can drop when gravity is reduced. Astronauts must reduce these risks with exercise, including cycling and running machines.  In the weightlessness of space, astronauts have to be held down to their exercise equipment with bungee straps.</p>
+        <p>During the trip to Mars, astronauts could produce "artificial gravity" by spinning the spacecraft like a centrifuge. Centrifuges are already used on Earth to mimic high gravitational forces. You can create a simple centrifuge by spinning a bucket of water around. Spin the bucket fast enough, and the water will stay stuck to the bucket even when it is horizontal or upside down.</p>
+      </div>
+      
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/5-8/bottomhomebh.png"></a></div>
+    </div><!--end of content-->
+  </div><!--/spacechar-->
+  <div class="audiopanel">
+    <div class="bbh"><img id="wibhaudiobbtn" src="css/images/audio/audio-back.png"></div>
+    <div class="plbh"><img id="wibhaudioplbtn" src="css/images/audio/audio-play.png"></div>
+    <div class="psbh"><img id="wibhaudiopsbtn" src="css/images/audio/audio-pause.png"></div>
+    <div class="fbh"><img id="wibhaudiofbtn" src="css/images/audio/audio-forw.png"></div>
+    <div id="actualaudio-wibh" style="visibility:hidden;"></div>
+  </div>
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    (function() {			
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");      
+      $('div#pol1').css("z-index", 1);      
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");      
+ 
+       if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-wibh').html('<audio id="wibhaudio" controls preload onpause="playbh()" onplay="pausebh()"><source src="audio/mmpmDangerous.mp3" type="audio/mpeg"></audio>');
+      } 
+ 
+      $("#dangerousplace").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-space-mm-pm.html");
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+
+    /* ******************** */
+    $("#wibhaudioplbtn").on('tap', function() {
+      wibhaudio.play();
+      $(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#wibhaudiofbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime + 10;
+    });
+    
+    $("#wibhaudiobbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime - 10;
+    });
+    
+    $("#wibhaudiopsbtn").on('tap', function() {
+      wibhaudio.pause();
+      $(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+    
+  </script>
+  <script src="js/twocardLogic.js"></script>
+</div>

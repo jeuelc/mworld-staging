@@ -1,0 +1,124 @@
+<!-- i-C-a -->
+<div data-role="page" id="pyro">
+  <script src="js/slidebarnat.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnnat"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnnat"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnnat"></div></div>
+  <div class="infobtnholder"><div class="infobtnnat"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnnat"></div></div>
+  <div class="menubtnholder"><div class="menubtnnat"></div></div>
+  
+  <div class="bptitleholder-pyro" style="padding-top:14px;"><h1>Pyroclastic flows</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+      
+        <a id="pyrolink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Rumbling_From_The_Deep/Huff_and_Puff_Vs_Flow/Pyroclastic_Flows/Pyroclastic_Flows.jpg', 'A pyroclastic flow sprints down the valley during an eruption of the Soufriere Hills volcano on the island of Montserrat in 2010');">click here</a>
+      
+        <div id="zoomwrapper">
+          <div id="polb1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Rumbling_From_The_Deep/Huff_and_Puff_Vs_Flow/Pyroclastic_Flows/Pyroclastic_Flows.png" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontent-pyro">
+        <p>Some eruption columns that rise above volcanoes are too heavy to stay afloat in the air, so they rapidly fall to the ground.  This forms large, scorching flows known as pyroclastic flows.  The flows are made up of volcanic gas, pulverised magma (small bits of volcanic glass and crystals), larger magma fragments (called pumice) and any random stuff on the ground that they pick up, like trees!</p>
+        <p>Pyroclastic flows travel at hundreds of kilometres per hour, can reach around 1000&deg;C in temperature, and travel for many kilometres!  These flows are the most destructive things that can come out of a volcano.  They bury, burn and boil, so you don't want to be anywhere near these bad guys!</p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Natural_World/bottomhomenat.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+  <!-- <div class="audiopanel"> -->
+    <!-- images are in slidebarnat.js 
+         note: change the ids to be able play the narration
+    -->
+    <div class="micbtnholder"><div class="micbtnnat" id="playstoppyro"></div></div>
+    <div class="bnat"><div class="rwnat" id="pyroaudiobbtn"></div></div>
+    <div class="plnat"><div class="plpsnat" id="pyroaudioplbtn"></div></div>
+    <div class="fnat"><div class="fwnat" id="pyroaudiofbtn"></div></div>
+    <div id="actualaudio-pyro" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      $('div#polb1').css("z-index", 3);
+      $('div#polb1 > img').css("-webkit-transform", "rotate(0deg)");
+      
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-pyro').html('<audio id="pyroaudio" controls preload onpause="playvol()" onplay="pausevol()"><source src="narrations/volcanoes_pyroclasticflows.mp3" type="audio/mpeg"></audio>');
+      } 
+
+      $("#pyro").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundvol.pause(); bgsoundvol.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-naturalworld-volcanoes-huffandpuff.html", {transition: "slide", reverse: true });
+    }
+    
+    $("#polb1").on('tap', function() {
+      $('#pyrolink')[0].click();
+    });
+    
+    function pausedaudio() {
+      bgsoundvol.play();
+    }
+    
+    function pausebg() {
+      bgsoundvol.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstoppyro").on('tap', function() {
+      if(!playing) {
+        pyroaudio.play();
+        $('.micbtnnat').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        pyroaudio.pause(); pyroaudio.currentTime = 0;
+        $('.micbtnnat').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#pyroaudioplbtn").on('tap', function() {
+      if(!paused) {
+        pyroaudio.pause();
+        paused = true;
+      } else {
+        pyroaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#pyroaudiofbtn").on('tap', function() {
+      var ctime = pyroaudio.currentTime;
+      pyroaudio.currentTime = ctime + 10;
+    });
+    
+    $("#pyroaudiobbtn").on('tap', function() {
+      var ctime = pyroaudio.currentTime;
+      pyroaudio.currentTime = ctime - 10;
+    });
+    
+    $("#pyroaudiopsbtn").on('tap', function() {
+      pyroaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+  </script>
+</div> <!--//home-->

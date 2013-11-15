@@ -1,0 +1,101 @@
+<!-- i-C-a -->
+<div id="falsealarms" data-role="page">	
+  <script src="js/hammer.js"></script>	
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebarbh.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><img class="homebtn" src="css/images/5-8/Ancient_Civilizations/Greece/homebtn.png"></div>
+  <div class="cpbtnholder"><img class="cpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/cpbtn.png"></div>
+  <div class="buildbtnholder"><img class="buildbtn" src="css/images/5-8/Ancient_Civilizations/Greece/buildbtn.png"></div>
+  <div class="mpbtnholder"><img class="mpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/mpbtn.png"></div>
+  <div class="menubtnholder"><img class="menubtn" src="css/images/5-8/Ancient_Civilizations/Greece/menubtn.png"></div>
+  <div class="bptitleholderbh" style="padding-top:14px;"><h1>False alarms</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <div id="zoomwrapper">
+          <div id="polb1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/5-8/Space/Mission_Mars/Life_on_Mars/justmountains.png" alt="" />
+          </div>
+          <div id="polb2" class="pPiece" style="left:75px;top:290px;">
+            <img src="css/images/5-8/Space/Mission_Mars/Life_on_Mars/meteorite.png" alt="" />
+          </div>
+          <div id="polb3" class="pPiece" style="left:80px;top:270px;">
+              <img src="css/images/5-8/Space/Mission_Mars/Life_on_Mars/cratersmileyface.png" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentbh">
+        <p>For over a century there have been false alarms about life on Mars.</p>
+        <p>In the late 19th and early 20th century there were claims that changes in the appearance of Mars were the result of seasonal plant growth. We now know that dust storms can sweep across Mars, changing the planet's appearance. There have also been false claims of radio signals and flashes of light from Mars.</p>
+        <p>In the 1970s images taken from space revealed mountains that some called "The Face on Mars". People are very good  at "seeing" faces, spotting them on the face of the Moon or in clouds.</p>
+        <p>Why do you think people are so eager to find evidence of life on Mars?</p>
+        <p>Billions of years ago, Mars may well have been a different planet. It was geologically active, like the Earth, with volcanoes and Marsquakes . It probably had a thicker atmosphere, and much of Mars may have been covered with liquid water. Was there life too?</p>
+      </div>
+      
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/5-8/bottomhomebh.png"></a></div>
+    </div><!--end of content-->
+  </div><!--/spacechar-->
+  <div class="audiopanel">
+    <div class="bbh"><img id="wibhaudiobbtn" src="css/images/audio/audio-back.png"></div>
+    <div class="plbh"><img id="wibhaudioplbtn" src="css/images/audio/audio-play.png"></div>
+    <div class="psbh"><img id="wibhaudiopsbtn" src="css/images/audio/audio-pause.png"></div>
+    <div class="fbh"><img id="wibhaudiofbtn" src="css/images/audio/audio-forw.png"></div>
+    <div id="actualaudio-wibh" style="visibility:hidden;"></div>
+  </div>
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    (function() {			
+      $('div#polb1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#polb1').css("z-index", 2);
+      $('div#polb2').css("z-index", 1);
+      $('div#polb2 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#polb3 > img').css("-webkit-transform", "rotate(-3deg)");	
+      
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-wibh').html('<audio id="wibhaudio" controls preload onpause="playbh()" onplay="pausebh()"><source src="audio/mmlmFalseAlarm.mp3" type="audio/mpeg"></audio>');
+      } 
+ 
+      $("#falsealarms").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+    })();
+
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-space-mm-lm.html");
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+ 
+    /* ******************** */
+    $("#wibhaudioplbtn").on('tap', function() {
+      wibhaudio.play();
+      $(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#wibhaudiofbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime + 10;
+    });
+    
+    $("#wibhaudiobbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime - 10;
+    });
+    
+    $("#wibhaudiopsbtn").on('tap', function() {
+      wibhaudio.pause();
+      $(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+  </script>
+  <script src="js/threecardLogicb.js"></script>
+</div>

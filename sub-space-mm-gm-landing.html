@@ -1,0 +1,110 @@
+<!-- i-C-a -->
+<div id="landing" data-role="page">	
+  <script src="js/hammer.js"></script>	
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebarbh.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><img class="homebtn" src="css/images/5-8/Ancient_Civilizations/Greece/homebtn.png"></div>
+  <div class="cpbtnholder"><img class="cpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/cpbtn.png"></div>
+  <div class="buildbtnholder"><img class="buildbtn" src="css/images/5-8/Ancient_Civilizations/Greece/buildbtn.png"></div>
+  <div class="mpbtnholder"><img class="mpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/mpbtn.png"></div>
+  <div class="menubtnholder"><img class="menubtn" src="css/images/5-8/Ancient_Civilizations/Greece/menubtn.png"></div>
+  <div class="bptitleholderbh" style="padding-top:14px;"><h1>Landing</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <div id="zoomwrapper">
+          <div id="polb1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/spacecraftphotograph.png" alt="" />
+          </div>
+          <div id="polb2" class="pPiece" style="left:75px;top:290px;">
+            <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/skycrane.png" alt="" />
+          </div>
+          <div id="polb3" class="pPiece" style="left:80px;top:270px;">
+              <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/bouncinglanding.png" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentbh">
+        <p>Landing on Mars is a challenge. There are no airports or helipads. Instead there are boulders to hit and craters to fall into. Some robotic spacecraft have got all the way to Mars and then crashed upon landing.</p>
+        <p>Nervous mission controllers can only watch the action, as it takes minutes for signals to travel between Earth and Mars. Computers control the final descent to the Martian surface.</p>
+        <p>After throwing away the heat shield, spacecraft are slowed down by parachutes or rockets. Once close to the surface, there are a myriad of ways to land.</p>
+        <p>Some spacecraft land like rocket-powered helicopters. Others protect themselves with inflated balls and bounce onto the surface. Curiosity, the biggest of the rover spacecraft to land on Mars, was lowered on cables from a rocket powered "Sky Crane".</p>
+        <p>Once the spacecraft is on the surface and the dust has settled, it's time to explore.</p>
+      </div>
+      
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/5-8/bottomhomebh.png"></a></div>
+    </div><!--end of content-->
+  </div><!--/spacechar-->
+  <div class="audiopanel">
+    <div class="bbh"><img id="wibhaudiobbtn" src="css/images/audio/audio-back.png"></div>
+    <div class="plbh"><img id="wibhaudioplbtn" src="css/images/audio/audio-play.png"></div>
+    <div class="psbh"><img id="wibhaudiopsbtn" src="css/images/audio/audio-pause.png"></div>
+    <div class="fbh"><img id="wibhaudiofbtn" src="css/images/audio/audio-forw.png"></div>
+    <div id="actualaudio-wibh" style="visibility:hidden;"></div>
+  </div>
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    (function() {			
+      $('div#polb1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#polb1').css("z-index", 2);
+      $('div#polb2').css("z-index", 1);
+      $('div#polb2 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#polb3 > img').css("-webkit-transform", "rotate(-3deg)");	
+      
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-wibh').html('<audio id="wibhaudio" controls preload onpause="playbh()" onplay="pausebh()"><source src="audio/mmgmLanding.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#landing").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+    })();
+ 
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-space-mm-gm.html");
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+    
+    $("#pol1").on('tap', function() {
+      $.mobile.changePage("sub-space-bh-gravity.html", { transition: "slide" });
+    });
+    $("#pol2").on('tap', function() {
+      $("#eatinggasholder").css({"visibility":"visible", "z-index":10});
+      $("#eatinggas").css({"z-index":9});
+      bgsoundbh.pause();
+      eatinggas.play();
+    });
+    /* ******************** */
+    $("#wibhaudioplbtn").on('tap', function() {
+      wibhaudio.play();
+      $(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#wibhaudiofbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime + 10;
+    });
+    
+    $("#wibhaudiobbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime - 10;
+    });
+    
+    $("#wibhaudiopsbtn").on('tap', function() {
+      wibhaudio.pause();
+      $(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+  </script>
+  <script src="js/threecardLogicb.js"></script>
+</div>

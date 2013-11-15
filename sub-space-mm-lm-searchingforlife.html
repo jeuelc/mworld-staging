@@ -1,0 +1,102 @@
+<!-- i-C-a -->
+<div id="searchingforlife" data-role="page">	
+  <script src="js/hammer.js"></script>	
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebarbh.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><img class="homebtn" src="css/images/5-8/Ancient_Civilizations/Greece/homebtn.png"></div>
+  <div class="cpbtnholder"><img class="cpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/cpbtn.png"></div>
+  <div class="buildbtnholder"><img class="buildbtn" src="css/images/5-8/Ancient_Civilizations/Greece/buildbtn.png"></div>
+  <div class="mpbtnholder"><img class="mpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/mpbtn.png"></div>
+  <div class="menubtnholder"><img class="menubtn" src="css/images/5-8/Ancient_Civilizations/Greece/menubtn.png"></div>
+  <div class="bptitleholderbh" style="padding-top:14px;"><h1>Searching for life</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/5-8/Space/Mission_Mars/mcquiz.png" alt="" />
+          </div>
+          <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+            <img src="css/images/5-8/Space/Mission_Mars/Life_on_Mars/mountsharp.png" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentbh">
+        <p>How do we find life on Mars?</p>
+        <p>Step one is finding where the water is or was. After initial disappointments, when Mars appeared to be a dead world, spacecraft revealed dry riverbeds and evidence for liquid water.</p>
+        <p>The first spacecraft to land on Mars didn't land in these places. They played it safe, landing on flat desert plains, so spacecraft didn't tumble over in hills and valleys.</p>
+        <p>More sophisticated spacecraft are now being deliberately landed near regions where water may have once been prevalent. For example, Mars Curiosity has landed next to a mountain, which has layers of sedimentary rock that may have been formed in water.</p>
+        <p>Robots can tell us much about water on Mars, how prevalent it once was, and whether conditions were suitable for life. However, we don't expect these rovers to find fossils of Martians, be they dinosaurs, unicorns or bacteria.</p>
+        <p>Perhaps to truly understand life on Mars, we need to send scientists - armed with nimble hands and creative minds, who can spot details that robots will completely miss.</p>
+        <p>Do  you think you would like the job of exploring Mars? Why?</p>
+      </div>
+      
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/5-8/bottomhomebh.png"></a></div>
+    </div><!--end of content-->
+  </div><!--/spacechar-->
+  <div class="audiopanel">
+    <div class="bbh"><img id="wibhaudiobbtn" src="css/images/audio/audio-back.png"></div>
+    <div class="plbh"><img id="wibhaudioplbtn" src="css/images/audio/audio-play.png"></div>
+    <div class="psbh"><img id="wibhaudiopsbtn" src="css/images/audio/audio-pause.png"></div>
+    <div class="fbh"><img id="wibhaudiofbtn" src="css/images/audio/audio-forw.png"></div>
+    <div id="actualaudio-wibh" style="visibility:hidden;"></div>
+  </div>
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    (function() {			
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");      
+      $('div#pol1').css("z-index", 1);      
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");      
+      
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-wibh').html('<audio id="wibhaudio" controls preload onpause="playbh()" onplay="pausebh()"><source src="audio/mmlmSearching.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#searchingforlife").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-space-mm-lm.html");
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+    
+    $("#pol1").on('tap', function() {
+      $.mobile.changePage("sub-space-mm-quiz.html", { transition: "slide" });
+    });
+    /* ******************** */
+    $("#wibhaudioplbtn").on('tap', function() {
+      wibhaudio.play();
+      $(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#wibhaudiofbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime + 10;
+    });
+    
+    $("#wibhaudiobbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime - 10;
+    });
+    
+    $("#wibhaudiopsbtn").on('tap', function() {
+      wibhaudio.pause();
+      $(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+    
+  </script>
+  <script src="js/twocardLogic.js"></script>
+</div>

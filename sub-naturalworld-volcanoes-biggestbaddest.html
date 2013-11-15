@@ -1,0 +1,132 @@
+<!-- i-C-a -->
+<div data-role="page" id="biggestbaddest">
+  <script src="js/slidebarnat.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnnat"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnnat"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnnat"></div></div>
+  <div class="infobtnholder"><div class="infobtnnat"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnnat"></div></div>
+  <div class="menubtnholder"><div class="menubtnnat"></div></div>
+  
+  <div class="navtitleholdervol" style="padding-top:14px;"><h1>Biggest and Baddest</h1></div>
+  
+    <div data-role="content" class="kidzcontent">
+      <div class="navvol-content3">
+        <p>Some volcanic eruptions on our Earth have been bigger and far more destructive than many others.</p>
+        <p>Before we look at these, it's important to know how volcanoes are measured and compared.  Volcanologists use the Volcanic Explosivity Index or VEI scale.  It measures the amount (volume) of erupted products, the height of the eruption cloud above the volcano and how long the eruption takes.</p>
+        <p>The scale is logarithmic.  This means each time you go up a level, the eruption is ten times greater!  So a VEI 6 eruption like Mt Pinatubo, in the Philippines in 1991, was ten times BIGGER than a VEI 5 eruption like the Mt St Helens eruption in the United States of America in 1980!</p>
+        <p>Tap on the buttons below to learn about a couple of the biggest eruptions in recorded history and a few that were so super-bad they changed the face of the Earth</p>
+      </div>
+        
+      <div class="navbtn1" style="top:420px;">
+        <p><a href="sub-naturalworld-volcanoes-krackawhata.html" data-transition="slide"><img src="css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/krackawhat.png"></a></p>
+      </div>
+      <div class="navbtn2" style="left:400px;">
+        <p><a href="sub-naturalworld-volcanoes-littlemonsters.html" data-transition="slide"><img src="css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/littlemonster.png"></a></p>
+      </div>
+      <div class="navbtn3" style="top:420px;">
+        <p><a href="sub-naturalworld-volcanoes-superbaddies.html" data-transition="slide"><img src="css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/superbaddies.png"></a></p>
+      </div>
+        
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Natural_World/bottomhomenat.png"></a></div>
+    </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js 
+         note: change the ids to be able play the narration
+    -->
+    <div class="micbtnholder"><div class="micbtnnat" id="playstopbiggestbaddest"></div></div>
+    <div class="bnat"><div class="rwnat" id="biggestbaddestaudiobbtn"></div></div>
+    <div class="plnat"><div class="plpsnat" id="biggestbaddestaudioplbtn"></div></div>
+    <div class="fnat"><div class="fwnat" id="biggestbaddestaudiofbtn"></div></div>
+    <div id="actualaudio-biggestbaddest" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-biggestbaddest').html('<audio id="biggestbaddestaudio" controls preload onpause="playvol()" onplay="pausevol()"><source src="narrations/volcanoes_biggestbaddest.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#biggestbaddest").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundvol.pause(); bgsoundvol.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-naturalworld-volcanoes.html", {transition: "slide", reverse: true });
+    }
+    
+    function pausedaudio() {
+      bgsoundvol.play();
+    }
+    
+    function pausebg() {
+      bgsoundvol.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopbiggestbaddest").on('tap', function() {
+      if(!playing) {
+        biggestbaddestaudio.play();
+        $('.micbtnnat').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        biggestbaddestaudio.pause(); biggestbaddestaudio.currentTime = 0;
+        $('.micbtnnat').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#biggestbaddestaudioplbtn").on('tap', function() {
+      if(!paused) {
+        biggestbaddestaudio.pause();
+        paused = true;
+      } else {
+        biggestbaddestaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#biggestbaddestaudiofbtn").on('tap', function() {
+      var ctime = biggestbaddestaudio.currentTime;
+      biggestbaddestaudio.currentTime = ctime + 10;
+    });
+    
+    $("#biggestbaddestaudiobbtn").on('tap', function() {
+      var ctime = biggestbaddestaudio.currentTime;
+      biggestbaddestaudio.currentTime = ctime - 10;
+    });
+    
+    $("#biggestbaddestaudiopsbtn").on('tap', function() {
+      biggestbaddestaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+    
+    $('.navbtn1').on('tap', function() { 
+      nav1Effects(); 
+    });
+    
+    $('.navbtn2').on('tap', function() { 
+      nav2Effects(); 
+    });
+    
+    $('.navbtn3').on('tap', function() { 
+      nav3Effects(); 
+    });
+    
+    $('.navbtn4').on('tap', function() { 
+      nav4Effects(); 
+    });
+  </script>
+</div> <!--//home-->

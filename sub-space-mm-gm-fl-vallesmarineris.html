@@ -1,0 +1,99 @@
+<!-- i-C-a -->
+<div id="vallesmarineris" data-role="page">	
+  <script src="js/hammer.js"></script>	
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebarbh.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><img class="homebtn" src="css/images/5-8/Ancient_Civilizations/Greece/homebtn.png"></div>
+  <div class="cpbtnholder"><img class="cpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/cpbtn.png"></div>
+  <div class="buildbtnholder"><img class="buildbtn" src="css/images/5-8/Ancient_Civilizations/Greece/buildbtn.png"></div>
+  <div class="mpbtnholder"><img class="mpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/mpbtn.png"></div>
+  <div class="menubtnholder"><img class="menubtn" src="css/images/5-8/Ancient_Civilizations/Greece/menubtn.png"></div>
+  <div class="bptitleholderbh" style="padding-top:14px;"><h1>Valles Marineris</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <div id="zoomwrapper">
+          <div id="polb1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/vallesmarineris.png" alt="" />
+          </div>
+          <div id="polb2" class="pPiece" style="left:75px;top:290px;">
+            <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/closerviewofvallesmarineris.png" alt="" />
+          </div>
+          <div id="polb3" class="pPiece" style="left:80px;top:270px;">
+              <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/falsecolour.png" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentbh">
+        <p>The Valles Marineris, or Valley of the Mariners, is the largest canyon in the Solar System.</p>
+        <p>It is 4000 kilometres in length and up to 200 kilometres wide.  It's so big that you can fit the whole of Japan in there, twice!  It is up to 200 kilometres wide and up to 7 kilometres deep! It dwarfs anything similar on Earth.</p>
+        <p>How did such a vast valley form? Perhaps two parts of Mars' crust pulled apart from each other, producing a rift valley. There are rift valleys on Earth, but none is as spectacular as the Valles Mariner.</p>
+      </div>
+      
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/5-8/bottomhomebh.png"></a></div>
+    </div><!--end of content-->
+  </div><!--/spacechar-->
+  <div class="audiopanel">
+    <div class="bbh"><img id="wibhaudiobbtn" src="css/images/audio/audio-back.png"></div>
+    <div class="plbh"><img id="wibhaudioplbtn" src="css/images/audio/audio-play.png"></div>
+    <div class="psbh"><img id="wibhaudiopsbtn" src="css/images/audio/audio-pause.png"></div>
+    <div class="fbh"><img id="wibhaudiofbtn" src="css/images/audio/audio-forw.png"></div>
+    <div id="actualaudio-wibh" style="visibility:hidden;"></div>
+  </div>
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    (function() {			
+      $('div#polb1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#polb1').css("z-index", 2);
+      $('div#polb2').css("z-index", 1);
+      $('div#polb2 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#polb3 > img').css("-webkit-transform", "rotate(-3deg)");	
+      
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-wibh').html('<audio id="wibhaudio" controls preload onpause="playbh()" onplay="pausebh()"><source src="audio/mmgmflValles.mp3" type="audio/mpeg"></audio>');
+      } 
+
+      $("#vallesmarineris").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+    })();
+ 
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-space-mm-gm-fl.html");
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+
+    /* ******************** */
+    $("#wibhaudioplbtn").on('tap', function() {
+      wibhaudio.play();
+      $(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#wibhaudiofbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime + 10;
+    });
+    
+    $("#wibhaudiobbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime - 10;
+    });
+    
+    $("#wibhaudiopsbtn").on('tap', function() {
+      wibhaudio.pause();
+      $(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+  </script>
+  <script src="js/threecardLogicb.js"></script>
+</div>

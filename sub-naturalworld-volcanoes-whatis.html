@@ -1,0 +1,180 @@
+<!-- i-C-a -->
+<div data-role="page" id="whatis">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebarnat.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnnat"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnnat"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnnat"></div></div>
+  <div class="infobtnholder"><div class="infobtnnat"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnnat"></div></div>
+  <div class="menubtnholder"><div class="menubtnnat"></div></div>
+  
+  <div class="bptitleholder-whatis" style="padding-top:14px;"><h1>What's a volcano?</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="tungurahua" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Rumbling_From_The_Deep/What_Is_A_Volcano/Mt_Tungurahua_Volcano.jpg', 'Explosive magmatic eruption of Mt Tungurahua volcano in Ecuador');">click here</a>
+        <a id="delafournaise" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Rumbling_From_The_Deep/What_Is_A_Volcano/Piton_De_La_Fournaise_Volcano.jpg', 'Piton de la Fournaise volcano on Reunion Island, Indian Ocean. This last erupted in 2010, can you spot the fresh black chilled lava?');">click here</a>
+        <a id="kilimanjaro" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Rumbling_From_The_Deep/What_Is_A_Volcano/Mt_Kilimanjaro.jpg', 'Elephants roam the savannah, with stunning Mt Kilimanjaro volcano in the background');">click here</a>
+      
+        <div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Rumbling_From_The_Deep/What_Is_A_Volcano/Watch_Mt_Etna_Errupt.png" alt="" />
+          </div>
+          <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Rumbling_From_The_Deep/What_Is_A_Volcano/Mt_Tungurahua_Volcano.png" alt="" />
+          </div>
+          <div id="pol3"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Rumbling_From_The_Deep/What_Is_A_Volcano/Piton_De_La_Fournaise_Volcano.png" alt="" />
+          </div>
+          <div id="pol4"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Rumbling_From_The_Deep/What_Is_A_Volcano/Mt_Kilimanjaro.png" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontent-whatis">
+        <p>A volcano is a conduit or opening that transfers hot molten rock from inside the Earth out on to its surface. Molten or melted rock below the Earth's surface is called "magma", but when it erupts at the surface we call it "lava".</p>
+        <p>When magma gets close to the surface it can release dissolved components from the liquid that actually prefer being a gas, such as water vapour, carbon dioxide and sulphur dioxide.  These gases make the magma bubbly, which builds up lots of pressure. Finally, the magma explodes through the Earth's surface as the pressure is released. It's a bit like when you shake a bottle of fizzy lemonade and then unscrew the top!</p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Natural_World/bottomhomenat.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+  <!-- <div class="audiopanel"> -->
+    <!-- images are in slidebarnat.js 
+         note: change the ids to be able play the narration
+    -->
+    <div class="micbtnholder"><div class="micbtnnat" id="playstopwhatis"></div></div>
+    <div class="bnat"><div class="rwnat" id="whatisaudiobbtn"></div></div>
+    <div class="plnat"><div class="plpsnat" id="whatisaudioplbtn"></div></div>
+    <div class="fnat"><div class="fwnat" id="whatisaudiofbtn"></div></div>
+    <div id="actualaudio-whatis" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  <div id="watchMtEtnaholder" style="width:1024px;height:748px;position:absolute;left:0px;top:0px;visibility:hidden;background:#000000;z-index:-1;">
+    <video id="watchMtEtna" width="1024" height="748" preload>
+      <source src="css/images/9-12/The_Natural_World/Volcanoes/Rumbling_From_The_Deep/What_Is_A_Volcano/Watch_Mt_Etna_Errupt.m4v" type="video/mp4">
+    </video>
+  </div> 
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      $('div#pol1').css("z-index", 3);
+      $('div#pol2').css("z-index", 2);
+      $('div#pol3').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('#watchMtEtnaholder').css({"visibility":"hidden", "z-index":-10});		
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#pol3 > img').css("-webkit-transform", "rotate(-3deg)");
+      $('div#pol4 > img').css("-webkit-transform", "rotate(-3deg)");
+      
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-whatis').html('<audio id="whatisaudio" controls preload onpause="playvol()" onplay="pausevol()"><source src="narrations/volcanoes_whatisavolcano.mp3" type="audio/mpeg"></audio>');
+      } 
+
+      watchMtEtna.addEventListener('ended', function() { 
+        $("#watchMtEtnaholder").css({"visibility":"hidden", "z-index":-1});
+        $("#watchMtEtna").css({"z-index":-1});
+        bgsoundvol.play(); 
+      });
+    
+    $("#watchMtEtna").on('tap', function() {
+      $("#watchMtEtnaholder").css({"visibility":"hidden", "z-index":-1});
+      $("#watchMtEtna").css({"z-index":-1});
+      bgsoundvol.play();
+      watchMtEtna.pause();
+      watchMtEtna.currentTime = 0;
+    });
+            
+      $("#whatis").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundvol.pause(); bgsoundvol.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-naturalworld-volcanoes-rumbling.html", {transition: "slide", reverse: true });
+      // prev page plays the same bgmusic so comment this out
+      //bgsoundvol.pause(); 
+      //bgsoundvol.currentTime = 0;
+      //bgsoundvol.play(); 
+    }
+    
+    $("#pol1").on('tap', function() {
+      $("#watchMtEtnaholder").css({"visibility":"visible", "z-index":10});
+      $("#watchMtEtna").css({"z-index":9});
+      bgsoundvol.pause();
+      watchMtEtna.play();
+      
+    });
+    $("#pol2").on('tap', function() {
+      $('#tungurahua')[0].click();
+    });
+    $("#pol3").on('tap', function() {
+      $('#delafournaise')[0].click();
+    }); 
+    $("#pol4").on('tap', function() {
+      $('#kilimanjaro')[0].click();
+    });
+    
+    function pausedaudio() {
+      bgsoundvol.play();
+    }
+    
+    function pausebg() {
+      bgsoundvol.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopwhatis").on('tap', function() {
+      if(!playing) {
+        whatisaudio.play();
+        $('.micbtnnat').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        whatisaudio.pause(); whatisaudio.currentTime = 0;
+        $('.micbtnnat').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#whatisaudioplbtn").on('tap', function() {
+      if(!paused) {
+        whatisaudio.pause();
+        paused = true;
+      } else {
+        whatisaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#whatisaudiofbtn").on('tap', function() {
+      var ctime = whatisaudio.currentTime;
+      whatisaudio.currentTime = ctime + 10;
+    });
+    
+    $("#whatisaudiobbtn").on('tap', function() {
+      var ctime = whatisaudio.currentTime;
+      whatisaudio.currentTime = ctime - 10;
+    });
+    
+    $("#whatisaudiopsbtn").on('tap', function() {
+      whatisaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+  </script>
+  <script src="js/fourcardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

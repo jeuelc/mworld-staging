@@ -1,0 +1,109 @@
+<!-- i-C-a -->
+<div data-role="page" id="oceans">
+  <script src="js/slidebarwos.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnwos"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnwos"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnwos"></div></div>
+  <div class="infobtnholder"><div class="infobtnwos"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnwos"></div></div>
+  <div class="menubtnholder"><div class="menubtnwos"></div></div>
+  
+  <div class="navtitleholder" style="padding-top:14px;"><h1>Oceans and the Earth</h1></div>
+  
+    <div data-role="content" class="kidzcontent">
+      <div class="nav-content">
+        <p>When we think about the Earth most of us will think about all the things that happen on the land, but did you know that 70% of the Earth is covered by water!  The water on Earth is super important; the earliest life forms evolved in water about 3600 million years ago and everything we see today evolved from there!</p>
+        <p>The oceans play a huge role in our climate.  They act as giant storage heaters, absorbing heat that comes from the sun.  The ocean currents can move warm and cold water from one part of the globe to another and many other important things like soaking up gases from the atmosphere!</p>
+<p>The oceans are also really important for us humans.  We have always relied on the oceans for food, trade and culture.  Nowadays we can hop on a plane and fly across our vast oceans, but once we had to make our own boats to discover new places!</p>
+      
+      </div>
+        
+      <div class="navseabtn1">
+  <p><a href="sub-deep- blue-sea-oceans-humans.html" data-transition="slide"><img src="css/images/9-12/sleep_dreams/background2.png"></a></p>
+      </div>
+      <div class="navseabtn3">
+        <p><a href="sub-deep- blue-sea-tides-currents.html" data-transition="slide" ><img src="css/images/9-12/sleep_dreams/background2.png"></a></p>
+      </div>
+     
+    <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Wonders_of_Science/bottomhomewos.png"></a></div>
+    </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <div class="micbtnholder"><div class="micbtnwos" id="playstopmedieval"></div></div>
+    <div class="bwos"><div class="rwwos" id="oceansaudiobbtn"></div></div>
+    <div class="plwos"><div class="plpswos" id="oceansaudioplbtn"></div></div>
+    <div class="fwos"><div class="fwwos" id="oceansaudiofbtn"></div></div>
+    <div id="actualaudio-" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    (function() {
+      playing = false;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-').html('<audio id="oceansaudio" controls preload onpause="playbh()" onplay="pausebh()"><source src="http://deftsoft.info/appvendo/mw/audio/.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-deep-blue-sea.html", {transition: "slide", reverse: true });
+      bgsoundbh.pause();
+      bgsoundbh.currentTime = 0;
+      spacesoundbg.play();
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+    /* ******************** */
+    $("#playstopoceans").on('tap', function() {
+      if(!playing) {
+        oceansaudio.play();
+        $('.micbtnwos').css('background-position-x', '-81px');
+        playing = true;
+      } else {
+        oceansaudio.pause(); volcanoaudio.currentTime = 0;
+        $('.micbtnwos').css('background-position-x', '0px');
+        playing = false;
+      }
+    });
+    
+    $("#oceansaudioplbtn").on('tap', function() {
+      if(!playing) {
+        oceansaudio.play();
+      } else {
+        oceansaudio.pause();
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#oceansaudiofbtn").on('tap', function() {
+      var ctime = oceansaudio.currentTime;
+      oceansaudio.currentTime = ctime + 10;
+    });
+    
+    $("#oceansaudiobbtn").on('tap', function() {
+      var ctime = oceansaudio.currentTime;
+      oceansaudio.currentTime = ctime - 10;
+    });
+    
+    $("#oceansaudiopsbtn").on('tap', function() {
+     oceansaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+    
+    $('.navbtn1').on('tap', function() { 
+      nav1Effects(); 
+    });
+  </script>
+</div> <!--//home-->

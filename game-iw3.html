@@ -1,0 +1,155 @@
+<!-- i-C-a -->
+<div data-role="page" id="antimattergame">
+    <div data-role="content" style="overflow:hidden !important;">
+        <div style="width:90%;margin:auto;">
+            <div id="card1">
+                <div class="card">
+                    <div class="face cardback"></div>
+                    <div class="face back hydrogen"></div>
+                </div>
+            </div>
+            <div id="card2">
+                <div class="card">
+                    <div class="face cardback"></div>
+                    <div class="face back positron"></div>
+                </div>
+            </div>
+            <div id="card3">
+                <div class="card">
+                    <div class="face cardback"></div>
+                    <div class="face back proton"></div>
+                </div>
+            </div>
+            <div id="card4">
+                <div class="card">
+                    <div class="face cardback"></div>
+                    <div class="face back antineutron"></div>
+                </div>
+            </div>
+            <div id="card5">
+                <div class="card">
+                    <div class="face cardback"></div>
+                    <div class="face back antiproton"></div>
+                </div>
+            </div>
+            <div id="card6">
+                <div class="card">
+                    <div class="face cardback"></div>
+                    <div class="face back neutron"></div>
+                </div>
+            </div>
+            <div id="card7">
+                <div class="card">
+                    <div class="face cardback"></div>
+                    <div class="face back antihydrogen"></div>
+                </div>
+            </div>
+            <div id="card8">
+                <div class="card">
+                    <div class="face cardback"></div>
+                    <div class="face back electron"></div>
+                </div>
+            </div>
+            <a id="back"></a>
+        </div>
+        <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/bottomhome.png"></a></div>
+    </div>    
+    <div class="dialogOverlay"></div>
+    <div id="gamedialog">
+        <div id="gamedialog-content"></div>
+    </div>
+    <script>
+                
+        var correctMatch = Array(4);
+        correctMatch[0] = Array(2);
+        correctMatch[0][0] = 1;
+        correctMatch[0][1] = 7;
+        correctMatch[1] = Array(2);
+        correctMatch[1][0] = 3;
+        correctMatch[1][1] = 5;
+        correctMatch[2] = Array(2);
+        correctMatch[2][0] = 4;
+        correctMatch[2][1] = 6;
+        correctMatch[3] = Array(2);
+        correctMatch[3][0] = 2;
+        correctMatch[3][1] = 8;
+        
+        var isBusy = false;
+        var openCardCount = 0;
+        var answer = Array(2);
+        answer[0] = 0;
+        answer[0] = 0;
+        
+        $(document).ready(function() {            
+            $('.dialogOverlay').hide();
+            
+            $('#card1, #card2, #card3, #card4, #card5, #card6, #card7, #card8').on('tap', function() {
+                if (isBusy) {
+                    return;
+                }                
+                var id = $(this).attr("id");
+                var targetId = "#" + id + ' .card';
+                //alert("mao ni target id: "+targetId);
+                var n = parseInt(id.substring(id.length-1));
+                if (!$(targetId).hasClass("card-rotate")) {
+                    //$(targetId).addClass("card-rotate");
+                    $(targetId).css({"-webkit-transform": "rotateY(180deg)"});
+                    $(targetId).css({"-moz-transform": "rotateY(180deg)"});
+                    $(targetId).css({"-o-transform": "rotateY(180deg)"});
+                    $(targetId).css({"transform": "rotateY(180deg)"});
+                    openCardCount = openCardCount + 1;                    
+                    if (openCardCount == 2) {
+                        answer[1] = n;                        
+                        openCardCount = 0;                        
+                        var isMatched = false;                        
+                        for (var i = 0; i < 4; i++) {
+                            if ((answer[0] == correctMatch[i][0] && answer[1] == correctMatch[i][1])
+                                || (answer[0] == correctMatch[i][1] && answer[1] == correctMatch[i][0])) {
+                                isMatched = true;
+                            }                            
+                        }                        
+                        if (!isMatched) {                        
+                            isBusy = true;
+                            var cardTimer = setTimeout(function() {
+                                $("#card" + answer[0] + " .card").css({"-webkit-transform": "rotateY(0deg)"});
+                                $("#card" + answer[0] + " .card").css({"-moz-transform": "rotateY(0deg)"});
+                                $("#card" + answer[0] + " .card").css({"-o-transform": "rotateY(0deg)"});
+                                $("#card" + answer[0] + " .card").css({"transform": "rotateY(0deg)"});
+                                $(targetId).css({"-webkit-transform": "rotateY(0deg)"});
+                                $(targetId).css({"-moz-transform": "rotateY(0deg)"});
+                                $(targetId).css({"-o-transform": "rotateY(0deg)"});
+                                $(targetId).css({"transform": "rotateY(0deg)"});
+                                clearTimeout(cardTimer);
+                                isBusy = false;
+                            }, 1000);                        
+                        }
+                    } else {                        
+                        answer[0] = n; 
+                    }
+                    
+                } else {
+                    //$(targetId).removeClass("card-rotate");
+                    $(targetId).css({"-webkit-transform": "rotateY(0deg)"});
+                    $(targetId).css({"-moz-transform": "rotateY(0deg)"});
+                    $(targetId).css({"-o-transform": "rotateY(0deg)"});
+                    $(targetId).css({"transform": "rotateY(0deg)"});
+                    openCardCount = openCardCount - 1;
+                }
+            });
+            
+            $('#back').click(function() {
+                goBack();
+            });
+            
+        });
+        
+        function goBack() {
+            $.mobile.changePage("sub-wonderscience-invisibleworld-antimatter.html", {transition: "slide", reverse: true });
+        }
+    
+        $('.homelinkbh').on('tap', function() { 
+            mainaudiobg.play(); sciencesoundbg.pause(); sciencesoundbg.currentTime = 0; 
+        });
+
+    </script>
+</div>

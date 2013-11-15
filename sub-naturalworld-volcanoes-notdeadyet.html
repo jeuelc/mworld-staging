@@ -1,0 +1,149 @@
+<!-- i-C-a -->
+<div data-role="page" id="notdeadyet">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebarnat.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnnat"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnnat"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnnat"></div></div>
+  <div class="infobtnholder"><div class="infobtnnat"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnnat"></div></div>
+  <div class="menubtnholder"><div class="menubtnnat"></div></div>
+  
+  <div class="bptitleholder-whatis" style="padding-top:14px;"><h1>Not Dead Yet!</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="gplakelink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/gplake.jpg', 'Grand Prismatic Spring at Yellowstone National Park.  The amazing bright colours around the rim of the hot spring are formed from bacteria that live there');">click here</a>
+        <a id="bisonlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/bison.jpg', 'A Bison checks out an eruption of the \'Old Faithful\' geyser while eating lunch at Yellowstone National Park');">click here</a>
+        <a id="yellowstonelink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/yellowstone.jpg', 'A male Elk surveys his beautiful home, Yellowstone National Park, USA ');">click here</a>
+      
+        <div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/whatsgoingonpol.png" alt="" />
+          </div>
+          <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/gplakepol.jpg" alt="" />
+          </div>
+          <div id="pol3"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/bisonpol.jpg" alt="" />
+          </div>
+          <div id="pol4"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/yellowstonepol.jpg" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontent-whatis">
+        <p>Yellowstone National Park in the USA is one of world's most stunning and well-loved places to visit.  It's also one of our biggest caldera volcanoes, measuring 85 x 45 kilometres.  Yep, when you walk around it you're stomping on the roof of the Yellowstone supervolcano!  </p>
+        <p>It's had three major eruptions.  The last one was about 640,000 years ago.  So you might think it must be dead by now.  Wrong.  It might be getting ready to erupt again. </p>
+        <p>How do we know?  If you visit the park you will see hot water and steam spurting into the air from the ground (called geysers), smoking mounds or colourful hot springs.  These bits of evidence show that the Yellowstone caldera is still hot, active and ready to erupt again  so be careful where you put your picnic rug! </p>
+        <p>Tap on the card to discover how volcanoes are monitored.</p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Natural_World/bottomhomenat.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnnat" id="playstopnotdeadyet"></div></div>
+    <div class="bnat"><div class="rwnat" id="notdeadyetaudiobbtn"></div></div>
+    <div class="plnat"><div class="plpsnat" id="notdeadyetaudioplbtn"></div></div>
+    <div class="fnat"><div class="fwnat" id="notdeadyetaudiofbtn"></div></div>
+    <div id="actualaudio-notdeadyet" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      $('div#pol1').css("z-index", 3);
+      $('div#pol2').css("z-index", 2);
+      $('div#pol3').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#pol3 > img').css("-webkit-transform", "rotate(-3deg)");
+      $('div#pol4 > img').css("-webkit-transform", "rotate(-3deg)");
+      
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-notdeadyet').html('<audio id="notdeadyetaudio" controls preload onpause="playvol()" onplay="pausevol()"><source src="narrations/volcanoes_notdeadyet.mp3" type="audio/mpeg"></audio>');
+      } 
+
+      $("#notdeadyet").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundvol.pause(); bgsoundvol.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-naturalworld-volcanoes-superbaddies.html", {transition: "slide", reverse: true });
+    }
+    
+    $("#pol1").on('tap', function() {
+      $.mobile.changePage("sub-naturalworld-volcanoes-whatsgoingon.html", {transition: "slide"});
+    });
+    $("#pol2").on('tap', function() {
+      $('#gplakelink')[0].click();
+    });
+    $("#pol3").on('tap', function() {
+      $('#bisonlink')[0].click();
+    }); 
+    $("#pol4").on('tap', function() {
+      $('#yellowstonelink')[0].click();
+    });
+    
+    function pausedaudio() {
+      bgsoundvol.play();
+    }
+    
+    function pausebg() {
+      bgsoundvol.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopnotdeadyet").on('tap', function() {
+      if(!playing) {
+        notdeadyetaudio.play();
+        $('.micbtnnat').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        notdeadyetaudio.pause(); notdeadyetaudio.currentTime = 0;
+        $('.micbtnnat').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#notdeadyetaudioplbtn").on('tap', function() {
+      if(!paused) {
+        notdeadyetaudio.pause();
+        paused = true;
+      } else {
+        notdeadyetaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#notdeadyetaudiofbtn").on('tap', function() {
+      var ctime = notdeadyetaudio.currentTime;
+      notdeadyetaudio.currentTime = ctime + 10;
+    });
+    
+    $("#notdeadyetaudiobbtn").on('tap', function() {
+      var ctime = notdeadyetaudio.currentTime;
+      notdeadyetaudio.currentTime = ctime - 10;
+    });
+    
+    $("#notdeadyetaudiopsbtn").on('tap', function() {
+      notdeadyetaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+  </script>
+  <script src="js/fourcardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

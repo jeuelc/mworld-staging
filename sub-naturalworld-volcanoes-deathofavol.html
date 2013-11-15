@@ -1,0 +1,109 @@
+<!-- i-C-a -->
+<div data-role="page" id="deathofavol">
+  <script src="js/slidebarnat.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnnat"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnnat"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnnat"></div></div>
+  <div class="infobtnholder"><div class="infobtnnat"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnnat"></div></div>
+  <div class="menubtnholder"><div class="menubtnnat"></div></div>
+  
+  <div class="bptitleholder-whatis" style="padding-top:14px;"></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+      </div>
+      
+      <div class="bpcontent-whatis">
+        
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Natural_World/bottomhomenat.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnnat" id="playstopdeathofavol"></div></div>
+    <div class="bnat"><div class="rwnat" id="deathofavolaudiobbtn"></div></div>
+    <div class="plnat"><div class="plpsnat" id="deathofavolaudioplbtn"></div></div>
+    <div class="fnat"><div class="fwnat" id="deathofavolaudiofbtn"></div></div>
+    <div id="actualaudio-deathofavol" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol1').css("z-index", 3);
+      $('div#pol2').css("z-index", 2);
+      $('div#pol3').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#pol3 > img').css("-webkit-transform", "rotate(-3deg)");
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-deathofavol').html('<audio id="deathofavolaudio" controls preload onpause="playvol()" onplay="pausevol()"><source src="narrations/volcanoes_deathofavol.mp3" type="audio/mpeg"></audio>');
+      }             
+      $("#deathofavol").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundvol.pause(); bgsoundvol.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-naturalworld-volcanoes-livingwithvol.html", {transition: "slide", reverse: true });
+    }
+    
+    function pausedaudio() {
+      bgsoundvol.play();
+    }
+    
+    function pausebg() {
+      bgsoundvol.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopdeathofavol").on('tap', function() {
+      if(!playing) {
+        deathofavolaudio.play();
+        $('.micbtnnat').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        deathofavolaudio.pause(); deathofavolaudio.currentTime = 0;
+        $('.micbtnnat').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#deathofavolaudioplbtn").on('tap', function() {
+      if(!paused) {
+        deathofavolaudio.pause();
+        paused = true;
+      } else {
+        deathofavolaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#deathofavolaudiofbtn").on('tap', function() {
+      var ctime = deathofavolaudio.currentTime;
+      deathofavolaudio.currentTime = ctime + 10;
+    });
+    
+    $("#deathofavolaudiobbtn").on('tap', function() {
+      var ctime = deathofavolaudio.currentTime;
+      deathofavolaudio.currentTime = ctime - 10;
+    });
+    
+    $("#deathofavolaudiopsbtn").on('tap', function() {
+      deathofavolaudio.pause();
+    });
+  </script>
+  
+</div> <!--//home-->

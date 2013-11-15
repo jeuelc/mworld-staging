@@ -1,0 +1,101 @@
+<!-- i-C-a -->
+<div data-role="page" id="etgiants">
+  <script src="js/slidebarnat.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnnat"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnnat"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnnat"></div></div>
+  <div class="infobtnholder"><div class="infobtnnat"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnnat"></div></div>
+  <div class="menubtnholder"><div class="menubtnnat"></div></div>
+  
+  <div class="navtitleholdervol" style="padding-top:14px;"></div>
+  <div id="etgiantslink" style="position:absolute;left:845px;top:20px;width:150px;height:60px;"></div>
+  <div id="hotspotslink" style="position:absolute;left:340px;top:330px;width:280px;height:40px;"></div>
+  <div id="undertheseelink" style="position:absolute;left:420px;top:460px;width:230px;height:40px;"></div>
+  <div id="inmountainslink" style="position:absolute;left:710px;top:440px;width:220px;height:40px;"></div>
+  <div data-role="content" class="kidzcontent">
+    <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Natural_World/bottomhomenat.png"></a></div>
+  </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js 
+         note: change the ids to be able play the narration
+    -->
+    <div class="micbtnholder"><div class="micbtnnat" id="playstopetgiants"></div></div>
+    <div class="bnat"><div class="rwnat" id="etgiantsaudiobbtn"></div></div>
+    <div class="plnat"><div class="plpsnat" id="etgiantsaudioplbtn"></div></div>
+    <div class="fnat"><div class="fwnat" id="etgiantsaudiofbtn"></div></div>
+    <div id="actualaudio-etgiants" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-etgiants').html('<audio id="etgiantsaudio" controls preload onpause="playvol()" onplay="pausevol()"><source src="narrations/volcanoes_etgiants.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#etgiants").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundvol.pause(); bgsoundvol.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-naturalworld-volcanoes-findingvol.html", {transition: "slide", reverse: true });
+    }
+    
+    function pausedaudio() {
+      bgsoundvol.play();
+    }
+    
+    function pausebg() {
+      bgsoundvol.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopetgiants").on('tap', function() {
+      if(!playing) {
+        etgiantsaudio.play();
+        $('.micbtnnat').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        etgiantsaudio.pause(); etgiantsaudio.currentTime = 0;
+        $('.micbtnnat').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#etgiantsaudioplbtn").on('tap', function() {
+      if(!paused) {
+        etgiantsaudio.pause();
+        paused = true;
+      } else {
+        etgiantsaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#etgiantsaudiofbtn").on('tap', function() {
+      var ctime = etgiantsaudio.currentTime;
+      etgiantsaudio.currentTime = ctime + 10;
+    });
+    
+    $("#etgiantsaudiobbtn").on('tap', function() {
+      var ctime = etgiantsaudio.currentTime;
+      etgiantsaudio.currentTime = ctime - 10;
+    });
+    
+    $("#etgiantsaudiopsbtn").on('tap', function() {
+      etgiantsaudio.pause();
+    });
+  </script>
+</div> <!--//home-->

@@ -1,0 +1,112 @@
+<!-- i-C-a -->
+<div data-role="page" id="thefuture">
+  <script src="js/slidebarwos.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnwos"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnwos"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnwos"></div></div>
+  <div class="infobtnholder"><div class="infobtnwos"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnwos"></div></div>
+  <div class="menubtnholder"><div class="menubtnwos"></div></div>
+  
+    <div class="navtitleholdervolcano" style="padding-top:14px;"><h1>The future</h1></div>
+  
+    <div data-role="content" class="kidzcontent">
+      <div class="navvolcanobig-content">
+          <p>The world's oceans cover 71% of the earth's surface and are vital in supporting the world's plants and animals.  They provide food to many of the world's people, and support fishing and related industries around the world.  The health of the world's oceans is essential to the health of the Earth as a whole and to you and me, our friends and our families.</p>
+		 <p>Changes in the world's climate threaten the health of the oceans.  It could also mean that the level of the world's oceans rise, threatening coastal communities around the world  not to mention swamping some beautiful beaches!</p>
+		 <p>There is also a lot of rubbish in the world's oceans, which hurts marine animals and has a big impact on our beautiful natural environment!</p>
+		 <p>But there are some good news stories did you know that whale poo might help to combat global warming?  Tap on the cards to find out mor</p>			 
+						
+      </div>
+        
+      <div class="navvolcanobigbtn1">
+  <p><a href="sub-deep-blue-sea-future-rubbish.html" data-transition="slide"><img src="css/images/9-12/sleep_dreams/background2.png"></a></p>
+      </div>
+      <div class="navvolcanobigbtn2">
+        <p><a href="sub-deep-blue-sea-future-whale-poo.html" data-transition="slide" ><img src="css/images/5-8/bluesea/whale.png"></a></p>
+      </div>
+      <div class="navvolcanobigbtn3">
+        <p><a href="sub-deep-blue-sea-future-what-can-we-do.html" data-transition="slide" ><img src="css/images/5-8/bluesea/whattodo.png"></a></p>
+      </div>
+ <div class="botlogobigholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Wonders_of_Science/bottomhomewos.png"></a></div>
+    </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <div class="micbtnholder"><div class="micbtnwos" id="playstopbigblue"></div></div>
+    <div class="bwos"><div class="rwwos" id="bigblueaudiobbtn"></div></div>
+    <div class="plwos"><div class="plpswos" id="bigblueaudioplbtn"></div></div>
+    <div class="fwos"><div class="fwwos" id="bigblueaudiofbtn"></div></div>
+    <div id="actualaudio-bigblue" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    (function() {
+      playing = false;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-bigblue').html('<audio id="bigblueaudio" controls preload onpause="playbigblue()" onplay="pausebigblue()"><source src="http://back.uvmate.com/sites/default/files/subjectsaudio/RevisedIntro.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#bigblue").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-deep-blue-sea.html", {transition: "slide", reverse: true });
+      bgsoundbh.pause();
+      bgsoundbh.currentTime = 0;
+      spacesoundbg.play();
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+    /* ******************** */
+    $("#playstopbigblue").on('tap', function() {
+      if(!playing) {
+        bigblueaudio.play();
+        $('.micbtnwos').css('background-position-x', '-81px');
+        playing = true;
+      } else {
+        bigblueaudio.pause(); bigblueaudio.currentTime = 0;
+        $('.micbtnwos').css('background-position-x', '0px');
+        playing = false;
+      }
+    });
+    
+    $("#bigblueaudioplbtn").on('tap', function() {
+      if(!playing) {
+        bigblueaudio.play();
+      } else {
+        bigblueaudio.pause();
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#bigblueaudiofbtn").on('tap', function() {
+      var ctime = bigblueaudio.currentTime;
+      bigblueaudio.currentTime = ctime + 10;
+    });
+    
+    $("#bigblueaudiobbtn").on('tap', function() {
+      var ctime = bigblueaudio.currentTime;
+      bigblueaudio.currentTime = ctime - 10;
+    });
+    
+    $("#bigblueaudiopsbtn").on('tap', function() {
+      bigblueaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+    
+    $('.navbigbluebigbtn1').on('tap', function() { 
+      nav1Effects(); 
+    });
+  </script>
+</div> <!--//home-->

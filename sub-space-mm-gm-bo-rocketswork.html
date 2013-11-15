@@ -1,0 +1,109 @@
+<!-- i-C-a -->
+<div id="rocketswork" data-role="page">	
+  <script src="js/slidebarbh.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><img class="homebtn" src="css/images/5-8/Ancient_Civilizations/Greece/homebtn.png"></div>
+  <div class="cpbtnholder"><img class="cpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/cpbtn.png"></div>
+  <div class="buildbtnholder"><img class="buildbtn" src="css/images/5-8/Ancient_Civilizations/Greece/buildbtn.png"></div>
+  <div class="mpbtnholder"><img class="mpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/mpbtn.png"></div>
+  <div class="menubtnholder"><img class="menubtn" src="css/images/5-8/Ancient_Civilizations/Greece/menubtn.png"></div>
+  <div class="bptitleholderbh" style="padding-top:14px;"><h1>How do rockets work?</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <div id="f1_container" style="visibility:hidden;position:absolute;left:100px;top:270px;">
+          <div id="f1_card">
+            <div class="front face">
+              <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/rocketswork.png" alt=""/>
+            </div>
+            <div class="back face center" style="padding: 0; overflow: hidden;">
+              <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/rocketswork1.png" alt=""/>
+            </div>
+          </div><!--/f1+card-->
+        </div>
+        <div id="pol1" class="pPiece" style="left:100px;top:270px;">  
+          <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/rocketswork.png" alt="" style="border:solid 4px #FFFFFF;" />
+        </div><!--/pol1-->
+      </div>
+      
+      <div class="bpcontentbh">
+        <p>Rockets work by burning explosive fuels, producing a jet of hot expanding gas. The rocket is pushed forward as the jet is blasted out of the rocket's nozzle.</p>
+        <p>Blast-off is one of the most dramatic and dangerous parts of space flight. The rockets accelerate rapidly, breaking the sound barrier  in less than one minute. While most rockets successfully reach outer space, many never make it, having exploded soon after lift off.</p>
+      </div>
+      
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/5-8/bottomhomebh.png"></a></div>
+    </div><!--end of content-->
+  </div><!--/spacechar-->
+  <div class="audiopanel">
+    <div class="bbh"><img id="wibhaudiobbtn" src="css/images/audio/audio-back.png"></div>
+    <div class="plbh"><img id="wibhaudioplbtn" src="css/images/audio/audio-play.png"></div>
+    <div class="psbh"><img id="wibhaudiopsbtn" src="css/images/audio/audio-pause.png"></div>
+    <div class="fbh"><img id="wibhaudiofbtn" src="css/images/audio/audio-forw.png"></div>
+    <div id="actualaudio-wibh" style="visibility:hidden;"></div>
+  </div>
+  <script>
+   console.log("start");
+   sound = new Audio(); // 'sound' is now an audio object
+    (function() {			
+      
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-wibh').html('<audio id="wibhaudio" controls preload onpause="playbh()" onplay="pausebh()"><source src="audio/mmgmboro.mp3" type="audio/mpeg"></audio>');
+      } 
+      $("#rocketswork").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+    })();
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-space-mm-gm-blastoff.html");
+    }
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+    
+    $("#f1_container").on('tap', function() {
+      $('#f1_card').css({"-webkit-transform": "rotateY(0deg)"});
+      $('#f1_card').css({"-moz-transform": "rotateY(0deg)"});
+      $('#f1_card').css({"-o-transform": "rotateY(0deg)"});
+      $('#f1_card').css({"transform": "rotateY(0deg)"});
+      setTimeout(function() {
+        $("#pol1").css({"visibility":"visible", "z-index":3});
+        $('#f1_container').css({"visibility":"hidden", "z-index":0});
+      }, 1000);
+    });
+
+    $('#rocketswork').find('.pPiece').on('tap', function(){
+      $('#f1_container').css({"visibility":"visible", "z-index":10});
+      $(this).css({"visibility":"hidden"});
+      $('#f1_card').css({"-webkit-transform": "rotateY(180deg)", "-webkit-box-shadow" : "-5px 5px 5px #aaa;"});
+      $('#f1_card').css({"-moz-transform": "rotateY(180deg)", "-moz-box-shadow" : "-5px 5px 5px #aaa;"});
+      $('#f1_card').css({"-o-transform": "rotateY(180deg)"});
+      $('#f1_card').css({"transform": "rotateY(180deg)", "box-shadow" : "-5px 5px 5px #aaa;"});
+    });
+    /* ******************** */
+    $("#wibhaudioplbtn").on('tap', function() {
+      wibhaudio.play();
+      $(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    }); 
+    
+    $("#wibhaudiofbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime + 10;
+    });
+    
+    $("#wibhaudiobbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime - 10;
+    });
+
+    $("#wibhaudiopsbtn").on('tap', function() {
+      wibhaudio.pause();
+      $(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+
+  </script>
+</div>

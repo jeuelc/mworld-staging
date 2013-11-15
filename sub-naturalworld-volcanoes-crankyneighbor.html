@@ -1,0 +1,136 @@
+<!-- i-C-a -->
+<div data-role="page" id="crankyneighbor">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebarnat.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnnat"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnnat"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnnat"></div></div>
+  <div class="infobtnholder"><div class="infobtnnat"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnnat"></div></div>
+  <div class="menubtnholder"><div class="menubtnnat"></div></div>
+  
+  <div class="bptitleholder-whatis" style="padding-top:14px;"><h1>A Cranky Neighbor</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="karyakskylink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Living_With_Volcanoes/karyaksky.jpg', 'Paragliders drift over the city of Petropavlovsk-Kamchatsky in Russia, while the active Karyaksky volcano, stands quietly behindfor now! ');">click here</a>
+        <a id="sakurajimalink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Living_With_Volcanoes/sakurajima.jpg', 'An eruption of Sakurajima volcano, Kyushu Island, Japan...better get the umbrella ready!');">click here</a>
+        <a id="lageralink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Living_With_Volcanoes/lagera.jpg', 'Fertile soils great for Vignerons in the La Geria region, Lanzarote Island, Canaray Islands');">click here</a>
+        <div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Living_With_Volcanoes/karyakskypol.jpg" alt="" />
+          </div>
+          <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Living_With_Volcanoes/sakurajimapol.jpg" alt="" />
+          </div>
+          <div id="pol3"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Living_With_Volcanoes/lagerapol.jpg" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontent-whatis">
+        <p>What would it be like to live next door to a volcano?  You could ask a Sicilian or Roman in Italy or a resident living around Lake Taupo in New Zealand!  Many people worldwide live in, on, or around volcanoes.  It can be dangerous because some of these volcanoes are active and volcanoes don't always erupt when or how you might expect.</p>
+        <p>However, volcanic deposits from eruptions can become wonderful, fertile soils over time.  That is good for agriculture and the reason why people often choose to live or work in the shadow of an active, fiery giant.</p>
+        <p>Imagine living in the town of Kagoshima, Japan.  You would need to pack your umbrella when you go outside, not for rain but for volcanic ash that might start falling!  The town sits next to the gigantic Aira caldera volcano, which has an active volcano inside it which often erupts, called Sakurajima.</p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Natural_World/bottomhomenat.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnnat" id="playstopcrankyneighbor"></div></div>
+    <div class="bnat"><div class="rwnat" id="crankyneighboraudiobbtn"></div></div>
+    <div class="plnat"><div class="plpsnat" id="crankyneighboraudioplbtn"></div></div>
+    <div class="fnat"><div class="fwnat" id="crankyneighboraudiofbtn"></div></div>
+    <div id="actualaudio-crankyneighbor" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol1').css("z-index", 3);
+      $('div#pol2').css("z-index", 2);
+      $('div#pol3').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#pol3 > img').css("-webkit-transform", "rotate(-3deg)");
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-crankyneighbor').html('<audio id="crankyneighboraudio" controls preload onpause="playvol()" onplay="pausevol()"><source src="narrations/volcanoes_crankyneighbor.mp3" type="audio/mpeg"></audio>');
+      }             
+      $("#crankyneighbor").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundvol.pause(); bgsoundvol.currentTime = 0;});
+    
+    $("#pol1").on('tap', function() {
+      $('#karyakskylink')[0].click();
+    });
+    $("#pol2").on('tap', function() {
+      $('#sakurajimalink')[0].click();
+    });
+    $("#pol3").on('tap', function() {
+      $('#lageralink')[0].click();
+    }); 
+    function goBack() {
+      $.mobile.changePage("sub-naturalworld-volcanoes-livingwithvol.html", {transition: "slide", reverse: true });
+    }
+    
+    function pausedaudio() {
+      bgsoundvol.play();
+    }
+    
+    function pausebg() {
+      bgsoundvol.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopcrankyneighbor").on('tap', function() {
+      if(!playing) {
+        crankyneighboraudio.play();
+        $('.micbtnnat').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        crankyneighboraudio.pause(); crankyneighboraudio.currentTime = 0;
+        $('.micbtnnat').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#crankyneighboraudioplbtn").on('tap', function() {
+      if(!paused) {
+        crankyneighboraudio.pause();
+        paused = true;
+      } else {
+        crankyneighboraudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#crankyneighboraudiofbtn").on('tap', function() {
+      var ctime = crankyneighboraudio.currentTime;
+      crankyneighboraudio.currentTime = ctime + 10;
+    });
+    
+    $("#crankyneighboraudiobbtn").on('tap', function() {
+      var ctime = crankyneighboraudio.currentTime;
+      crankyneighboraudio.currentTime = ctime - 10;
+    });
+    
+    $("#crankyneighboraudiopsbtn").on('tap', function() {
+      crankyneighboraudio.pause();
+    });
+  </script>
+  <script src="js/threecardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

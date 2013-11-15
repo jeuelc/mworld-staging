@@ -1,0 +1,137 @@
+<!-- i-C-a -->
+<div data-role="page" id="rumbling">
+  <script src="js/slidebarnat.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnnat"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnnat"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnnat"></div></div>
+  <div class="infobtnholder"><div class="infobtnnat"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnnat"></div></div>
+  <div class="menubtnholder"><div class="menubtnnat"></div></div>
+  
+  <div class="navtitleholdervol" style="padding-top:14px;"><h1>Rumbling from the deep</h1></div>
+  
+    <div data-role="content" class="kidzcontent">
+      <div class="navvol-content">
+        <p>Volcanoes have been part of our Earth and its processes for hundreds of millions of years. They've helped form our atmosphere and produce new land, so we can breathe easily and have somewhere to live!</p>
+        <p>These stunning and powerful parts of our landscape are not only creators. They can also be destroyers! To find out what a volcano actually is and how they erupt, tap on the buttons.</p>
+      </div>
+        
+      <div class="navbtn1">
+        <p><a href="sub-naturalworld-volcanoes-whatis.html" data-transition="slide"><img src="css/images/9-12/The_Natural_World/Volcanoes/Rumbling_From_The_Deep/What_Is_A_Volcano.png"></a></p>
+      </div>
+      <div class="navbtn2">
+        <p><a href="sub-naturalworld-volcanoes-huffandpuff.html" data-transition="slide"><img src="css/images/9-12/The_Natural_World/Volcanoes/Rumbling_From_The_Deep/Huff_and_Puff_Vs_Flow.png"></a></p>
+      </div>
+      <div class="navbtn3">
+        <p><a href="sub-naturalworld-volcanoes-earthsinnard.html" data-transition="slide"><img src="css/images/9-12/The_Natural_World/Volcanoes/Rumbling_From_The_Deep/Earths_Innards.png"></a></p>
+      </div>
+      <div class="navbtn4">
+        <p><a href="sub-naturalworld-volcanoes-cracksfromsurface.html" data-transition="slide"><img src="css/images/9-12/The_Natural_World/Volcanoes/Rumbling_From_The_Deep/Cracks_On_The_Surface.png"></a></p>
+      </div>
+        
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Natural_World/bottomhomenat.png"></a></div>
+    </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js 
+         note: change the ids to be able play the narration
+    -->
+    <div class="micbtnholder"><div class="micbtnnat" id="playstoprumbling"></div></div>
+    <div class="bnat"><div class="rwnat" id="rumaudiobbtn"></div></div>
+    <div class="plnat"><div class="plpsnat" id="rumaudioplbtn"></div></div>
+    <div class="fnat"><div class="fwnat" id="rumaudiofbtn"></div></div>
+    <div id="actualaudio-rum" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-rum').html('<audio id="rumaudio" controls preload onpause="playvol()" onplay="pausevol()"><source src="narrations/volcanoes_rumbling.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#rumbling").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundvol.pause(); bgsoundvol.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-naturalworld-volcanoes.html", {transition: "slide", reverse: true });
+      // prev page plays the same bgmusic so comment this out
+      //bgsoundvol.pause(); 
+      //bgsoundvol.currentTime = 0;
+      //bgsoundvol.play(); 
+    }
+    
+    function pausedaudio() {
+      bgsoundvol.play();
+    }
+    
+    function pausebg() {
+      bgsoundvol.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstoprumbling").on('tap', function() {
+      if(!playing) {
+        rumaudio.play();
+        $('.micbtnnat').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        rumaudio.pause(); rumaudio.currentTime = 0;
+        $('.micbtnnat').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#rumaudioplbtn").on('tap', function() {
+      if(!paused) {
+        rumaudio.pause();
+        paused = true;
+      } else {
+        rumaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#rumaudiofbtn").on('tap', function() {
+      var ctime = rumaudio.currentTime;
+      rumaudio.currentTime = ctime + 10;
+    });
+    
+    $("#rumaudiobbtn").on('tap', function() {
+      var ctime = rumaudio.currentTime;
+      rumaudio.currentTime = ctime - 10;
+    });
+    
+    $("#rumaudiopsbtn").on('tap', function() {
+      rumaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+    
+    $('.navbtn1').on('tap', function() { 
+      nav1Effects(); 
+    });
+    
+    $('.navbtn2').on('tap', function() { 
+      nav2Effects(); 
+    });
+    
+    $('.navbtn3').on('tap', function() { 
+      nav3Effects(); 
+    });
+    
+    $('.navbtn4').on('tap', function() { 
+      nav4Effects(); 
+    });
+  </script>
+</div> <!--//home-->

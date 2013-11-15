@@ -1,0 +1,112 @@
+<div id="superbaddies" data-role="page">
+  <script src="js/slidebarnat.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnnat"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnnat"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnnat"></div></div>
+  <div class="infobtnholder"><div class="infobtnnat"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnnat"></div></div>
+  <div class="menubtnholder"><div class="menubtnnat"></div></div>
+ 
+  <div data-role="content" class="kidzcontent">
+    <div class="storypagetitlevol"><h1>Super-baddies</h1></div>
+    <div id="storypagevol" class="storypage">
+      <p>Many volcanic eruptions have been bad but some have been SUPER-bad! </p>
+      <p>They're commonly referred to as 'supervolcanoes'. They're the giant calderas that are at the top end of the VEI scale.  They spew over 400 cubic kilometres of material, enough to cause big issues not only for locals but the entire world!</p>
+      <p>Caldera volcanoes form when part of the Earth's crust catastrophically collapses into a shallow underlying magma chamber.  This causes a huge explosive eruption.  Calderas can be up to 100 hundred kilometres long!  It's the big ones, like those over 30 kilometres long, which can be really bad! </p>
+      <p>Calderas are sneaky.  When they erupt, material is spewed far away, sometimes thousands of kilometres!  It leaves the remaining caldera looking like a hole in the ground  so you may not know it's there until it erupts again!  Calderas may fill with water, forming a lake, like Lake Taupo that formed in the Taupo caldera depression in New Zealand!  Tap the super-baddie to find out about two super-caldera eruptions!</p>
+    </div><!--/node-content/half-->
+    <div id="poisoncloudlink" style="width:180px;height:150px;position:absolute;top:100px;left:100px;"></div>
+    <div id="notdeadlink" style="width:130px;height:150px;position:absolute;top:400px;left:270px;"></div>
+    <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Natural_World/bottomhomenat.png"></a></div>
+    
+  </div><!--/.kidzcontent-->
+  
+  <div class="micbtnholder"><div class="micbtnnat" id="playstopsuperbaddies"></div></div>
+    <div class="bnat"><div class="rwnat" id="superbaddiesaudiobbtn"></div></div>
+    <div class="plnat"><div class="plpsnat" id="superbaddiesaudioplbtn"></div></div>
+    <div class="fnat"><div class="fwnat" id="superbaddiesaudiofbtn"></div></div>
+    <div id="actualaudio-superbaddies" style="visibility:hidden;"></div>
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-superbaddies').html('<audio id="superbaddiesaudio" controls preload onpause="playvol()" onplay="pausevol()"><source src="narrations/volcanoes_superbaddies.mp3" type="audio/mpeg"></audio>');
+      } 
+            
+      $("#superbaddies").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundvol.pause(); bgsoundvol.currentTime = 0;});
+    
+	$('#notdeadlink').on('tap', function() {
+    $.mobile.changePage("sub-naturalworld-volcanoes-notdeadyet.html", {transition: "slide" });
+	});
+  
+  $('#poisoncloudlink').on('tap', function() {
+    $.mobile.changePage("sub-naturalworld-volcanoes-poisoncloud.html", {transition: "slide" });
+	});
+	
+    function goBack() {
+      $.mobile.changePage("sub-naturalworld-volcanoes-biggestbaddest.html", {transition: "slide", reverse: true });
+      // prev page plays the same bgmusic so comment this out
+      //bgsoundvol.pause(); 
+      //bgsoundvol.currentTime = 0;
+      //bgsoundvol.play(); 
+    }
+    
+    function playvol() {
+      bgsoundvol.play();
+    }
+    
+    function pausevol() {
+      bgsoundvol.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopsuperbaddies").on('tap', function() {
+      if(!playing) {
+        superbaddiesaudio.play();
+        $('.micbtnnat').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        superbaddiesaudio.pause(); superbaddiesaudio.currentTime = 0;
+        $('.micbtnnat').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#superbaddiesaudioplbtn").on('tap', function() {
+      if(!paused) {
+        superbaddiesaudio.pause();
+        paused = true;
+      } else {
+        superbaddiesaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#superbaddiesaudiofbtn").on('tap', function() {
+      var ctime = superbaddiesaudio.currentTime;
+      superbaddiesaudio.currentTime = ctime + 10;
+    });
+    
+    $("#superbaddiesaudiobbtn").on('tap', function() {
+      var ctime = superbaddiesaudio.currentTime;
+      superbaddiesaudio.currentTime = ctime - 10;
+    });
+    
+    $("#superbaddiesaudiopsbtn").on('tap', function() {
+      superbaddiesaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+  </script>
+</div>

@@ -1,0 +1,138 @@
+<!-- i-C-a -->
+<div data-role="page" id="krackawhata">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebarnat.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnnat"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnnat"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnnat"></div></div>
+  <div class="infobtnholder"><div class="infobtnnat"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnnat"></div></div>
+  <div class="menubtnholder"><div class="menubtnnat"></div></div>
+  
+  <div class="bptitleholder-huff" style="padding-top:14px;"><h1>Krak-a-what-a?</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+      
+        <a id="krakatulink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/krakatu.jpg', 'An artist\'s impression of what the 1883 Krakatau eruption in Indonesia might have looked like. This was a colossal VEI 6 eruption!');">click here</a>
+
+        <div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/krakatupol.png" alt="" />
+          </div>
+          <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/rockquizpol.png" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontent-huff">
+        <p>Did you know that Indonesia has more volcanoes than any other country?  One of its historically nasty eruptions occurred from a volcano known as Krakatau or you may have heard it referred to as Krakatoa.  It erupted in 1883 and was so loud it was probably heard in the Maldives!  If you check your atlas you'll see that's a long way  so either the Maldivians have really good hearing or it really was very loud!</p>
+        <p>During the eruption most of the island of Krakatau collapsed into the underlying magma chamber, forming a giant crater or hole known as a 'caldera'.  It sent flying tens' of cubic kilometres of material (don't forget one cubic kilometre = 1 km x 1 km x 1 km = pretty big).  It also caused large tsunamis, or giant waves, as the volcano collapsed a bit like what happens when you plonk into the bath!  The eruption was so big that it sadly killed more than 36,000 people. </p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Natural_World/bottomhomenat.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+  <!-- <div class="audiopanel"> -->
+    <!-- images are in slidebarnat.js 
+         note: change the ids to be able play the narration
+    -->
+    <div class="micbtnholder"><div class="micbtnnat" id="playstopkrackawhata"></div></div>
+    <div class="bnat"><div class="rwnat" id="krackawhataaudiobbtn"></div></div>
+    <div class="plnat"><div class="plpsnat" id="krackawhataaudioplbtn"></div></div>
+    <div class="fnat"><div class="fwnat" id="krackawhataaudiofbtn"></div></div>
+    <div id="actualaudio-krackawhata" style="visibility:hidden;"></div>
+  <!-- </div> -->
+    
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      $('div#pol1').css("z-index", 3);
+      $('div#pol2').css("z-index", 2);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      
+      playing = false;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-krackawhata').html('<audio id="krackawhataaudio" controls preload onpause="playvol()" onplay="pausevol()"><source src="narrations/volcanoes_krackawhata.mp3" type="audio/mpeg"></audio>');
+      } 
+
+      $("#krackawhata").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundvol.pause(); bgsoundvol.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-naturalworld-volcanoes-biggestbaddest.html", {transition: "slide", reverse: true });
+      // prev page plays the same bgmusic so comment this out
+      //bgsoundvol.pause(); 
+      //bgsoundvol.currentTime = 0;
+      //bgsoundvol.play(); 
+    }
+    
+    $("#pol2").on('tap', function() {
+      $.mobile.changePage("game-vol2.html", {transition: "slide"});
+    });
+    $("#pol1").on('tap', function() {
+      $('#krakatulink')[0].click();
+    });
+    
+    function pausedaudio() {
+      bgsoundvol.play();
+    }
+    
+    function pausebg() {
+      bgsoundvol.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopkrackawhata").on('tap', function() {
+      if(!playing) {
+        krackawhataaudio.play();
+        $('.micbtnnat').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        krackawhataaudio.pause(); krackawhataaudio.currentTime = 0;
+        $('.micbtnnat').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#krackawhataaudioplbtn").on('tap', function() {
+      if(!paused) {
+        krackawhataaudio.pause();
+        paused = true;
+      } else {
+        krackawhataaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#krackawhataaudiofbtn").on('tap', function() {
+      var ctime = krackawhataaudio.currentTime;
+      krackawhataaudio.currentTime = ctime + 10;
+    });
+    
+    $("#krackawhataaudiobbtn").on('tap', function() {
+      var ctime = krackawhataaudio.currentTime;
+      krackawhataaudio.currentTime = ctime - 10;
+    });
+    
+    $("#huffaudiopsbtn").on('tap', function() {
+      huffaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+  </script>
+  <script src="js/twocardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

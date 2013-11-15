@@ -1,0 +1,210 @@
+<!-- i-C-a -->
+<div data-role="page" id="littlemonsters">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebarnat.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnnat"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnnat"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnnat"></div></div>
+  <div class="infobtnholder"><div class="infobtnnat"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnnat"></div></div>
+  <div class="menubtnholder"><div class="menubtnnat"></div></div>
+  
+  <div class="bptitleholder-whatis" style="padding-top:14px;"><h1>Little Monster</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="eruptionlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/eruption.jpg', 'Eyjafjallajkull volcano erupts in Iceland in 2010, coming in at 4 on the VEI scale');">click here</a>
+        <a id="planeslink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/planes.jpg', 'How the planes may have felt at not being able to fly when Eyjafjallajkull was erupting! ');">click here</a>
+        <a id="eveningcraterlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/eveningcrater.jpg', 'Lava spits into the sky from the active Gosstr&#242;kar crater during the lead up to the main eruption phase of Eyjafjallaj&#246;kull in 2010');">click here</a>
+        <div id="f1_container" style="visibility:hidden;position:absolute;left:100px;top:270px;">
+          <div id="f1_card">
+            <div class="front face">
+              <img id="dopple" src="css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/pronounceeyjapol.png">
+            </div>
+            <div id="backofcard" class="back face center" style="background:url(css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/pronounceeyjareverse.png) no-repeat;">
+              <div class="returncard" style="position:absolute;left:0px;top:0px;width:362px;height:170px;"></div>
+              <div id="playhearme" style="position:absolute;left:152px;top:180px;width:60px;height:50px;"></div>
+              <div style="visibility:hidden;">
+                <audio id="eyjafaudio" controls preload onpause="playvol()" onplay="pausevol()"><source src="audio/volcano_eyjaf.mp3" type="audio/mpeg"></audio>
+              </div>
+            </div>
+          </div><!--/f1+card-->
+        </div><!--/f1_container-->
+        <div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/eruptionpol.png" alt="" />
+          </div>
+          <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/planespol.png" alt="" />
+          </div>
+          <div id="pol3"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/eveningcraterpol.png" alt="" />
+          </div>
+          <div id="pol4"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/The_Natural_World/Volcanoes/Biggest_and_Baddest/pronounceeyjapol.png" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontent-whatis">
+        <p>In 2010 something happened that shows even relatively small volcanoes can suddenly change how we live.  It was the Eyjafjallaj&Ouml;kull volcano eruption in Iceland.  The eruption started with lava flows and then went explosive!  The earth shook and the glacier sitting on the top of the volcano began to melt and water rushed down its sides.  Then a huge eruption column full of ash rose kilometres into the sky!</p>
+        <p>Although there was lots going on with this eruption, the main thing that made the world ask "what's the go with this Icelandic volcano?" was the impact of its eruption cloud.  It was so thick and widespread it stopped aeroplane travel near Iceland and over Europe for a week!  The stranded airport passengers had to just sleep at the airport!  Imagine that  no comfy bed, just hard plastic chairs and sharing the bathroom with thousands of other people  for days on end!</p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Natural_World/bottomhomenat.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+  <!-- <div class="audiopanel"> -->
+    <!-- images are in slidebarnat.js 
+         note: change the ids to be able play the narration
+    -->
+    <div class="micbtnholder"><div class="micbtnnat" id="playstoplittlemonsters"></div></div>
+    <div class="bnat"><div class="rwnat" id="littlemonstersaudiobbtn"></div></div>
+    <div class="plnat"><div class="plpsnat" id="littlemonstersaudioplbtn"></div></div>
+    <div class="fnat"><div class="fwnat" id="littlemonstersaudiofbtn"></div></div>
+    <div id="actualaudio-littlemonsters" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  <div id="watchMtEtnaholder" style="width:1024px;height:748px;position:absolute;left:0px;top:0px;visibility:hidden;background:#000000;z-index:-1;">
+    <video id="watchMtEtna" width="1024" height="748" preload>
+      <source src="css/images/9-12/The_Natural_World/Volcanoes/Rumbling_From_The_Deep/What_Is_A_Volcano/Watch_Mt_Etna_Errupt.m4v" type="video/mp4">
+    </video>
+  </div> 
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      $('div#pol1').css("z-index", 3);
+      $('div#pol2').css("z-index", 2);
+      $('div#pol3').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('#watchMtEtnaholder').css({"visibility":"hidden", "z-index":-10});		
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#pol3 > img').css("-webkit-transform", "rotate(-3deg)");
+      $('div#pol4 > img').css("-webkit-transform", "rotate(-3deg)");
+      
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-littlemonsters').html('<audio id="littlemonstersaudio" controls preload onpause="playvol()" onplay="pausevol()"><source src="narrations/volcanoes_littlemonsters.mp3" type="audio/mpeg"></audio>');
+      } 
+
+      watchMtEtna.addEventListener('ended', function() { 
+        $("#watchMtEtnaholder").css({"visibility":"hidden", "z-index":-1});
+        $("#watchMtEtna").css({"z-index":-1});
+        bgsoundvol.play(); 
+      });
+    
+    $("#watchMtEtna").on('tap', function() {
+      $("#watchMtEtnaholder").css({"visibility":"hidden", "z-index":-1});
+      $("#watchMtEtna").css({"z-index":-1});
+      bgsoundvol.play();
+      watchMtEtna.pause();
+      watchMtEtna.currentTime = 0;
+    });
+            
+      $("#littlemonsters").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundvol.pause(); bgsoundvol.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-naturalworld-volcanoes-biggestbaddest.html", {transition: "slide", reverse: true });
+      // prev page plays the same bgmusic so comment this out
+      //bgsoundvol.pause(); 
+      //bgsoundvol.currentTime = 0;
+      //bgsoundvol.play(); 
+    }
+    
+    $("#playhearme").on('tap', function() {
+      eyjafaudio.play();
+    });
+    $("#pol1").on('tap', function() {
+      $('#eruptionlink')[0].click();
+    });
+    $("#pol2").on('tap', function() {
+      $('#planeslink')[0].click();
+    });
+    $("#pol3").on('tap', function() {
+      $('#eveningcraterlink')[0].click();
+    }); 
+    $("#pol4").on('tap', function() {
+      $('#f1_container').css({"visibility":"visible", "z-index":10});
+      $(this).css({"visibility":"hidden"});
+      $('#f1_card').css({"-webkit-transform": "rotateY(180deg)"});
+      $('#f1_card').css({"-moz-transform": "rotateY(180deg)"});
+      $('#f1_card').css({"-o-transform": "rotateY(180deg)"});
+      $('#f1_card').css({"transform": "rotateY(180deg)"});
+    });
+    $(".returncard").on('tap', function() {
+      eyjafaudio.pause();eyjafaudio.currentTime = 0;
+      $('#f1_card').css({"-webkit-transform": "rotateY(0deg)"});
+      $('#f1_card').css({"-moz-transform": "rotateY(0deg)"});
+      $('#f1_card').css({"-o-transform": "rotateY(0deg)"});
+      $('#f1_card').css({"transform": "rotateY(0deg)"});
+      setTimeout(function() {
+        $("#pol4").css({"visibility":"visible", "z-index":3});
+        $('#f1_container').css({"visibility":"hidden", "z-index":0});
+      }, 1000);
+      //$("#hittites").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+      //$("#hittites").swipe("enable");
+    });
+    
+    function pausedaudio() {
+      bgsoundvol.play();
+    }
+    
+    function pausebg() {
+      bgsoundvol.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstoplittlemonsters").on('tap', function() {
+      if(!playing) {
+        littlemonstersaudio.play();
+        $('.micbtnnat').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        littlemonstersaudio.pause(); littlemonstersaudio.currentTime = 0;
+        $('.micbtnnat').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#littlemonstersaudioplbtn").on('tap', function() {
+      if(!paused) {
+        littlemonstersaudio.pause();
+        paused = true;
+      } else {
+        littlemonstersaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#littlemonstersaudiofbtn").on('tap', function() {
+      var ctime = littlemonstersaudio.currentTime;
+      littlemonstersaudio.currentTime = ctime + 10;
+    });
+    
+    $("#littlemonstersaudiobbtn").on('tap', function() {
+      var ctime = littlemonstersaudio.currentTime;
+      littlemonstersaudio.currentTime = ctime - 10;
+    });
+    
+    $("#littlemonstersaudiopsbtn").on('tap', function() {
+      littlemonstersaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+  </script>
+  <script src="js/fourcardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

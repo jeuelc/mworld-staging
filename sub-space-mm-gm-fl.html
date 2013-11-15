@@ -1,0 +1,102 @@
+<!-- i-C-a -->
+<div id="firstlook" data-role="page"> 
+  <script src="js/hammer.js"></script>  
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebarbh.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><img class="homebtn" src="css/images/5-8/Ancient_Civilizations/Greece/homebtn.png"></div>
+  <div class="cpbtnholder"><img class="cpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/cpbtn.png"></div>
+  <div class="buildbtnholder"><img class="buildbtn" src="css/images/5-8/Ancient_Civilizations/Greece/buildbtn.png"></div>
+  <div class="mpbtnholder"><img class="mpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/mpbtn.png"></div>
+  <div class="menubtnholder"><img class="menubtn" src="css/images/5-8/Ancient_Civilizations/Greece/menubtn.png"></div>
+  <div class="bptitleholderbh" style="padding-top:14px;"><h1>Our First Look</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/vallesmarineris1.png" alt="" />
+          </div>
+          <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+            <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/olympusmons2.png" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentbh">
+        <p>Scientists first tried to send spacecraft to Mars in the 1960s, but there were many frustrating failures. Some rockets exploded, parts failed and some spacecraft fell silent after travelling millions of kilometres.</p>
+        <p>The first spacecraft to successfully make the journey of Mars were Mariners 4, 6, and 7. These were small robotic spacecraft, each weighing less than 500 kg, far less than a small car . They had no way of stopping when they reached Mars, so they flew over the planetary surface, taking grainy television pictures.</p>
+        <p>All of this happened back in the 1960s, when computers were less sophisticated than your mobile phone and there were no colour printers. The first colour pictures of Mars were sent to Earth as a series of numbers, which were then turned into a colour picture by hand! That's right, colouring by numbers!</p>
+        <p>More sophisticated robotic spacecraft orbited the Red Planet, taking more detailed and intriguing pictures. Mariner 9 showed what looked like dry river beds, the vast Valles Marineris canyon and Olympus Mons, an extinct volcano three times taller than Mount Everest!</p>
+        <p>However, to find out what Mars was really like we had to try to land a spacecraft on the surface.</p>
+      </div>
+      
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/5-8/bottomhomebh.png"></a></div>
+    </div><!--end of content-->
+  </div><!--/spacechar-->
+  <div class="audiopanel">
+    <div class="bbh"><img id="wibhaudiobbtn" src="css/images/audio/audio-back.png"></div>
+    <div class="plbh"><img id="wibhaudioplbtn" src="css/images/audio/audio-play.png"></div>
+    <div class="psbh"><img id="wibhaudiopsbtn" src="css/images/audio/audio-pause.png"></div>
+    <div class="fbh"><img id="wibhaudiofbtn" src="css/images/audio/audio-forw.png"></div>
+    <div id="actualaudio-wibh" style="visibility:hidden;"></div>
+  </div>
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    (function() {     
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");      
+      $('div#pol1').css("z-index", 1);      
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");      
+   
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-wibh').html('<audio id="wibhaudio" controls preload onpause="playbh()" onplay="pausebh()"><source src="audio/mmgmFirstLook.mp3" type="audio/mpeg"></audio>');
+      } 
+
+      $("#firstlook").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+    })();
+ 
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-space-mm-gm.html");
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+    
+    $("#pol1").on('tap', function() {
+      $.mobile.changePage("sub-space-mm-gm-fl-vallesmarineris.html", { transition: "slide" });
+    });
+    $("#pol2").on('tap', function() {
+      $.mobile.changePage("sub-space-mm-gm-fl-olympusmons.html", { transition: "slide" });
+    });
+    /* ******************** */
+    $("#wibhaudioplbtn").on('tap', function() {
+      wibhaudio.play();
+      $(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#wibhaudiofbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime + 10;
+    });
+    
+    $("#wibhaudiobbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime - 10;
+    });
+    
+    $("#wibhaudiopsbtn").on('tap', function() {
+      wibhaudio.pause();
+      $(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+  </script>
+  <script src="js/twocardLogic.js"></script>
+</div>

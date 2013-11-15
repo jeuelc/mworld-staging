@@ -1,0 +1,99 @@
+<!-- i-C-a -->
+<div id="whalepoo" data-role="page">
+  <script src="js/slidebarbh.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnbh"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnbh"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnbh"></div></div>
+  <div class="infobtnholder"><div class="infobtnbh"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnbh"></div></div>
+  <div class="menubtnholder"><div class="menubtnbh"></div></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+     <!-- <div id="sgl" style="width:141px;height:112px;left:210px;top:362px;background:transparent;position:absolute;z-index:99999;"></div>
+        <div id="snl" style="width:141px;height:112px;left:128px;top:485px;background:transparent;position:absolute;z-index:99999;"></div>
+        <div id="nsl" style="width:176px;height:106px;left:388px;top:283px;background:transparent;position:absolute;z-index:99999;"></div>
+        <div id="bhl" style="width:165px;height:117px;left:498px;top:467px;background:transparent;position:absolute;z-index:99999;"></div>
+		<div id="dsl" style="width:176px;height:106px;left:735px;top:217px;background:transparent;position:absolute;z-index:99999;"></div>
+        <div id="ehl" style="width:165px;height:110px;left:844px;top:415px;background:transparent;position:absolute;z-index:99999;"></div>-->
+      </div>
+      <div class="storypagetitleetg"><h1>Whale Poo!</h1></div>
+      <div class="storypageetg">
+			<p>Did you know that whale poo is important in fighting climate change?</p>
+			<p>The poo from the Southern Ocean Sperm Whales alone can remove about 400,000 tonnes of carbon dioxide each year!  That's equivalent to getting rid of pollution from 40,000 cars! </p>
+			<p>It's a very complicated process but  the whales eat lots and lots of squid and fish from the deep ocean and when they surface the whales do huge floating poo.  This poo is very high in iron which is a favourite food of sea plants called phytoplankton.  These tiny plants then take in carbon dioxide from the atmosphere, in the same way trees do. Then they drop into the deep sea, taking the carbon dioxide and storing it up for hundreds to thousands of years.</p>
+	  </div>
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/5-8/bottomhomebh.png"></a></div>
+    </div><!--end of content-->
+  </div><!--/spacechar-->
+  
+  <div class="micbtnholder"><div class="micbtnbh"></div></div>
+  <div class="bbh"><div class="rwbh" id="whalepooaudiobbtn"></div></div>
+  <div class="plbh"><div class="plpsbh" id="whalepooaudioplbtn"></div></div>
+  <div class="fbh"><div class="fwbh" id="whalepooaudiofbtn" ></div></div>
+  <div id="actualaudio-whalepoo" style="visibility:hidden;"></div>
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+        (function() {
+          playing = false;
+           /* $('#node-body-minoans').html(data[0].Body);*/
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-whalepoo').html('<audio controls preload id="whalepooaudio" onpause="pausedaudio()" onplay="pausebg()"><source src="http://deftsoft.info/appvendo/mw/audio/whalepoolife.mp3" type="audio/mpeg"></audio>');
+      } 
+      
+      $("#whalepoo").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    //$("#sgl").on('tap', function() {$.mobile.changePage("sub-medieval- metropolis-whalepoolife-angkor-cooking.html", {transition:"slide"}); });
+ //  $("#snl").on('tap', function() { $.mobile.changePage("sub-medieval- metropolis-whalepoolife-angkor-marketers.html", {transition:"slide"}); });
+  //  $("#nsl").on('tap', function() { $.mobile.changePage("sub-medieval- metropolis-whalepoolife-angkor-village.html", {transition:"slide"}); });
+   // $("#bhl").on('tap', function() { $.mobile.changePage("sub-medieval- metropolis-whalepoolife-angkor-fashion.html", {transition:"slide"}); });
+	// $("#dsl").on('tap', function() { $.mobile.changePage("sub-medieval- metropolis-whalepoolife-angkor-houses.html", {transition:"slide"}); });
+	//  $("#ehl").on('tap', function() { $.mobile.changePage("sub-medieval- metropolis-whalepoolife-angkor-animals.html", {transition:"slide"}); });
+    
+   $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+   function goBack() {
+      $.mobile.changePage("sub-deep-blue-sea-future.html");
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+    /* ******************** */
+    $("#whalepooaudioplbtn").on('tap', function() {
+      //comefromaudio.play();
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+      if(!playing) {
+        whalepooaudio.play();
+        $('.micbtnbh').css('background-position-x', '-81px');
+        playing = true;
+      } else {
+        whalepooaudio.pause();
+        $('.micbtnbh').css('background-position-x', '0px');
+        playing = false;
+      }
+    });
+    
+    $("#whalepooaudiofbtn").on('tap', function() {
+      var ctime = whalepooaudio.currentTime;
+      whalepooaudio.currentTime = ctime + 10;
+    });
+    
+    $("#whalepooaudiobbtn").on('tap', function() {
+      var ctime = whalepooaudio.currentTime;
+      whalepooaudio.currentTime = ctime - 10;
+    });
+    
+    $("#whalepooaudiopsbtn").on('tap', function() {
+      whalepooaudio.pause();
+      $(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+  </script>
+</div>

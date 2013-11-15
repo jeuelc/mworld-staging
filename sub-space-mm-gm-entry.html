@@ -1,0 +1,141 @@
+<!-- i-C-a -->
+<div id="entry" data-role="page">	
+  <script src="js/hammer.js"></script>	
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebarbh.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><img class="homebtn" src="css/images/5-8/Ancient_Civilizations/Greece/homebtn.png"></div>
+  <div class="cpbtnholder"><img class="cpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/cpbtn.png"></div>
+  <div class="buildbtnholder"><img class="buildbtn" src="css/images/5-8/Ancient_Civilizations/Greece/buildbtn.png"></div>
+  <div class="mpbtnholder"><img class="mpbtn" src="css/images/5-8/Ancient_Civilizations/Greece/mpbtn.png"></div>
+  <div class="menubtnholder"><img class="menubtn" src="css/images/5-8/Ancient_Civilizations/Greece/menubtn.png"></div>
+  <div class="bptitleholderbh" style="padding-top:14px;"><h1>Entry</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <div id="f1_container" style="visibility:hidden;position:absolute;left:100px;top:270px;">
+          <div id="f1_card">
+            <div class="front face">
+              <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/parachute.png" alt="" />
+            </div>
+            <div id="backofcard" class="back face center" style="padding: 0; overflow: hidden;">
+              <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/parachute_back.png" alt="" />
+            </div>
+          </div><!--/f1+card-->
+        </div><!--/f1_container-->
+        <div id="zoomwrapper">
+          <div id="polb1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/parachute.png" alt="" />
+          </div>
+          <div id="polb2"class="pPiece" style="left:75px;top:290px;">
+            <img src="css/images/5-8/Space/Mission_Mars/mcquiz.png" alt="" />
+          </div>
+          <div id="polb3"class="pPiece" style="left:80px;top:270px;">
+            <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/entryimage.png" alt="" />
+          </div>
+          <div id="polb4"class="pPiece" style="left:80px;top:270px;">
+            <img src="css/images/5-8/Space/Mission_Mars/Getting_to_Mars/heatshield.png" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentbh">
+        <p>To land on Mars, spacecraft need to pass through the thin Martian atmosphere and slow down from terrifying speeds measured in kilometres per second. Luckily, the Martian atmosphere provides the means of slowing spacecraft down.</p>
+        <p>How does that work? Throw a ball through the air and friction slows it down until it eventually starts to fall to the ground. You really notice this when you try to throw a lighter ball, like a foam ball, against the wind.</p>
+        <p>A spacecraft travelling kilometres every second, experiences a huge amount of friction when it hits the atmosphere. The spacecraft isn't just slowed by the friction, but heated too...heated to hundreds or even thousands of degrees!</p>
+        <p>To stop the most delicate parts of the spacecraft getting too hot, the spacecraft has a heat shield. The heat shield burns away (but not entirely) as the spacecraft plunges through the atmosphere. Once the spacecraft has slowed, the heat shield is thrown away and it is time to land.</p>
+      </div>
+      
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/5-8/bottomhomebh.png"></a></div>
+    </div><!--end of content-->
+  </div><!--/spacechar-->
+  <div class="audiopanel">
+    <div class="bbh"><img id="wibhaudiobbtn" src="css/images/audio/audio-back.png"></div>
+    <div class="plbh"><img id="wibhaudioplbtn" src="css/images/audio/audio-play.png"></div>
+    <div class="psbh"><img id="wibhaudiopsbtn" src="css/images/audio/audio-pause.png"></div>
+    <div class="fbh"><img id="wibhaudiofbtn" src="css/images/audio/audio-forw.png"></div>
+    <div id="actualaudio-wibh" style="visibility:hidden;"></div>
+  </div>
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    (function() {			
+      $('div#polb1').css("z-index", 3);
+      $('div#polb2').css("z-index", 2);
+      $('div#polb3').css("z-index", 1);
+      $('div#polb1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#polb2 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#polb3 > img').css("-webkit-transform", "rotate(-3deg)");
+      $('div#polb4 > img').css("-webkit-transform", "rotate(-3deg)");
+      $('#f1_container').css({"visibility":"hidden", "z-index":0});
+
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-wibh').html('<audio id="wibhaudio" controls preload onpause="playbh()" onplay="pausebh()"><source src="audio/mmgmEntry.mp3" type="audio/mpeg"></audio>');
+      } 
+
+      $("#entry").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-space-mm-gm.html");
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+    
+        $("#f1_container").on('tap', function() {
+            $('#f1_card').css({"-webkit-transform": "rotateY(0deg)"});
+            $('#f1_card').css({"-moz-transform": "rotateY(0deg)"});
+            $('#f1_card').css({"-o-transform": "rotateY(0deg)"});
+            $('#f1_card').css({"transform": "rotateY(0deg)"});
+            setTimeout(function() {
+                $("#polb1").css({"visibility":"visible", "z-index":3});
+                $('#f1_container').css({"visibility":"hidden", "z-index":0});
+            }, 1000);
+            //$("#hittites").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+            //$("#hittites").swipe("enable");
+        });
+    
+        $("#polb1").on('tap', function() {
+            $('#f1_container').css({"visibility":"visible", "z-index":10});
+            $(this).css({"visibility":"hidden"});
+            $('#f1_card').css({"-webkit-transform": "rotateY(180deg)"});
+            $('#f1_card').css({"-moz-transform": "rotateY(180deg)"});
+            $('#f1_card').css({"-o-transform": "rotateY(180deg)"});
+            $('#f1_card').css({"transform": "rotateY(180deg)"});
+        });
+
+      $("#polb2").on('tap', function() {
+      $.mobile.changePage("sub-space-mm-quiz.html", { transition: "slide" });
+    });
+    /* ******************** */
+    $("#wibhaudioplbtn").on('tap', function() {
+      wibhaudio.play();
+      $(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#wibhaudiofbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime + 10;
+    });
+    
+    $("#wibhaudiobbtn").on('tap', function() {
+      var ctime = wibhaudio.currentTime;
+      wibhaudio.currentTime = ctime - 10;
+    });
+    
+    $("#wibhaudiopsbtn").on('tap', function() {
+      wibhaudio.pause();
+      $(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+  </script>
+  <script src="js/fourcardLogicb.js"></script>
+</div>

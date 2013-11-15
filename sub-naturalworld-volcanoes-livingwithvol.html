@@ -1,0 +1,133 @@
+<!-- i-C-a -->
+<div data-role="page" id="livingwithvol">
+  <script src="js/slidebarnat.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnnat"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnnat"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnnat"></div></div>
+  <div class="infobtnholder"><div class="infobtnnat"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnnat"></div></div>
+  <div class="menubtnholder"><div class="menubtnnat"></div></div>
+  
+  <div class="navtitleholdervol" style="padding-top:14px;"><h1>Living With Volcanoes</h1></div>
+  
+    <div data-role="content" class="kidzcontent">
+      <div class="navvol-content3">
+        <p>Volcanoes are powerful and amazing and they can affect us all no matter where we live. </p>
+        <p>Are they all bad? </p>
+        <p>Ever wonder whether good things come from volcanoes? </p>
+        <p>Would you want to live near one? </p>
+        <p>To find out more, tap on the buttons!</p>
+      </div>
+        
+      <div class="navbtn1" style="top:420px;">
+        <p><a href="sub-naturalworld-volcanoes-crankyneighbor.html" data-transition="slide"><img src="css/images/9-12/The_Natural_World/Volcanoes/Living_With_Volcanoes/acrankyneighbor.png"></a></p>
+      </div>
+      <div class="navbtn2" style="left:400px;">
+        <p><a href="sub-naturalworld-volcanoes-deathofavol.html" data-transition="slide"><img src="css/images/9-12/The_Natural_World/Volcanoes/Living_With_Volcanoes/deathofavol.png"></a></p>
+      </div>
+      <div class="navbtn3" style="top:420px;">
+        <p><a href="sub-naturalworld-volcanoes-goodbadsparkly.html" data-transition="slide"><img src="css/images/9-12/The_Natural_World/Volcanoes/Living_With_Volcanoes/goodbadsparkly.png"></a></p>
+      </div>
+        
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/The_Natural_World/bottomhomenat.png"></a></div>
+    </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js 
+         note: change the ids to be able play the narration
+    -->
+    <div class="micbtnholder"><div class="micbtnnat" id="playstoplivingwithvol"></div></div>
+    <div class="bnat"><div class="rwnat" id="livingwithvolaudiobbtn"></div></div>
+    <div class="plnat"><div class="plpsnat" id="livingwithvolaudioplbtn"></div></div>
+    <div class="fnat"><div class="fwnat" id="livingwithvolaudiofbtn"></div></div>
+    <div id="actualaudio-livingwithvol" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-livingwithvol').html('<audio id="livingwithvolaudio" controls preload onpause="playvol()" onplay="pausevol()"><source src="narrations/volcanoes_livingwithvol.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#livingwithvol").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundvol.pause(); bgsoundvol.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-naturalworld-volcanoes.html", {transition: "slide", reverse: true });
+    }
+    
+    function pausedaudio() {
+      bgsoundvol.play();
+    }
+    
+    function pausebg() {
+      bgsoundvol.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstoplivingwithvol").on('tap', function() {
+      if(!playing) {
+        livingwithvolaudio.play();
+        $('.micbtnnat').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        livingwithvolaudio.pause(); livingwithvolaudio.currentTime = 0;
+        $('.micbtnnat').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#livingwithvolaudioplbtn").on('tap', function() {
+      if(!paused) {
+        livingwithvolaudio.pause();
+        paused = true;
+      } else {
+        livingwithvolaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#livingwithvolaudiofbtn").on('tap', function() {
+      var ctime = livingwithvolaudio.currentTime;
+      livingwithvolaudio.currentTime = ctime + 10;
+    });
+    
+    $("#livingwithvolaudiobbtn").on('tap', function() {
+      var ctime = livingwithvolaudio.currentTime;
+      livingwithvolaudio.currentTime = ctime - 10;
+    });
+    
+    $("#livingwithvolaudiopsbtn").on('tap', function() {
+      livingwithvolaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+    
+    $('.navbtn1').on('tap', function() { 
+      nav1Effects(); 
+    });
+    
+    $('.navbtn2').on('tap', function() { 
+      nav2Effects(); 
+    });
+    
+    $('.navbtn3').on('tap', function() { 
+      nav3Effects(); 
+    });
+    
+    $('.navbtn4').on('tap', function() { 
+      nav4Effects(); 
+    });
+  </script>
+</div> <!--//home-->
