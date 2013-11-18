@@ -1,0 +1,123 @@
+<!-- i-C-a -->
+<div id="angkorhouses" data-role="page">
+  <script src="js/slidebarac.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnac"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnac"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnac"></div></div>
+  <div class="infobtnholder"><div class="infobtnac"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnac"></div></div>
+  <div class="menubtnholder"><div class="menubtnac"></div></div>
+    <div class="bptitleholder" style="padding-top:14px;"><h1>Stone houses for the gods, wooden houses for mortals</h1></div>
+    <div id="anisold">
+        <div id="spacechar">&nbsp;
+            <div data-role="content" class="kidzcontent">
+                <div class="v-volcano"></div>
+                  <div class="sidebarleft-half">
+                     <div id="zoomwrapper">
+                        <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+                           <img src="css/images/9-12/Ancient_Civilizations/Angkor/Daily_Life_In_Angkor/housesquizpol.png" alt="" />
+                        </div>
+                     </div><!--/zoomwrapper-->
+                </div>
+                <div class="bpcontentangkor">
+                  <p>The people of Angkor built thatch houses on stilts, just as many houses in the Cambodian countryside are today. There are a lot of good reasons to do this in a humid and rainy country. If you are living near a river, you are safe above the floodwaters in the rainy season, and in the dry season, cool air can circulate under your floor. Most of all, you can sleep easier knowing that scorpions, snakes and prowling tigers can't wander straight into your bedroom! </p>
+                  <p>Their houses were very light and built without nails, so most Cambodians could quickly pack up their home and move it down the road if they needed to!  Stones and bricks were kept for the temples of the gods. Even the king lived in a palace made of wood, but it was much more permanent than the houses of ordinary Khmer people.  Zhou Daguan writes that the royal buildings were big and richly ornamented.  They had lead-tiled roofs, soaring beams and pillars.</p>
+                </div>
+                
+                <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Ancient_Civilizations/bottomhomeac.png"></a></div>
+            </div><!--end of content-->
+        </div>
+    </div><!--/anisold-->
+     
+    <div class="micbtnholder"><div class="micbtnac" id="playstophouses"></div></div>
+    <div class="bac"><div class="rwac" id="housesaudiobbtn"></div></div>
+    <div class="plac"><div class="plpsac" id="housesaudioplbtn"></div></div>
+    <div class="fac"><div class="fwac" id="housesaudiofbtn" ></div></div>
+    <div id="actualaudio-houses" style="visibility:hidden;"></div>
+    
+    <script>
+        sound = new Audio();
+        soundpop = new Audio();
+        var playing;
+        (function() {
+          playing = false;
+            $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+            $('div#pol1').css("z-index", 2);
+            $('div#pol2').css("z-index", 1);
+            $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+            $('div#pol3 > img').css("-webkit-transform", "rotate(-5deg)");
+           
+           
+             if(sound.canPlayType('audio/mpeg')) {
+                 $('#actualaudio-houses').html('<audio controls preload id="housesaudio" onpause="playangkor()" onplay="pauseangkor()"><source src="narrations/angkor_houses.mp3" type="audio/mpeg"></audio>');
+             } 
+             
+    
+            $("#angkorhouses").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+        })();
+        $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+        function goBack() {
+            $.mobile.changePage("sub-ac-angkor-dailylife.html", {transition: "slide", reverse: true });
+        }
+        
+       function pauseangkor() {
+          angkorbg.pause();
+        }
+        
+        function playangkor() {
+          angkorbg.play();
+        }
+       
+   // $("#pol3").on('tap', function() {
+//      $.mobile.changePage("sub-space-bh-binaries.html", {transition: "slide"});
+//    });
+//    
+//    $("#pol2").on('tap', function() {
+//      $.mobile.changePage("sub-space-bh-quasars.html", {transition: "slide"});
+//    });
+//    
+//    $("#pol1").on('tap', function() {
+//      $.mobile.changePage("sub-space-bh-galaxies.html", {transition: "slide"});
+//    });
+      
+
+/* ******************** */
+    $("#playstophouses").on('tap', function() {
+      if(!playing) {
+        housesaudio.play();
+        $('.micbtnac').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        housesaudio.pause(); housesaudio.currentTime = 0;
+        $('.micbtnac').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#housesaudioplbtn").on('tap', function() {
+      if(!paused) {
+        housesaudio.pause();
+        paused = true;
+      } else {
+        housesaudio.play();
+        paused = false;
+      }
+    });
+    
+    $("#housesaudiofbtn").on('tap', function() {
+      var ctime = housesaudio.currentTime;
+      housesaudio.currentTime = ctime + 10;
+    });
+    
+    $("#housesaudiobbtn").on('tap', function() {
+      var ctime = housesaudio.currentTime;
+      housesaudio.currentTime = ctime - 10;
+    });        
+                
+  </script>
+</div>

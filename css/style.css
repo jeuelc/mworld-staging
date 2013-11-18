@@ -3083,13 +3083,14 @@ ul.slides {
   text-align:left;
 }
 
-#medieval , #cooking , #marketers , #houses , #village , #wheredeygo , #peopleangkor , #angkorwat , #angkorwater , #daugan , #myths , #mystery {
+#medieval , #cooking , #marketers , #angkorhouses , #village , #wheredeygo , #peopleangkor , #angkorwat , #angkorwater , #daugan , #myths , #mystery,
+#angkorlegacy, #angkorreligion {
  background:url('images/5-8/medieval/medi.jpg') no-repeat;
   height:748px !important;
   overflow:hidden !important;
   width:1024px !important;
 }
-#everyday {
+#dailylife {
  background:url('images/5-8/medieval/everyday.jpg') no-repeat;
   height:748px !important;
   overflow:hidden !important;
@@ -3122,7 +3123,7 @@ color: #000000;
 .storypagetitlefashion h1 {
     color: #000000;
 }
-#worldangkor , #findangkor , #legacy , #religion{
+#worldangkor , #findangkor {
  background:url('images/5-8/medieval/world.jpg') no-repeat;
   height:748px !important;
   overflow:hidden !important;

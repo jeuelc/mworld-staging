@@ -1,0 +1,104 @@
+<!-- i-C-a -->
+<div id="dailylife" data-role="page">
+  <script src="js/slidebarac.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnac"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnac"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnac"></div></div>
+  <div class="infobtnholder"><div class="infobtnac"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnac"></div></div>
+  <div class="menubtnholder"><div class="menubtnac"></div></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+      <div id="sgl" style="width:141px;height:112px;left:210px;top:362px;background:transparent;position:absolute;z-index:99999;"></div>
+        <div id="snl" style="width:141px;height:112px;left:128px;top:485px;background:transparent;position:absolute;z-index:99999;"></div>
+        <div id="nsl" style="width:176px;height:106px;left:388px;top:283px;background:transparent;position:absolute;z-index:99999;"></div>
+        <div id="bhl" style="width:165px;height:117px;left:498px;top:467px;background:transparent;position:absolute;z-index:99999;"></div>
+        <div id="dsl" style="width:176px;height:106px;left:735px;top:217px;background:transparent;position:absolute;z-index:99999;"></div>
+        <div id="ehl" style="width:165px;height:110px;left:844px;top:415px;background:transparent;position:absolute;z-index:99999;"></div>
+      </div>
+      <!--<div class="storypagetitleetg"><h1>Everyday life in Angkor</h1></div>-->
+      <div class="storypageetg" style="width: 400px;position: absolute;top: 98px;left: 328px;color: #FFFFFF;height: 120px;overflow-y: scroll;">
+        <p>Daily life for people in the city of Angkor was pretty hard work! They had to cultivate the land, look after their animals and sometimes go to the market. On certain days, people sometimes had to go and work for the king or one of the larger temples. Families of artisans and artists who lived or worked close to the palace would spend their days crafting silver, or chiselling decorative patterns in wood and on stone sculptures. </p>
+        <p>Other people had to manage the pottery kilns, tend the royal elephants or make sure the business of the palace was running smoothly.  Imagine being appointed the official elephant minder in the kingdom, what things would you need to do? </p>
+        <p>If you were lucky enough to be related to the king, or a special favourite, your family might help manage the temples. It wasn't all work though!   Zhou Daguan told us there were lots of festivals, with an event at least every month  the New Year festival went on for 15 days! </p>
+      </div>
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Ancient_Civilizations/bottomhomeac.png"></a></div>
+    </div><!--end of content-->
+  </div><!--/spacechar-->
+  
+  <div class="micbtnholder"><div class="micbtnac" id="playstopeveryday"></div></div>
+    <div class="bac"><div class="rwac" id="everydayaudiobbtn"></div></div>
+    <div class="plac"><div class="plpsac" id="everydayaudioplbtn"></div></div>
+    <div class="fac"><div class="fwac" id="everydayaudiofbtn" ></div></div>
+    <div id="actualaudio-everyday" style="visibility:hidden;"></div>
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+        (function() {
+          playing = false;
+           /* $('#node-body-minoans').html(data[0].Body);*/
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-everyday').html('<audio controls preload id="everydayaudio" onpause="playangkor()" onplay="pauseangkor()"><source src="narrations/angkor_everyday.mp3" type="audio/mpeg"></audio>');
+      } 
+      
+      $("#dailylife").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $("#sgl").on('tap', function() {$.mobile.changePage("sub-medieval-metropolis-everydaylife-angkor-cooking.html", {transition:"slide"}); });
+   $("#snl").on('tap', function() { $.mobile.changePage("sub-medieval-metropolis-everydaylife-angkor-marketers.html", {transition:"slide"}); });
+    $("#nsl").on('tap', function() { $.mobile.changePage("sub-ac-angkor-villages.html", {transition:"slide"}); });
+    $("#bhl").on('tap', function() { $.mobile.changePage("sub-medieval-metropolis-everydaylife-angkor-fashion.html", {transition:"slide"}); });
+	 $("#dsl").on('tap', function() { $.mobile.changePage("sub-ac-angkor-houses.html", {transition:"slide"}); });
+	  $("#ehl").on('tap', function() { $.mobile.changePage("sub-medieval-metropolis-everydaylife-angkor-animals.html", {transition:"slide"}); });
+    
+   $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+   function goBack() {
+      $.mobile.changePage("sub-ac-angkor.html", {transition: "slide", reverse: true });
+    }
+    
+    function pauseangkor() {
+          angkorbg.pause();
+        }
+        
+        function playangkor() {
+          angkorbg.play();
+        }
+    /* ******************** */
+    $("#playstopeveryday").on('tap', function() {
+      if(!playing) {
+        everydayaudio.play();
+        $('.micbtnac').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        everydayaudio.pause(); everydayaudio.currentTime = 0;
+        $('.micbtnac').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#everydayaudioplbtn").on('tap', function() {
+      if(!paused) {
+        everydayaudio.pause();
+        paused = true;
+      } else {
+        everydayaudio.play();
+        paused = false;
+      }
+    });
+    
+    $("#everydayaudiofbtn").on('tap', function() {
+      var ctime = everydayaudio.currentTime;
+      everydayaudio.currentTime = ctime + 10;
+    });
+    
+    $("#everydayaudiobbtn").on('tap', function() {
+      var ctime = everydayaudio.currentTime;
+      everydayaudio.currentTime = ctime - 10;
+    });   
+  </script>
+</div>
