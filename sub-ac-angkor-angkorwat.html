@@ -1,0 +1,126 @@
+<!-- i-C-a -->
+<div id="angkorwat" data-role="page">
+  <script src="js/slidebarac.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnac"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnac"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnac"></div></div>
+  <div class="infobtnholder"><div class="infobtnac"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnac"></div></div>
+  <div class="menubtnholder"><div class="menubtnac"></div></div>
+   <div class="bptitleholder" style="padding-top:14px;"><h1>Angkor Wat</h1></div>
+    <div id="anisold">
+        <div id="spacechar">&nbsp;
+            <div data-role="content" class="kidzcontent">
+                 <div id="zoomwrapper">
+                    <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+                       <img src="css/images/9-12/Ancient_Civilizations/Angkor/Who_Were_The_People_Of_Angkor/angkorwaterpol.png" alt="" />
+                    </div>
+                 </div><!--/zoomwrapper-->
+                <div class="bpcontentangkor">
+                  <p>Did you know that Angkor Wat is the biggest religious monument in the world?  It was built by king Suryavarman II, who reigned from 1113 to 1150 CE. He dedicated the temple to the Hindu god Vishnu.  Angkor Wat is famous for its five towers shaped like lotus buds, its galleries and enclosures, and its immense moat! The temple has as much sandstone in it as some of the largest pyramids in Egypt!</p>
+                  <p>Most Khmer temples face the east, but Angkor Wat is different  it faces the west.  Some people believe that Suryavarman II intended to be buried in it. Because it was so well built and was never completely abandoned, the architecture of Angkor Wat has lasted well over the centuries. </p>
+                  <p>A lot of the land in the enclosure is covered in forests, but archaeologists have discovered that originally it was criss-crossed with roads, serving a city of wooden buildings that once housed priests, monks and temple officials as well as ordinary people working for the temple.</p>
+                </div>
+                <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Ancient_Civilizations/bottomhomeac.png"></a></div>
+            </div><!--end of content-->
+        </div>
+    </div><!--/anisold-->
+     
+    <div class="micbtnholder"><div class="micbtnac" id="playstopangkorwat"></div></div>
+    <div class="bac"><div class="rwac" id="angkorwataudiobbtn"></div></div>
+    <div class="plac"><div class="plpsac" id="angkorwataudioplbtn"></div></div>
+    <div class="fac"><div class="fwac" id="angkorwataudiofbtn" ></div></div>
+    <div id="actualaudio-angkorwat" style="visibility:hidden;"></div>
+    
+    <div id="angkorwatholder" style="width:1024px;height:748px;position:absolute;left:0px;top:0px;visibility:hidden;background:#000000;z-index:-1;">
+      <div class="vidcontainer">
+       <video id="angkorwatvid" width="1024" height="748" preload>
+         <source src="videos/angkorwatvid.mp4" type="video/mp4">
+       </video>
+      </div>
+     </div> 
+    
+    <script>
+        sound = new Audio();
+        soundpop = new Audio();
+        var playing;
+        (function() {
+          playing = false;
+           
+           
+             if(sound.canPlayType('audio/mpeg')) {
+                 $('#actualaudio-angkorwat').html('<audio controls preload id="angkorwataudio" onpause="playangkor()" onplay="pauseangkor()"><source src="narrations/angkor_angkorwat.mp3" type="audio/mpeg"></audio>');
+             } 
+             
+    
+            $("#angkorwat").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+        })();
+        $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+        function goBack() {
+            $.mobile.changePage("sub-ac-angkor-peopleofangkor.html", {transition:"slide", reverse:true}); 
+        }
+        
+       function pauseangkor() {
+          angkorbg.pause();
+        }
+        
+        function playangkor() {
+          angkorbg.play();
+        }
+       
+    $("#pol1").on('tap', function() {
+         $("#angkorwatholder").css({"visibility":"visible", "z-index":10});
+         $("#angkorwatvid").css({"z-index":9});
+         angkorbg.pause();
+         angkorwatvid.play();
+       });
+      
+    $("#angkorwatvid").on('tap', function() {
+      $("#angkorwatholder").css({"visibility":"hidden", "z-index":-1});
+      $("#angkorwatvid").css({"z-index":-1});
+      angkorbg.play();
+      angkorwatvid.pause();
+      angkorwatvid.currentTime = 0;
+    }); 
+      
+
+/* ******************** */
+    $("#playstopangkorwat").on('tap', function() {
+      if(!playing) {
+        angkorwataudio.play();
+        $('.micbtnac').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        angkorwataudio.pause(); angkorwataudio.currentTime = 0;
+        $('.micbtnac').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#angkorwataudioplbtn").on('tap', function() {
+      if(!paused) {
+        angkorwataudio.pause();
+        paused = true;
+      } else {
+        angkorwataudio.play();
+        paused = false;
+      }
+    });
+    
+    $("#angkorwataudiofbtn").on('tap', function() {
+      var ctime = angkorwataudio.currentTime;
+      angkorwataudio.currentTime = ctime + 10;
+    });
+    
+    $("#angkorwataudiobbtn").on('tap', function() {
+      var ctime = angkorwataudio.currentTime;
+      angkorwataudio.currentTime = ctime - 10;
+    });;     
+                
+  </script>
+</div>

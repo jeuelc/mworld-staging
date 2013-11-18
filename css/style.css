@@ -3028,6 +3028,61 @@ ul.slides {
   width:1024px !important;
 }
 
+.navangkor-content {
+  position:absolute;
+  left:305px;
+  top:263px;
+  width:410px;
+  height:359px;
+  overflow-y:scroll;
+  text-align:left;
+  font-family:"Chalkboard SE";
+  font-size:18px;
+  font-weight:bold;
+}
+
+.navtitleholderangkor {
+  width:410px;
+  height:68px;
+  position:absolute;
+  top:169px;
+  left:305px;
+  text-align:center;
+  line-height:32px;
+}
+
+.navtitleholderangkor h1 {
+  text-transform:uppercase;
+  color: #FFFFFF;
+  font-family:"Chalkboard SE";
+  font-weight:normal;
+  padding:0;
+  margin:0;
+}
+
+.bptitleholderangkor {
+  width:627px;
+  height:68px;
+  text-align:center;
+  line-height:28px;
+  position:absolute;
+  top:169px;
+  left:194px;
+}
+
+.bpcontentangkor {
+  width:413px;
+  height:356px;
+  position:absolute;
+  left:550px;
+  top:266px;
+  overflow-y:scroll;
+  font-family:"Chalkboard SE";
+  font-size:18px;
+  font-weight:normal;
+  text-align:left;
+}
+
 #medieval , #cooking , #marketers , #houses , #village , #wheredeygo , #peopleangkor , #angkorwat , #angkorwater , #daugan , #myths , #mystery {
  background:url('images/5-8/medieval/medi.jpg') no-repeat;
   height:748px !important;

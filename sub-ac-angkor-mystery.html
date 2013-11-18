@@ -1,6 +1,8 @@
 <!-- i-C-a -->
 <div id="mystery" data-role="page">
   <script src="js/slidebarac.js"></script>
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
   <div class="menuhousing"></div>
   <div class="homebtnholder"><div class="homebtnac"></div></div>
   <div class="mpbtnholder"><div class="mpbtnac"></div></div>
@@ -8,39 +10,45 @@
   <div class="infobtnholder"><div class="infobtnac"></div></div>
   <div class="credsbtnholder"><div class="credsbtnac"></div></div>
   <div class="menubtnholder"><div class="menubtnac"></div></div>
-    <script src="js/hammer.js"></script>
-    <script src="js/jquery.hammer.js"></script>
-   <div class="bptitleholder" style="padding-top:14px;"><h1>Angkor's mysteries</h1></div>
+   <div class="bptitleholderangkor" style="padding-top:14px;"><h1>Angkor's mysteries</h1></div>
     <div id="anisold">
         <div id="spacechar">&nbsp;
             <div data-role="content" class="kidzcontent">
-                <div class="v-volcano"></div>
-                  <div class="sidebarleft-half">
-                     <div id="zoomwrapper">
-                        <div id="pol1" class="pPiece" style="left:100px;top:270px;">
-                           <img src="css/images/5-8/volcanoes/placeholder-background.jpg" alt="" />
+                <div class="sidebarleft-half">
+                  <div id="f1_container" style="visibility:hidden;position:absolute;left:100px;top:270px;">
+                    <div id="f1_card">
+                      <div class="front face">
+                        <img id="dopple" src="css/images/9-12/Ancient_Civilizations/Angkor/Who_Were_The_People_Of_Angkor/tfmysteriespol.png">
+                      </div>
+                      <div id="backofcard" class="back face center" style="background:url(css/images/9-12/Ancient_Civilizations/Angkor/Who_Were_The_People_Of_Angkor/tfmysteriespol.png) no-repeat;">
+                        <div class="returncard" style="position:absolute;left:0px;top:0px;width:362px;height:170px;">
+                          <div style="margin-top:100px;margin-left:auto;margin-right:auto;width:235px;color:#000000;">Angkor was once the largest city in the world?</div>
                         </div>
-                        <div id="pol2"class="pPiece" style="left:75px;top:290px;">
-                           <img src="css/images/5-8/volcanoes/placeholder-background.jpg" alt="" />
-                        </div>
-                      </div><!--/zoomwrapper-->
-                
+                        <div id="trueans" style="position:absolute;left:90px;top:180px;width:70px;height:50px;"></div>
+                        <div id="falseans" style="position:absolute;left:200px;top:180px;width:70px;height:50px;"></div>
+                      </div>
+                    </div><!--/f1+card-->
+                  </div><!--/f1_container-->
+                  <div id="zoomwrapper">
+                    <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+                       <img src="css/images/9-12/Ancient_Civilizations/Angkor/Who_Were_The_People_Of_Angkor/tfmysteriespol.png" alt="" />
+                    </div>
+                    <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+                      <img src="css/images/9-12/Ancient_Civilizations/Angkor/Who_Were_The_People_Of_Angkor/snakeinforestpol.png" alt="" />
+                    </div>
+                  </div><!--/zoomwrapper-->
                 </div>
                 <div class="bpcontentangkor">
-                </div>
-                <div data-role="popup" id="imongnawong" data-position-to="window" data-overlay-theme="a" style="text-align:center;">
-                  <div id="node-pop">
-                     <p>What is an orbit?</p>
-                     <p>Does gravity always pull objects together? It does, but this doesn't always result in objects colliding with each other. If objects are set in motion, then they can orbit one another.  That means they circle around each other.</p>
-                     <p>A satellite travels so fast horizontally that instead of crashing to Earth, the satellite ends up circling the Earth instead.  The Planets in our Solar System have orbited the Sun for billions of years!</p>
-                  </div>
+                  <p>When French explorer Henri Mouhot saw the ruins of stone temples at Angkor in 1860, he thought he had discovered the remains of a vanished civilisation. At this time, the kingdom of Cambodia was nothing like it had been in the past. The kings had long ago become Buddhists and moved the royal capital to Phnom Penh in the south of the country. Neighbouring countries Thailand and Vietnam had taken over a lot of the old Cambodian empire and the Cambodian kings hadn't built stone temples for more than 500 years! </p>
+                  <p>The tropical climate was not kind to the remains of Angkor. Books were made of palm leaves and they had completely rotted away, and so had the vast wooden city that once surrounded the temples. </p>
+                  <p>And there weren't tombs full of exciting treasures or even skeletons to unearth, because the Angkorians either cremated their dead or left the bodies out to be eaten by wild animals. But as the years went by, French scholars uncovered more than 1000 stone inscriptions. With these they could piece together the almost forgotten history of Angkor.</p>
                 </div>
                 <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Ancient_Civilizations/bottomhomeac.png"></a></div>
             </div><!--end of content-->
         </div>
     </div><!--/anisold-->
-     
-    <div class="micbtnholder"><div class="micbtnac"></div></div>
+    
+    <div class="micbtnholder"><div class="micbtnac" id="playstopmystery"></div></div>
     <div class="bac"><div class="rwac" id="mysteryaudiobbtn"></div></div>
     <div class="plac"><div class="plpsac" id="mysteryaudioplbtn"></div></div>
     <div class="fac"><div class="fwac" id="mysteryaudiofbtn" ></div></div>
@@ -60,7 +68,7 @@
            
            
              if(sound.canPlayType('audio/mpeg')) {
-                 $('#actualaudio-mystery').html('<audio controls preload id="mysteryaudio" onpause="playangkor()" onplay="pauseangkor()"><source src="http://back.uvmate.com/sites/default/files/subjectsaudio/page16v1.mp3" type="audio/mpeg"></audio>');
+                 $('#actualaudio-mystery').html('<audio controls preload id="mysteryaudio" onpause="playangkor()" onplay="pauseangkor()"><source src="narrations/angkor_mystery.mp3" type="audio/mpeg"></audio>');
              } 
              
     
@@ -71,7 +79,7 @@
         $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
     
         function goBack() {
-            $.mobile.changePage("sub-medieval-metropolis-where-dey-go.html");
+            $.mobile.changePage("sub-ac-angkor-peopleofangkor.html", {transition:"slide", reverse:true});
         }
         
         function pauseangkor() {
@@ -82,31 +90,54 @@
           angkorbg.play();
         }
        
-   // $("#pol3").on('tap', function() {
-//      $.mobile.changePage("sub-space-bh-binaries.html", {transition: "slide"});
-//    });
-//    
-//    $("#pol2").on('tap', function() {
-//      $.mobile.changePage("sub-space-bh-quasars.html", {transition: "slide"});
-//    });
-//    
-//    $("#pol1").on('tap', function() {
-//      $.mobile.changePage("sub-space-bh-galaxies.html", {transition: "slide"});
-//    });
-      
+      $('#pol1').on('tap', function() {
+        $('#f1_container').css({"visibility":"visible", "z-index":10});
+        $(this).css({"visibility":"hidden"});
+        $('#f1_card').css({"-webkit-transform": "rotateY(180deg)"});
+        $('#f1_card').css({"-moz-transform": "rotateY(180deg)"});
+        $('#f1_card').css({"-o-transform": "rotateY(180deg)"});
+        $('#f1_card').css({"transform": "rotateY(180deg)"});
+      });
+      $('#falseans').on('tap', function() {
+        alert("Wrong answer");
+      });
+      $('#trueans').on('tap', function() {
+        alert("Correct answer");
+      });
+      $(".returncard").on('tap', function() {
+        $('#f1_card').css({"-webkit-transform": "rotateY(0deg)"});
+        $('#f1_card').css({"-moz-transform": "rotateY(0deg)"});
+        $('#f1_card').css({"-o-transform": "rotateY(0deg)"});
+        $('#f1_card').css({"transform": "rotateY(0deg)"});
+        setTimeout(function() {
+          $("#pol1").css({"visibility":"visible", "z-index":3});
+          $('#f1_container').css({"visibility":"hidden", "z-index":0});
+        }, 1000);
+      });
 
 /* ******************** */
-    $("#mysteryaudioplbtn").on('tap', function() {
-      //lifeabhaudio.play();
-      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    /* this is the microphone button */
+    $("#playstopmystery").on('tap', function() {
       if(!playing) {
         mysteryaudio.play();
         $('.micbtnac').css('background-position-x', '-81px');
         playing = true;
+        paused = false;
       } else {
-        mysteryaudio.pause();
+        mysteryaudio.pause(); mysteryaudio.currentTime = 0;
         $('.micbtnac').css('background-position-x', '0px');
         playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#mysteryaudioplbtn").on('tap', function() {
+      if(!paused) {
+        mysteryaudio.pause();
+        paused = true;
+      } else {
+        mysteryaudio.play();
+        paused = false;
       }
     });
     
@@ -118,12 +149,7 @@
     $("#mysteryaudiobbtn").on('tap', function() {
       var ctime = mysteryaudio.currentTime;
       mysteryaudio.currentTime = ctime - 10;
-    });
-    
-    $("#mysteryaudiopsbtn").on('tap', function() {
-      mysteryaudio.pause();
-      $(".audiopanel").css({"backgroundPosition":"0px 0px"});
-    });       
+    });     
                 
   </script><script src="js/threecardLogic.js"></script>
 </div>

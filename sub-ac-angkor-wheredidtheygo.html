@@ -1,0 +1,98 @@
+<!-- i-C-a -->
+<div data-role="page" id="wheredeygo">
+  <script src="js/slidebarac.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnac"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnac"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnac"></div></div>
+  <div class="infobtnholder"><div class="infobtnac"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnac"></div></div>
+  <div class="menubtnholder"><div class="menubtnac"></div></div>
+  
+  <div class="navtitleholderangkor" style="padding-top:14px;"><h1>Where did they go?</h1></div>
+  
+  <div data-role="content" class="kidzcontent">
+      <div class="navangkor-content">
+        <p>What happened to Angkor?  Well, the civilisation collapsed, but why?  Historians and archaeologists believe there are a few reasons. One reason was that Theravada Buddhism became very popular, and this was different from the Hindu gods the temples were dedicated to. Another reason was that Angkor was weakened by repeated wars with the neighbouring Thai kingdom of Ayutthaya, and this made the Cambodian kings decide to move their capital south near Phnom Penh.</p>
+        <p>Recent archaeological research has shown that changes in climate may also have wreaked havoc with Angkor's complex water network. All these changes occurred gradually over many decades though there were no sudden, catastrophic disasters to blame.</p>
+        <p>While the city of Angkor was abandoned, the temple of Angkor Wat was never forgotten or forsaken. Long after the city of Angkor became shrouded in jungle, Angkor Wat continued as a Buddhist shrine,visited by Cambodian kings and pilgrims, from as far away as Japan.</p>
+      </div>
+        
+      <div class="navbtn1" style="top:320px;">
+        <p><a href="sub-ac-angkor-religion.html" data-transition="slide"><img src="css/images/9-12/medieval/religion.png"></a></p>
+      </div>
+      <div class="navbtn3" style="top:320px;">
+        <p><a href="sub-ac-angkor-legacy.html" data-transition="slide" ><img src="css/images/9-12/medieval/legacy.png"></a></p>
+      </div>
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Ancient_Civilizations/bottomhomeac.png"></a></div>
+    </div> <!-- end content -->  
+  
+  <!--<div class="audiopanel">-->
+    <div class="micbtnholder"><div class="micbtnac" id="playstopwheredeygo"></div></div>
+    <div class="bac"><div class="rwac" id="wheredeygoaudiobbtn"></div></div>
+    <div class="plac"><div class="plpsac" id="wheredeygoaudioplbtn"></div></div>
+    <div class="fac"><div class="fwac" id="wheredeygoaudiofbtn"></div></div>
+    <div id="actualaudio-wheredeygo" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    (function() {
+      playing = false;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-wheredeygo').html('<audio id="wheredeygoaudio" controls preload onpause="playbh()" onplay="pausebh()"><source src="narrations/angkor_wheredeygo.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#wheredeygo").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-ac-angkor.html", {transition: "slide", reverse: true });
+    }
+    
+    function pausedaudio() {
+      bgsoundbh.play();
+    }
+    
+    function pausebg() {
+      bgsoundbh.pause();
+    }
+    /* ******************** */
+    $("#playstopwheredeygo").on('tap', function() {
+      if(!playing) {
+        wheredeygoaudio.play();
+        $('.micbtnac').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        wheredeygoaudio.pause(); wheredeygoaudio.currentTime = 0;
+        $('.micbtnac').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#wheredeygoaudioplbtn").on('tap', function() {
+      if(!paused) {
+        wheredeygoaudio.pause();
+        paused = true;
+      } else {
+        wheredeygoaudio.play();
+        paused = false;
+      }
+    });
+    
+    $("#wheredeygoaudiofbtn").on('tap', function() {
+      var ctime = wheredeygoaudio.currentTime;
+      wheredeygoaudio.currentTime = ctime + 10;
+    });
+    
+    $("#wheredeygoaudiobbtn").on('tap', function() {
+      var ctime = wheredeygoaudio.currentTime;
+      wheredeygoaudio.currentTime = ctime - 10;
+    }); 
+    
+  </script>
+</div> <!--//home-->

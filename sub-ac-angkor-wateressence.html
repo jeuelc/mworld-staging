@@ -1,0 +1,124 @@
+<!-- i-C-a -->
+<div id="angkorwater" data-role="page">
+  <script src="js/slidebarac.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnac"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnac"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnac"></div></div>
+  <div class="infobtnholder"><div class="infobtnac"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnac"></div></div>
+  <div class="menubtnholder"><div class="menubtnac"></div></div>
+   <div class="bptitleholder" style="padding-top:14px;"><h1>Water, The Essence of Angkor</h1></div>
+    <div id="anisold">
+        <div id="spacechar">&nbsp;
+            <div data-role="content" class="kidzcontent">
+                <div class="sidebarleft-half">
+                  <div id="zoomwrapper">
+                    <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+                      <img src="css/images/9-12/Ancient_Civilizations/Angkor/Who_Were_The_People_Of_Angkor/angkorwaterpol.png" alt="" />
+                    </div>
+                  </div><!--/zoomwrapper-->
+                </div>
+                <div class="bpcontentangkor">
+                  <p>To understand how the city of Angkor became so large and rich it helps to understand the importance of water and the monsoon seasons. </p>
+                  <p>Cambodia is a very hot country; half the year it rains a lot and for the other half it hardly rains at all!  To grow rice you need a lot of water, and over hundreds of years, the kings and high officials of Angkor worked out ways to capture the water from the wet season and save it for the dry season. They built big reservoirs called 'baray' to hold millions of litres of water and built huge embankments and canals, all connected together in a complex network. </p>
+                  <p>Angkor has been described as a 'hydraulic city', served by a highly productive system of irrigation.  Its canals made it easy for people to travel and move things around; it was often quicker to go by boat than by road!</p>
+                </div>
+                <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Ancient_Civilizations/bottomhomeac.png"></a></div>
+            </div><!--end of content-->
+        </div>
+    </div><!--/anisold-->
+     
+    <div class="micbtnholder"><div class="micbtnac" id="playstopangkorwater"></div></div>
+    <div class="bac"><div class="rwac" id="angkorwateraudiobbtn"></div></div>
+    <div class="plac"><div class="plpsac" id="angkorwateraudioplbtn"></div></div>
+    <div class="fac"><div class="fwac" id="angkorwateraudiofbtn" ></div></div>
+    <div id="actualaudio-angkorwater" style="visibility:hidden;"></div>
+    
+    <div id="angkorwaterholder" style="width:1024px;height:748px;position:absolute;left:0px;top:0px;visibility:hidden;background:#000000;z-index:-1;">
+      <div class="vidcontainer">
+       <video id="angkorwater" width="1024" height="748" preload>
+         <source src="videos/angkorwater.mp4" type="video/mp4">
+       </video>
+      </div>
+     </div> 
+    <script>
+        sound = new Audio();
+        soundpop = new Audio();
+        var playing;
+        (function() {
+          playing = false;
+           
+             if(sound.canPlayType('audio/mpeg')) {
+                 $('#actualaudio-angkorwater').html('<audio controls preload id="angkorwateraudio" onpause="playangkor()" onplay="pauseangkor()"><source src="narrations/angkor_wateressence.mp3" type="audio/mpeg"></audio>');
+             } 
+             
+    
+            $("#angkorwater").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+        })();
+        $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+        function goBack() {
+            $.mobile.changePage("sub-ac-angkor-peopleofangkor.html", {transition:"slide", reverse:true}); 
+        }
+        
+       function pauseangkor() {
+          angkorbg.pause();
+        }
+        
+        function playangkor() {
+          angkorbg.play();
+        }
+       /*
+      $("#pol1").on('tap', function() {
+         $("#angkorwaterholder").css({"visibility":"visible", "z-index":10});
+         $("#angkorwater").css({"z-index":9});
+         angkorbg.pause();
+         angkorwater.play();
+       });
+      
+    $("#angkorwater").on('tap', function() {
+      $("#angkorwaterholder").css({"visibility":"hidden", "z-index":-1});
+      $("#angkorwater").css({"z-index":-1});
+      angkorbg.play();
+      angkorwater.pause();
+      angkorwater.currentTime = 0;
+    }); */
+
+/* ******************** */
+    $("#playstopangkorwater").on('tap', function() {
+      if(!playing) {
+        angkorwateraudio.play();
+        $('.micbtnac').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        angkorwateraudio.pause(); angkorwateraudio.currentTime = 0;
+        $('.micbtnac').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#angkorwateraudioplbtn").on('tap', function() {
+      if(!paused) {
+        angkorwateraudio.pause();
+        paused = true;
+      } else {
+        angkorwateraudio.play();
+        paused = false;
+      }
+    });
+    
+    $("#angkorwateraudiofbtn").on('tap', function() {
+      var ctime = angkorwateraudio.currentTime;
+      angkorwateraudio.currentTime = ctime + 10;
+    });
+    
+    $("#angkorwateraudiobbtn").on('tap', function() {
+      var ctime = angkorwateraudio.currentTime;
+      angkorwateraudio.currentTime = ctime - 10;
+    });
+  </script>
+</div>

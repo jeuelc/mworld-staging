@@ -1,0 +1,112 @@
+<!-- i-C-a -->
+<div id="daugan" data-role="page">
+  <script src="js/slidebarac.js"></script>
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnac"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnac"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnac"></div></div>
+  <div class="infobtnholder"><div class="infobtnac"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnac"></div></div>
+  <div class="menubtnholder"><div class="menubtnac"></div></div>
+   <div class="bptitleholder" style="padding-top:14px;"><h1>Zhou Daguan</h1></div>
+    <div id="anisold">
+        <div id="spacechar">&nbsp;
+            <div data-role="content" class="kidzcontent">
+                <div class="sidebarleft-half">
+                  <div id="zoomwrapper">
+                    <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+                       <img src="css/images/9-12/Ancient_Civilizations/Angkor/Who_Were_The_People_Of_Angkor/sanskritpol.png" alt="" />
+                    </div>
+                    <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+                       <img src="css/images/9-12/Ancient_Civilizations/Angkor/Who_Were_The_People_Of_Angkor/palmsheetspol.png" alt="" />
+                    </div>
+                </div><!--/zoomwrapper-->
+                </div>
+                <div class="bpcontentangkor">
+                  <p>The person who can tell you most today about life at Angkor is a man who lived 800 years ago!  He was a Chinese diplomat named Zhou Daguan and he visited Angkor in 1296 when it was a rich and bustling city. He stayed almost a year. When Zhou returned to China he wrote a diary of his visit, A Record of Cambodia  The Land and Its People, and in it he wrote of the wonderful things he had seen. </p>
+                  <p>Zhou's diary is extremely important to us because it is the only eyewitness account of Angkor as a living city. Zhou wrote lots of notes about things that amazed and intrigued him. He wrote about magnificent temples in the city the Cambodians then called Yasodharapura (Angkor Thom), and about festivals and processions he saw. He wrote a good deal about the people of Angkor, so today, you can find out how they dressed and spoke, what sort of things they traded, their customs and the food that they ate. </p>
+                </div>
+                <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Ancient_Civilizations/bottomhomeac.png"></a></div>
+            </div><!--end of content-->
+        </div>
+    </div><!--/anisold-->
+     
+    <div class="micbtnholder"><div class="micbtnac" id="playstopdaguan"></div></div>
+    <div class="bac"><div class="rwac" id="daguanaudiobbtn"></div></div>
+    <div class="plac"><div class="plpsac" id="daguanaudioplbtn"></div></div>
+    <div class="fac"><div class="fwac" id="daguanaudiofbtn" ></div></div>
+    <div id="actualaudio-daguan" style="visibility:hidden;"></div>
+    
+    <script>
+        sound = new Audio();
+        soundpop = new Audio();
+        var playing;
+        (function() {
+          playing = false;
+            $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+            $('div#pol1').css("z-index", 2);
+            $('div#pol2').css("z-index", 1);
+            $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+           
+             if(sound.canPlayType('audio/mpeg')) {
+                 $('#actualaudio-daguan').html('<audio controls preload id="daguanaudio" onpause="playangkor()" onplay="pauseangkor()"><source src="narrations/angkor_daguan.mp3" type="audio/mpeg"></audio>');
+             } 
+             
+    
+            $("#daugan").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+        })();
+        $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+        function goBack() {
+            $.mobile.changePage("sub-ac-angkor-peopleofangkor.html", {transition:"slide", reverse:true}); 
+        }
+        
+       function pauseangkor() {
+          angkorbg.pause();
+        }
+        
+        function playangkor() {
+          angkorbg.play();
+        }
+      
+
+/* ******************** */
+     $("#playstopdaguan").on('tap', function() {
+      if(!playing) {
+        daguanaudio.play();
+        $('.micbtnac').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        daguanaudio.pause(); daguanaudio.currentTime = 0;
+        $('.micbtnac').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#daguanaudioplbtn").on('tap', function() {
+      if(!paused) {
+        daguanaudio.pause();
+        paused = true;
+      } else {
+        daguanaudio.play();
+        paused = false;
+      }
+    });
+    
+    $("#daguanaudiofbtn").on('tap', function() {
+      var ctime = daguanaudio.currentTime;
+      daguanaudio.currentTime = ctime + 10;
+    });
+    
+    $("#daguanaudiobbtn").on('tap', function() {
+      var ctime = daguanaudio.currentTime;
+      daguanaudio.currentTime = ctime - 10;
+    });         
+                
+  </script><script src="js/twocardLogic.js"></script>
+</div>
