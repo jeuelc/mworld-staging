@@ -916,7 +916,7 @@ a.fun.bsubjectlink { background:url("images/5-8/Home_Screen/bfun.png") no-repeat
 /***********slider button************/
 .menubtnholder {
   position:absolute;
-  top:660px;
+  top:671px;
   left:0px;
   z-index:21;
 }
@@ -959,7 +959,7 @@ a.fun.bsubjectlink { background:url("images/5-8/Home_Screen/bfun.png") no-repeat
 
 .homebtnholder, .cpbtnholder, .buildbtnholder, .mpbtnholder, .credsbtnholder, .infobtnholder {
   position:absolute;
-  top:670px;
+  top:684px;
   left:-93px;
   z-index:20;
 }
@@ -1192,7 +1192,7 @@ a.fun.bsubjectlink { background:url("images/5-8/Home_Screen/bfun.png") no-repeat
 
 .micbtnholder {
   position:absolute;
-  top:664px;
+  top:679px;
   left:942px;
   width:81px;
   height:81px;
