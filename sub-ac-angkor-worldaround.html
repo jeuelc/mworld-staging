@@ -1,0 +1,92 @@
+<!-- i-C-a -->
+<div id="worldangkor" data-role="page">
+  <script src="js/slidebarac.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnac"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnac"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnac"></div></div>
+  <div class="infobtnholder"><div class="infobtnac"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnac"></div></div>
+  <div class="menubtnholder"><div class="menubtnac"></div></div>
+  <div class="bptitleholder" style="padding-top:14px;"><h1>The World Around Angkor</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="sidebarleft-half"> 
+        <div id="findingangkorlink" style="width:367px;height:287px;;left:83px;top:292px;background:transparent;position:absolute;z-index:99999;"></div>
+      </div>
+      <div class="bpcontentangkor">
+        <p>Between about 800 CE and 1300 CE, the Khmer empire covered much of mainland South-East Asia.  On a map, where you see Cambodia today was the heart of an empire that spread into southern areas of Thailand, Vietnam, Laos and Burma.  At the crossroads between China and India, the Khmers adopted Indian religious ideas (Hinduism and Buddhism) from an early stage, even though Cambodia had more direct diplomatic and trade contact with China.</p>
+        <p>Most of Angkor's neighbours in historical times were conquered by other states and have disappeared.  Among these were Champa, a kingdom on the central coast of Vietnam that Angkor often quarrelled with, the kingdoms of Dvaravati and Pegu in modern Thailand and Burma and, further away, the Srivijayan empire in Sumatra and Malaysia.  In the dying days of the Angkorian empire, the kingdoms of Ayutthaya in Thailand and the Dai Viet in northern Vietnam grew very quickly.  Tap on the Khmer Empire to locate Angkor on this map.  </p>
+      </div>
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Ancient_Civilizations/bottomhomeac.png"></a></div>
+    </div><!--end of content-->
+  </div><!--/spacechar-->
+  
+  <div class="micbtnholder"><div class="micbtnac" id="playstopworldangkor"></div></div>
+    <div class="bac"><div class="rwac" id="worldangkoraudiobbtn"></div></div>
+    <div class="plac"><div class="plpsac" id="worldangkoraudioplbtn"></div></div>
+    <div class="fac"><div class="fwac" id="worldangkoraudiofbtn" ></div></div>
+    <div id="actualaudio-worldangkor" style="visibility:hidden;"></div>
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+        (function() {
+          playing = false;
+           /* $('#node-body-minoans').html(data[0].Body);*/
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-worldangkor').html('<audio controls preload id="worldangkoraudio" onpause="playangkor()" onplay="pauseangkor()"><source src="narrations/angkor_worldaround.mp3" type="audio/mpeg"></audio>');
+      } 
+      
+      $("#worldangkor").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $("#findingangkorlink").on('tap', function() {$.mobile.changePage("sub-ac-angkor-finding.html", {transition:"slide"}); });
+
+   $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+   function goBack() {
+      $.mobile.changePage("sub-medieval-metropolis.html");
+    }
+    
+    function pauseangkor() {
+      angkorbg.pause();
+    }
+        
+    function playangkor() {
+      angkorbg.play();
+    }
+    /* ******************** */
+    $("#playstopworldangkor").on('tap', function() {
+      if(!playing) {
+        worldangkoraudio.play();
+        $('.micbtnac').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        worldangkoraudio.pause(); worldangkoraudio.currentTime = 0;
+        $('.micbtnac').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#worldangkoraudioplbtn").on('tap', function() {
+      if(!paused) {
+        worldangkoraudio.pause();
+        paused = true;
+      } else {
+        worldangkoraudio.play();
+        paused = false;
+      }
+    });
+    
+    $("#worldangkoraudiofbtn").on('tap', function() {
+      var ctime = worldangkoraudio.currentTime;
+      worldangkoraudio.currentTime = ctime + 10;
+    });
+    
+    $("#worldangkoraudiobbtn").on('tap', function() {
+      var ctime = worldangkoraudio.currentTime;
+      worldangkoraudio.currentTime = ctime - 10;
+    });   
+  </script>
+</div>

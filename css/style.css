@@ -1179,13 +1179,13 @@ a.fun.bsubjectlink { background:url("images/5-8/Home_Screen/bfun.png") no-repeat
   left:827px;
   width:169px;
   height:137px;
-  /*background:url("images/audio/micpanel.png") no-repeat 0 0;*/
+  /*background:url("images/audio/bpanel.png") no-repeat 0 0;*/
   padding-left:28px;
 }
 
 .plbh, .psbh, .bbh, .fbh {
   position:absolute;
-  top:670px;
+  top:683px;
   left:1024px;
   z-index:20;
 } 
@@ -1249,7 +1249,7 @@ ul.slides {
 /********* ancient civilization  **********/
 .plac, .psac, .bac, .fac {
   position:absolute;
-  top:670px;
+  top:683px;
   left:1024px;
   z-index:20;
 }
@@ -1317,7 +1317,7 @@ ul.slides {
 /********* the wonders of science  **********/
 .plwos, .pswos, .bwos, .fwos {
   position:absolute;
-  top:670px;
+  top:683px;
   left:1024px;
   z-index:20;
 }
@@ -3083,8 +3083,8 @@ ul.slides {
   text-align:left;
 }
 
-#medieval , #cooking , #marketers , #angkorhouses , #village , #wheredeygo , #peopleangkor , #angkorwat , #angkorwater , #daugan , #myths , #mystery,
-#angkorlegacy, #angkorreligion {
+#medieval , #cookingcuisine , #marketstrade , #angkorhouses , #angkorvillage , #wheredeygo , #peopleangkor , #angkorwat , #angkorwater , #daugan , #myths , 
+#mystery, #angkoranimals, #angkorlegacy, #angkorreligion {
  background:url('images/5-8/medieval/medi.jpg') no-repeat;
   height:748px !important;
   overflow:hidden !important;

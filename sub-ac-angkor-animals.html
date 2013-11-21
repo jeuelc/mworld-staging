@@ -1,0 +1,169 @@
+<!-- i-C-a -->
+<div id="angkoranimals" data-role="page">
+  <script src="js/slidebarac.js"></script>
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnac"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnac"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnac"></div></div>
+  <div class="infobtnholder"><div class="infobtnac"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnac"></div></div>
+  <div class="menubtnholder"><div class="menubtnac"></div></div>
+    <div class="bptitleholder" style="padding-top:14px;"><h1>Watch out for the Elephants!</h1></div>
+    <div id="anisold">
+        <div id="spacechar">&nbsp;
+            <div data-role="content" class="kidzcontent">
+                  <div class="sidebarleft-half">
+                    <div id="f1_container" style="visibility:hidden;position:absolute;left:100px;top:270px;">
+                      <div id="f1_card">
+                        <div class="front face">
+                          <img id="dopple" src="css/images/9-12/Ancient_Civilizations/Angkor/Daily_Life_In_Angkor/animalsquizpol.png">
+                        </div>
+                        <div id="backofcard" class="back face center" style="background:url(css/images/9-12/Ancient_Civilizations/Angkor/Daily_Life_In_Angkor/animalsquizpol-reverse.png) no-repeat;">
+                          <div class="returncard" style="position:absolute;left:0px;top:0px;width:362px;height:170px;"></div>
+                          <div id="trueans" style="position:absolute;left:90px;top:180px;width:70px;height:50px;"></div>
+                          <div id="falseans" style="position:absolute;left:200px;top:180px;width:70px;height:50px;"></div>
+                        </div>
+                      </div><!--/f1+card-->
+                    </div><!--/f1_container-->
+                     <div id="zoomwrapper">
+                        <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+                           <img src="css/images/9-12/Ancient_Civilizations/Angkor/Daily_Life_In_Angkor/animalsquizpol.png" alt="" />
+                        </div>
+                        <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+                           <img src="css/images/9-12/Ancient_Civilizations/Angkor/Daily_Life_In_Angkor/wmelephantpol.png" alt="" />
+                        </div>
+                     </div><!--/zoomwrapper-->
+                
+                </div>
+                <div class="bpcontentangkor">
+                  <p>The Angkorians used animals for work, transport and farming.  You can tell that elephants were very important because they appear prominently in decorations carrying military commanders and princes into battle.  Elephants were also used in royal processions, and if you were walking along the roads of Angkor you'd also need to keep out of the way of elephants ridden by high-ranking people!  Elephants and water buffaloes also helped to pull or lift heavy stone and timber in temple construction. </p>
+                  <p>The Angkorians used cattle to pull carts (but not to eat!), and they sometimes rode ponies.  As you wandered through the markets and villages you'd also see chickens, pigs, ducks and goats.  The people of Angkor never lived far from the water, where there were plenty of fish, turtles and waterbirds to catch, or the forest, where they hunted deer and wild boar, so wild game was always available.  But of course people had to be careful not to be 'on the menu' themselves for tigers, leopards or crocodiles!</p>
+                </div>
+                <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Ancient_Civilizations/bottomhomeac.png"></a></div>
+            </div><!--end of content-->
+        </div>
+    </div><!--/anisold-->
+     
+    <div class="micbtnholder"><div class="micbtnac" id="playstopangkoranimals"></div></div>
+    <div class="bac"><div class="rwac" id="angkoranimalsaudiobbtn"></div></div>
+    <div class="plac"><div class="plpsac" id="angkoranimalsaudioplbtn"></div></div>
+    <div class="fac"><div class="fwac" id="angkoranimalsaudiofbtn" ></div></div>
+    <div id="actualaudio-angkoranimals" style="visibility:hidden;"></div>
+    
+    <div id="elephantvideoholder" style="width:1024px;height:748px;position:absolute;left:0px;top:0px;visibility:hidden;background:#000000;z-index:-1;">
+      <video id="elephantvideo" width="1024" height="748" preload>
+        <source src="video/elephant.mp4" type="video/mp4">
+      </video>
+    </div>
+    
+    <script>
+        sound = new Audio();
+        soundpop = new Audio();
+        var playing;
+        (function() {
+          playing = false;
+            $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+            $('div#pol1').css("z-index", 1);
+            $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+           
+           
+             if(sound.canPlayType('audio/mpeg')) {
+                 $('#actualaudio-angkoranimals').html('<audio controls preload id="angkoranimalsaudio" onpause="playangkor()" onplay="pauseangkor()"><source src="narrations/angkor_animals.mp3" type="audio/mpeg"></audio>');
+             } 
+             
+             elephantvideo.addEventListener('ended', function() { 
+              $("#elephantvideoholder").css({"visibility":"hidden", "z-index":-1});
+              $("#elephantvideo").css({"z-index":-1});
+              angkorbg.play(); 
+            });
+    
+            $("#angkoranimals").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+        })();
+        $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+        function goBack() {
+            $.mobile.changePage("sub-ac-angkor-dailylife.html", {transition: "slide", reverse: true });
+        }
+        
+       function pauseangkor() {
+          angkorbg.pause();
+        }
+        
+        function playangkor() {
+          angkorbg.play();
+        }
+      
+    $("#pol2").on('tap', function() {
+      $("#elephantvideoholder").css({"visibility":"visible", "z-index":10});
+      $("#elephantvideo").css({"z-index":9});
+      angkorbg.pause();
+      elephantvideo.play();
+    });
+    $("#elephantvideo").on('tap', function() {
+      $("#elephantvideoholder").css({"visibility":"hidden", "z-index":-1});
+      $("#elephantvideo").css({"z-index":-1});
+      angkorbg.play();
+      elephantvideo.pause();
+      elephantvideo.currentTime = 0;
+    }); 
+    
+    $("#pol1").on('tap', function() {
+      $('#f1_container').css({"visibility":"visible", "z-index":10});
+        $(this).css({"visibility":"hidden"});
+        $('#f1_card').css({"-webkit-transform": "rotateY(180deg)"});
+        $('#f1_card').css({"-moz-transform": "rotateY(180deg)"});
+        $('#f1_card').css({"-o-transform": "rotateY(180deg)"});
+        $('#f1_card').css({"transform": "rotateY(180deg)"});
+    });
+    $(".returncard").on('tap', function() {
+        $('#f1_card').css({"-webkit-transform": "rotateY(0deg)"});
+        $('#f1_card').css({"-moz-transform": "rotateY(0deg)"});
+        $('#f1_card').css({"-o-transform": "rotateY(0deg)"});
+        $('#f1_card').css({"transform": "rotateY(0deg)"});
+        setTimeout(function() {
+          $("#pol1").css({"visibility":"visible", "z-index":3});
+          $('#f1_container').css({"visibility":"hidden", "z-index":0});
+        }, 1000);
+      });
+      
+
+/* ******************** */
+    $("#playstopangkoranimals").on('tap', function() {
+      if(!playing) {
+        angkoranimalsaudio.play();
+        $('.micbtnac').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        angkoranimalsaudio.pause(); angkoranimalsaudio.currentTime = 0;
+        $('.micbtnac').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#angkoranimalsaudioplbtn").on('tap', function() {
+      if(!paused) {
+        angkoranimalsaudio.pause();
+        paused = true;
+      } else {
+        angkoranimalsaudio.play();
+        paused = false;
+      }
+    });
+    
+    $("#angkoranimalsaudiofbtn").on('tap', function() {
+      var ctime = angkoranimalsaudio.currentTime;
+      angkoranimalsaudio.currentTime = ctime + 10;
+    });
+    
+    $("#angkoranimalsaudiobbtn").on('tap', function() {
+      var ctime = angkoranimalsaudio.currentTime;
+      angkoranimalsaudio.currentTime = ctime - 10;
+    });          
+                
+  </script><script src="js/twocardLogic.js"></script>
+</div>

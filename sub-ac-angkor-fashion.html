@@ -1,0 +1,91 @@
+<!-- i-C-a -->
+<div id="fashion" data-role="page">
+  <script src="js/slidebarac.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnac"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnac"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnac"></div></div>
+  <div class="infobtnholder"><div class="infobtnac"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnac"></div></div>
+  <div class="menubtnholder"><div class="menubtnac"></div></div>
+  <div class="bptitleholder" style="padding-top:14px;"><h1>Fashion, Perfumes and Jewellry</h1></div>
+    <div id="anisold">
+        <div id="spacechar">&nbsp;
+            <div data-role="content" class="kidzcontent">
+                <div class="sidebarleft-half"></div>
+                <div class="bpcontentangkor">
+                  <p>Zhou Daguan said in his diary that the people of Angkor "wrap a cloth around their waists, but apart from that they leave their... chests ...uncovered".  Cambodia is a very hot country so they didn't need to wear much!  But the colour and design of the cloth (called a 'sampot' in Khmer) told quite a lot about a person's social rank. </p>
+                  <p>For example, only senior officials and relatives of the king could wear a cloth with a scattered flower design  no other men would dare to do so! These officials were often followed around by a servant holding a red or green silk parasol, or umbrella.  They all wore perfumes too, like sandalwood and musk.  Important women wore gold bracelets and rings and dyed their hands and the soles of their feet with henna.  Some decorations show people with long ear lobes from which big heavy earrings could be hung.  And did you know that all the people of Angkor had long hair and tied it in a knot?</p>
+                </div>
+                <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Ancient_Civilizations/bottomhomeac.png"></a></div>
+            </div><!--end of content-->
+        </div>
+    </div><!--/anisold-->
+     
+    <div class="micbtnholder"><div class="micbtnac" id="playstopfashion"></div></div>
+    <div class="bac"><div class="rwac" id="fashionaudiobbtn"></div></div>
+    <div class="plac"><div class="plpsac" id="fashionaudioplbtn"></div></div>
+    <div class="fac"><div class="fwac" id="fashionaudiofbtn" ></div></div>
+    <div id="actualaudio-fashion" style="visibility:hidden;"></div>
+    
+  <script>
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+        (function() {
+          playing = false;
+           /* $('#node-body-minoans').html(data[0].Body);*/
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-fashion').html('<audio controls preload id="fashionaudio" onpause="playangkor()" onplay="pauseangkor()"><source src="narrations/angkor_fashion.mp3" type="audio/mpeg"></audio>');
+      } 
+      
+      $("#fashion").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+   $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+   function goBack() {
+      $.mobile.changePage("sub-ac-angkor-dailylife.html", {transition: "slide", reverse: true });
+    }
+    
+    function pauseangkor() {
+      angkorbg.pause();
+    }
+        
+    function playangkor() {
+      angkorbg.play();
+    }
+    /* ******************** */
+    $("#playstopfashion").on('tap', function() {
+      if(!playing) {
+        fashionaudio.play();
+        $('.micbtnac').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        fashionaudio.pause(); fashionaudio.currentTime = 0;
+        $('.micbtnac').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#fashionaudioplbtn").on('tap', function() {
+      if(!paused) {
+        fashionaudio.pause();
+        paused = true;
+      } else {
+        fashionaudio.play();
+        paused = false;
+      }
+    });
+    
+    $("#fashionaudiofbtn").on('tap', function() {
+      var ctime = fashionaudio.currentTime;
+      fashionaudio.currentTime = ctime + 10;
+    });
+    
+    $("#fashionaudiobbtn").on('tap', function() {
+      var ctime = fashionaudio.currentTime;
+      fashionaudio.currentTime = ctime - 10;
+    });   
+  </script>
+</div>

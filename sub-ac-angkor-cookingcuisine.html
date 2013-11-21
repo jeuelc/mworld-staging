@@ -1,0 +1,133 @@
+<!-- i-C-a -->
+<div id="cookingcuisine" data-role="page">
+  <script src="js/slidebarac.js"></script>
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnac"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnac"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnac"></div></div>
+  <div class="infobtnholder"><div class="infobtnac"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnac"></div></div>
+  <div class="menubtnholder"><div class="menubtnac"></div></div>
+    <div class="bptitleholder" style="padding-top:14px;"><h1>Cooking and Cuisine</h1></div>
+    <div id="anisold">
+        <div id="spacechar">&nbsp;
+            <div data-role="content" class="kidzcontent">                
+                <div class="sidebarleft-half">
+                    <a id="basrelieflink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Ancient_Civilizations/Angkor/Daily_Life_In_Angkor/basrelief.png', 'Ancient bas relief carving showing Khmer people cooking.');">click here</a>
+                    <a id="cricketslink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Ancient_Civilizations/Angkor/Daily_Life_In_Angkor/crickets.png', 'Ready to eat fried crickets');">click here</a>
+                   <div id="zoomwrapper">
+                      <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+                         <img src="css/images/9-12/Ancient_Civilizations/Angkor/Daily_Life_In_Angkor/cookingquizpol.png" alt="" />
+                      </div>
+                      <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+                         <img src="css/images/9-12/Ancient_Civilizations/Angkor/Daily_Life_In_Angkor/basreliefpol.png" alt="" />
+                      </div>
+                      <div id="pol3"class="pPiece" style="left:80px;top:270px;">
+                         <img src="css/images/9-12/Ancient_Civilizations/Angkor/Daily_Life_In_Angkor/cricketspol.png" alt="" />
+                      </div>
+                   </div><!--/zoomwrapper-->
+                
+                </div>
+                <div class="bpcontentangkor">
+                  <p>If you lived in Angkor, you would eat almost the same food as you would in Cambodia today. They had a healthy diet of mainly rice and fish. </p>
+                  <p>Rice-growing was really important, but there were also heaps of fish near the city of Angkor and this was also essential in sustaining the people. They ate fish in different ways  fresh, dried, salted or smoked, or made into a fermented strong-smelling paste called prahok. </p>
+                  <p>Of course, the Angkorians enjoyed lots of other foods as well. They had sugar cane and palm sugar for sweeter flavours and mustard and tamarind could season sour tastes. There were all kinds of fruits, like jackfruit, mango and durian, and all kinds of different vegetables too. </p>
+                  <p>Turtles, snakes, snails and frogs were also on the menu, as well as roasted water bugs and crickets!  Have you ever eaten any of these delicacies? </p>
+                </div>
+                <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Ancient_Civilizations/bottomhomeac.png"></a></div>
+            </div><!--end of content-->
+        </div>
+    </div><!--/anisold-->
+     
+    <div class="micbtnholder"><div class="micbtnac" id="playstopcookingcuisine"></div></div>
+    <div class="bac"><div class="rwac" id="cookingcuisineaudiobbtn"></div></div>
+    <div class="plac"><div class="plpsac" id="cookingcuisineaudioplbtn"></div></div>
+    <div class="fac"><div class="fwac" id="cookingcuisineaudiofbtn" ></div></div>
+    <div id="actualaudio-cookingcuisine" style="visibility:hidden;"></div>
+    
+    <script>
+        sound = new Audio();
+        soundpop = new Audio();
+        var playing;
+        (function() {
+          playing = false;
+            $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+            $('div#pol1').css("z-index", 2);
+            $('div#pol2').css("z-index", 1);
+            $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+            $('div#pol3 > img').css("-webkit-transform", "rotate(-5deg)");
+           
+           
+             if(sound.canPlayType('audio/mpeg')) {
+                 $('#actualaudio-cookingcuisine').html('<audio controls preload id="cookingcuisineaudio" onpause="playangkor()" onplay="pauseangkor()"><source src="narrations/angkor_cooking.mp3" type="audio/mpeg"></audio>');
+             } 
+             
+            $("#cookingcuisine").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+        })();
+        $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+        function goBack() {
+            $.mobile.changePage("sub-ac-angkor-dailylife.html", {transition: "slide", reverse: true });
+        }
+        
+       function pauseangkor() {
+          angkorbg.pause();
+        }
+        
+        function playangkor() {
+          angkorbg.play();
+        }
+       
+    $("#pol3").on('tap', function() {
+      $('#cricketslink')[0].click();
+    });
+    
+    $("#pol2").on('tap', function() {
+      $('#basrelieflink')[0].click();
+    });
+    
+    $("#pol1").on('tap', function() {
+      //$.mobile.changePage("sub-space-bh-galaxies.html", {transition: "slide"});
+    });
+      
+
+/* ******************** */
+    $("#playstopcookingcuisine").on('tap', function() {
+      if(!playing) {
+        cookingcuisineaudio.play();
+        $('.micbtnac').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        cookingcuisineaudio.pause(); cookingcuisineaudio.currentTime = 0;
+        $('.micbtnac').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#cookingcuisineaudioplbtn").on('tap', function() {
+      if(!paused) {
+        cookingcuisineaudio.pause();
+        paused = true;
+      } else {
+        cookingcuisineaudio.play();
+        paused = false;
+      }
+    });
+    
+    $("#cookingcuisineaudiofbtn").on('tap', function() {
+      var ctime = cookingcuisineaudio.currentTime;
+      cookingcuisineaudio.currentTime = ctime + 10;
+    });
+    
+    $("#cookingcuisineaudiobbtn").on('tap', function() {
+      var ctime = cookingcuisineaudio.currentTime;
+      cookingcuisineaudio.currentTime = ctime - 10;
+    });     
+                
+  </script><script src="js/threecardLogic.js"></script>
+</div>

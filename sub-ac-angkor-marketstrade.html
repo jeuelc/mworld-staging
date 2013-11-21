@@ -1,0 +1,152 @@
+<!-- i-C-a -->
+<div id="marketstrade" data-role="page">
+  <script src="js/slidebarac.js"></script>
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnac"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnac"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnac"></div></div>
+  <div class="infobtnholder"><div class="infobtnac"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnac"></div></div>
+  <div class="menubtnholder"><div class="menubtnac"></div></div>
+  <div class="bptitleholder" style="padding-top:14px;"><h1>Markets and Trade ... but no Money</h1></div>
+    <div id="anisold">
+        <div id="spacechar">&nbsp;
+            <div data-role="content" class="kidzcontent">
+                <div class="v-volcano"></div>
+                  <div class="sidebarleft-half">
+                    <a id="marketslink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Ancient_Civilizations/Angkor/Daily_Life_In_Angkor/markets.jpg', 'Description Here');">click here</a>
+                    <div id="f1_container" style="visibility:hidden;position:absolute;left:100px;top:270px;">
+                      <div id="f1_card">
+                        <div class="front face">
+                          <img id="dopple" src="css/images/9-12/Ancient_Civilizations/Angkor/Daily_Life_In_Angkor/qtmarketspol.png">
+                        </div>
+                        <div id="backofcard" class="back face center" style="background:url(css/images/9-12/Ancient_Civilizations/Angkor/Daily_Life_In_Angkor/qtmarketspol-reverse.png) no-repeat;">
+                          <div class="returncard" style="position:absolute;left:0px;top:0px;width:362px;height:170px;"></div>
+                          <div id="trueans" style="position:absolute;left:90px;top:180px;width:70px;height:50px;"></div>
+                          <div id="falseans" style="position:absolute;left:200px;top:180px;width:70px;height:50px;"></div>
+                        </div>
+                      </div><!--/f1+card-->
+                    </div><!--/f1_container-->
+                     <div id="zoomwrapper">
+                        <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+                           <img src="css/images/9-12/Ancient_Civilizations/Angkor/Daily_Life_In_Angkor/qtmarketspol.png" alt="" />
+                        </div>
+                        <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+                           <img src="css/images/9-12/Ancient_Civilizations/Angkor/Daily_Life_In_Angkor/marketspol.png" alt="" />
+                        </div>
+                     </div><!--/zoomwrapper-->
+                
+                </div>
+                <div class="bpcontentangkor">
+                    <p>Far from the sea and the Mekong river, Angkor was an inland empire that built its wealth through rich rice harvests.  It wasn't a port city where riches were made through trade. The capital was hard to get to whichever way you went -  overland or upstream - but Zhou Daguan said there were Chinese traders in the markets at Angkor.  There were many Cambodian goods the Chinese wanted and they exchanged them for items that the Angkorians desired from China. </p>
+                    <p>Zhou was interested in the quality of Cambodian products such as ivory, rhinoceros horns, kingfisher feathers and beeswax. He saw that the Cambodians valued Chinese goods such as silks, ceramics, fine-toothed combs, writing paper and copper dishes. But at Angkor they didn't use money, so how would you buy these things?  Well, you would barter (or swap)! Angkorians bartered with rice, cloth or gold and silver. </p>
+                </div>
+                <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Ancient_Civilizations/bottomhomeac.png"></a></div>
+            </div><!--end of content-->
+        </div>
+    </div><!--/anisold-->
+     
+    <div class="micbtnholder"><div class="micbtnac" id="playstopmarketstrade"></div></div>
+    <div class="bac"><div class="rwac" id="marketstradeaudiobbtn"></div></div>
+    <div class="plac"><div class="plpsac" id="marketstradeaudioplbtn"></div></div>
+    <div class="fac"><div class="fwac" id="marketstradeaudiofbtn" ></div></div>
+    <div id="actualaudio-marketstrade" style="visibility:hidden;"></div>
+    
+    <script>
+        sound = new Audio();
+        soundpop = new Audio();
+        var playing;
+        (function() {
+          playing = false;
+            $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+            $('div#pol1').css("z-index", 1);
+            $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+            
+           
+           
+             if(sound.canPlayType('audio/mpeg')) {
+                 $('#actualaudio-marketstrade').html('<audio controls preload id="marketstradeaudio" onpause="playangkor()" onplay="pauseangkor()"><source src="narrations/angkor_marketstrade.mp3" type="audio/mpeg"></audio>');
+             } 
+             
+    
+            $("#marketstrade").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    
+        })();
+        $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundbh.pause(); bgsoundbh.currentTime = 0;});
+    
+        function goBack() {
+            $.mobile.changePage("sub-ac-angkor-dailylife.html", {transition: "slide", reverse: true });
+        }
+        
+       function pauseangkor() {
+          angkorbg.pause();
+        }
+        
+        function playangkor() {
+          angkorbg.play();
+        }
+       
+
+    $("#pol2").on('tap', function() {
+      $('#marketslink')[0].click();
+    });
+    
+    $("#pol1").on('tap', function() {
+      $('#f1_container').css({"visibility":"visible", "z-index":10});
+        $(this).css({"visibility":"hidden"});
+        $('#f1_card').css({"-webkit-transform": "rotateY(180deg)"});
+        $('#f1_card').css({"-moz-transform": "rotateY(180deg)"});
+        $('#f1_card').css({"-o-transform": "rotateY(180deg)"});
+        $('#f1_card').css({"transform": "rotateY(180deg)"});
+    });
+    $(".returncard").on('tap', function() {
+        $('#f1_card').css({"-webkit-transform": "rotateY(0deg)"});
+        $('#f1_card').css({"-moz-transform": "rotateY(0deg)"});
+        $('#f1_card').css({"-o-transform": "rotateY(0deg)"});
+        $('#f1_card').css({"transform": "rotateY(0deg)"});
+        setTimeout(function() {
+          $("#pol1").css({"visibility":"visible", "z-index":3});
+          $('#f1_container').css({"visibility":"hidden", "z-index":0});
+        }, 1000);
+      });
+      
+
+/* ******************** */
+    $("#playstopmarketstrade").on('tap', function() {
+      if(!playing) {
+        marketstradeaudio.play();
+        $('.micbtnac').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        marketstradeaudio.pause(); marketstradeaudio.currentTime = 0;
+        $('.micbtnac').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#marketstradeaudioplbtn").on('tap', function() {
+      if(!paused) {
+        marketstradeaudio.pause();
+        paused = true;
+      } else {
+        marketstradeaudio.play();
+        paused = false;
+      }
+    });
+    
+    $("#marketstradeaudiofbtn").on('tap', function() {
+      var ctime = marketstradeaudio.currentTime;
+      marketstradeaudio.currentTime = ctime + 10;
+    });
+    
+    $("#marketstradeaudiobbtn").on('tap', function() {
+      var ctime = marketstradeaudio.currentTime;
+      marketstradeaudio.currentTime = ctime - 10;
+    });        
+                
+  </script><script src="js/twocardLogic.js"></script>
+</div>
