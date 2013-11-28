@@ -1,15 +1,14 @@
 <!-- i-C-a -->
 <div data-role="page" id="blackholes">
   <script src="js/slidebarbh.js"></script>
-  
   <div class="menuhousing"></div>
-  <div class="homebtnholder"><div class="homebtnbh"></div></div>
+  <div class="homebtnholder"><a href="map-bh.html" data-transition="flip"><div class="homebtnbh"></div></a></div>
   <div class="mpbtnholder"><div class="mpbtnbh"></div></div>
   <div class="cpbtnholder"><div class="cpbtnbh"></div></div>
   <div class="infobtnholder"><div class="infobtnbh"></div></div>
   <div class="credsbtnholder"><div class="credsbtnbh"></div></div>
   <div class="menubtnholder"><div class="menubtnbh"></div></div>
-  
+  <div class="mpointsoverlay"></div><div class="mpointspopup"><div class="mpointscontainer"></div></div>
   <div class="navtitleholderbh" style="padding-top:14px;"><h1>Black Holes</h1></div>
   
     <div data-role="content" class="kidzcontent">
@@ -41,14 +40,14 @@
     </div> <!-- end content -->  
     
   
-  <!--<div class="audiopanel">-->
+  
     <div class="micbtnholder"><div class="micbtnbh" id="playstopbh"></div></div>
     <div class="bbh"><div class="rwbh" id="bhaudiobbtn"></div></div>
     <div class="plbh"><div class="plpsbh" id="bhaudioplbtn"></div></div>
     <!--<div class="psbh"><div id="bhaudiopsbtn"></div></div>-->
     <div class="fbh"><div class="fwbh" id="bhaudiofbtn"></div></div>
     <div id="actualaudio-bh" style="visibility:hidden;"></div>
-  <!--</div>-->
+    
   <script>
     sound = new Audio(); // 'sound' is now an audio object
     var playing;

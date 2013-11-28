@@ -1,0 +1,44 @@
+<!-- i-C-a -->
+<div data-role="page" id="blackholesmap">
+  <div data-role="content">
+    <div class="mapbackbtnbh"></div>
+    <div class="pagepoint" id="p6" style="top:146px;left:620px;"></div>
+    <div class="pagepoint" id="p7" style="top:222px;left:646px;"></div>
+    <div class="pagepoint" id="p8" style="top:146px;left:125px;"></div>
+    <div class="pagepoint" id="p9" style="top:384px;left:152px;"></div>
+    <div class="pagepoint" id="p10" style="top:385px;left:228px;"></div>
+    <div class="pagepoint" id="p11" style="top:469px;left:151px;"></div>
+    <div class="pagepoint" id="p12" style="top:495px;left:225px;"></div>
+    <div class="pagepoint" id="p13" style="top:446px;left:225px;"></div>
+    <div class="pagepoint" id="p14" style="top:300px;left:151px;"></div>
+    <div class="pagepoint" id="p15" style="top:215px;left:151px;"></div>
+    <div class="pagepoint" id="p16" style="top:298px;left:227px;"></div>
+    <div class="pagepoint" id="p17" style="top:214px;left:228px;"></div>
+    <div class="pagepoint" id="p18" style="top:146px;left:806px;"></div>
+    <div class="pagepoint" id="p19" style="top:146px;left:321px;"></div>
+    <div class="pagepoint" id="p20" style="top:290px;left:390px;"></div>
+    <div class="pagepoint" id="p21" style="top:328px;left:430px;"></div>
+    <div class="pagepoint" id="p22" style="top:242px;left:390px;"></div>
+    <div class="pagepoint" id="p23" style="top:193px;left:390px;"></div>
+    <div style="position:absolute;left:513px;top:720px;width:157px;height:14px;">
+      <div id="exploremeter" style="float:left;height:14px;width:inherit;background:#245572;">
+      </div>
+    </div>
+  </div>
+  <script>
+    (function() {
+      var idstring = mworldGetVisits(1, "Black-Holes");
+      var res = idstring.split(";");
+      for(var i=0;i<res.length;i++) {
+        $('#p'+res[i]).css('visibility', 'visible');
+        alert(res[i]);
+      }
+      var percentagePage = (res.length / 18) * 100;
+      $('#exploremeter').css('width', percentagePage+'%');
+    })();
+    
+    $('.mapbackbtnbh').on('tap', function() {
+      history.back();
+    });
+  </script>
+</div> 

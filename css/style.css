@@ -355,6 +355,55 @@ a.fun.bsubjectlink { background:url("images/5-8/Home_Screen/bfun.png") no-repeat
   width:1024px !important;
 }
 
+.pagepoint {
+  position:absolute;
+  width:31px;
+  height:31px;
+  background:url('images/9-12/Space/Black_Holes/bhvisited.png') no-repeat;
+  visibility:hidden;
+}
+
+.mapbackbtnbh{
+  width:67px;
+  height:67px;
+  position:absolute;
+  top:20px;
+  left:20px;
+  background:url('images/9-12/Space/Black_Holes/mapbackbtn.png') no-repeat;
+}
+
+#blackholesmap {
+  background:url('images/9-12/Space/Black_Holes/bhmap.jpg') no-repeat;
+  height:748px;
+  width:1024px !important;
+}
+
+.mpointscontainer {
+  margin:110px 20px 0px 10px;
+  line-height:24px;
+}
+
+.mpointspopup {
+  background:url('images/5-8/Space/Black_Holes/mpointspopupbh.png') no-repeat;
+  width:260px;
+  height:248px;
+  position:absolute;
+  top:445px;
+  left:70px;
+  visibility:hidden;
+}
+
+.mpointsoverlay {
+  background:url('images/5-8/Space/Black_Holes/mpointsoverlay.png') repeat;
+  width:1024px;
+  height:748px;
+  position:absolute;
+  top:0px;
+  left:0px;
+  visibility:hidden;
+  z-index:-1;
+}
+
 #blackholes {
   background:url('images/5-8/Space/Black_Holes/bhnavbg.jpg') no-repeat;
   height:748px !important;

@@ -115,3 +115,26 @@ $('.fwbh').on('tap', function() {
       $('.fwbh').css('background-position-y', '-73px');
     }, 300);
 });
+
+// $('.homebtnbh').on('tap', function() {
+  // $.mobile.changePage("map-bh.html", {transition: "flip", reverse: false });
+// });
+
+$('.mpbtnbh').on('tap', function() {
+  $('.mpointsoverlay').css('visibility','visible');
+  $('.mpointsoverlay').css('z-index', 10);
+  $('.mpointspopup').css('visibility','visible');
+  $('.mpointspopup').css('z-index', 11);
+});
+
+$('.mpointsoverlay').on('tap', function() {
+  var totalMpoints = mworldMpoints(1);
+  var totalMpointsBH = mworldMpoints(1, 'Black-Holes');
+  var usedMpoints = mworldMpointsUsed(1);
+  var availableMpoints = totalMpoints - usedMpoints;
+  $('.mpointscontainer').html("<div>mPoints earned <span style='float:right;font-weight:bold'>"+totalMpoints+"</span><br>mPoints used <span style='float:right;font-weight:bold'>"+usedMpoints+"</span><br>mPoints available <span style='float:right;font-weight:bold'>"+availableMpoints+"</span><br>mPoints in this section <span style='float:right;font-weight:bold'>"+totalMpointsBH+"</div>");
+  $('.mpointsoverlay').css('visibility','hidden');
+  $('.mpointsoverlay').css('z-index', 0);
+  $('.mpointspopup').css('visibility','hidden');
+  $('.mpointspopup').css('z-index', 0);
+});

@@ -47,14 +47,6 @@ function mworldPageVisit(kidid, pageid) {
           });
           break;
         case "2":
-          // $( "div" ).on( "pageshow", function( event, ui ) {
-            // alert( "This page was just hidden: " + ui.prevPage );
-          // });
-           
-          // $( "div" ).on( "pagehide", function( event, ui ) {
-            // alert( "This page was just shown: " + ui.nextPage );
-          // });
-          
             $('#bhgo > .coachcontainer').css({'top':'300px'});
             setTimeout(function() {
                 $('.coachcontainer').animate({'left':'200px'}, 800);
@@ -115,7 +107,7 @@ function mworldMpointsUsed(kidid, subject) {
     async:false,
     data: {kidid:kidid, subject:subject}
   }).done(function(usedmpoints) {
-    if(mpoints > 0) { usedpoints = usedmpoints;}
+    if(usedmpoints > 0) { usedpoints = usedmpoints;}
   });
   return usedpoints;
 }
@@ -127,4 +119,29 @@ function mworldSaveQuiz(kidid, correct, quizid) {
     async:false,
     data: {kidid:kidid, correct:correct, quizid:quizid}
   }).done();
+}
+
+function mworldGetVisits(kidid, subject) {
+  var lm = 0;
+  var um = 0;
+  var idstring;
+  switch(subject) {
+    case "Black-Holes":
+      lm = 5;
+      um = 23;
+      break;
+  }
+  $.ajax({
+    type:"POST",
+    url:resourceLoc+"getvisits.php",
+    async:false,
+    data: {id:kidid, lm:lm, um:um}
+  }).done(function(pageidstring) {
+    if(pageidstring != "") {
+      idstring = pageidstring;
+    } else {
+      idstring = "imong nawong";
+    }
+  });
+  return idstring;
 }
