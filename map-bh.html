@@ -31,7 +31,6 @@
       var res = idstring.split(";");
       for(var i=0;i<res.length;i++) {
         $('#p'+res[i]).css('visibility', 'visible');
-        alert(res[i]);
       }
       var percentagePage = (res.length / 18) * 100;
       $('#exploremeter').css('width', percentagePage+'%');
