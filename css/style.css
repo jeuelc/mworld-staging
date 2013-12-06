@@ -2,6 +2,167 @@
 
 body { background:#000000; font-size:17px;}
 
+/*indexpage*/
+#indexpage{
+  width:1024px;
+  height:768px;
+  background:url('images/indexpagebg.jpg') no-repeat;
+}
+
+#indexlogo {
+  width:154px;
+  height:72px;
+  background:url('images/mworldlogo.png') no-repeat;
+  position:absolute;
+  left:80px;
+  top:42px;
+}
+
+.topiclink .backpic{
+  display: block;
+  -webkit-transform: rotateY(180deg);
+  -webkit-box-sizing: border-box;
+  -moz-transform: rotateY(180deg);
+  -moz-box-sizing: border-box;
+  -o-transform: rotateY(180deg);
+  -o-box-sizing: border-box;
+  transform: rotateY(180deg);
+  width:100%;
+  height:100%;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.topiclink .frontpic{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.topiclink {
+  width:167px;
+  height:167px;
+  float:left;
+  margin-right:10px;
+  margin-bottom:10px;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: all 1.0s linear;
+  -moz-transform-style: preserve-3d;
+  -moz-transition: all 1.0s linear;
+  -o-transform-style: preserve-3d;
+  -o-transition: all 1.0s linear;
+  transform-style: preserve-3d;
+  transition: all 1.0s linear;
+}
+
+#signinsignoutlink span {
+  vertical-align:middle;
+  line-height:167px;
+}
+
+#signinsignoutlink {
+  float:left;
+  height:167px;
+  width:344px;
+  text-align:center;
+  background:#abe8ec;
+  color:#d70024;
+  font-family:"Chalkboard SE";
+  font-size:24px;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  -border-radius:10px;
+}
+
+#animalslink .frontpic {  background:url('images/9-12/Entry_Screen/animals1.png') no-repeat; }
+#artmusiclink .frontpic {  background:url('images/9-12/Entry_Screen/artmusic1.png') no-repeat; }
+#earlycivilisationslink .frontpic {  background:url('images/9-12/Entry_Screen/earlyciv1.png') no-repeat; }
+#humanbodylink .frontpic {  background:url('images/9-12/Entry_Screen/humanbody1.png') no-repeat; }
+#languageculturelink .frontpic {  background:url('images/9-12/Entry_Screen/languageculture1.png') no-repeat; }
+#modernworldlink .frontpic {  background:url('images/9-12/Entry_Screen/modernworld1.png') no-repeat; }
+#naturalworldlink .frontpic {  background:url('images/9-12/Entry_Screen/naturalworld1.png') no-repeat; }
+#peopleplaceslink .frontpic {  background:url('images/9-12/Entry_Screen/peopleplaces1.png') no-repeat; }
+#spacelink .frontpic {  background:url('images/9-12/Entry_Screen/space1.png') no-repeat; }
+#wondersofsciencelink .frontpic {  background:url('images/9-12/Entry_Screen/wondersofscience1.png') no-repeat; }
+
+#flippingcardsholder {
+  position:absolute;
+  left:74px;
+  top:174px;
+  width:708px;
+  height:522px;
+  display:none;
+  z-index:1;
+  -webkit-perspective: 1000px;
+  -moz-perspective: 1000px;
+  -o-perspective: 1000px;
+  perspective: 1000px;
+}
+
+#buildworldlink span, #exploreworldlink span {
+  vertical-align:middle;
+  line-height:222px;
+}
+
+#buildworldlink {
+  font-family:"Chalkboard SE";
+  position:absolute;
+  left:555px;
+  top:280px;
+  width:222px;
+  height:222px;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  -border-radius:10px;
+  background:#007b99;
+  font-size:24px;
+  color:#FFFFFF;
+  text-align:center;
+}
+
+#exploreworldlink {
+  font-family:"Chalkboard SE";
+  position:absolute;
+  left:242px;
+  top:280px;
+  width:222px;
+  height:222px;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  -border-radius:10px;
+  background:#edb71b;
+  font-size:24px;
+  color:#FFFFFF;
+  text-align:center;
+}
+
+.supportedby {
+  position:absolute;
+  top:700px;
+  left:880px;
+  text-align:right;
+  color:#FFFFFF;
+  font-family:Arial;
+  font-size:12px;
+}
+
+.poweredby {
+  position:absolute;
+  top:700px;
+  left:50px;
+  text-align:left;
+  color:#FFFFFF;
+  font-family:Arial;
+  font-size:12px;
+}
+/*indexpage-end*/
+
 #kid {
   width:1024px;
   height:720px !important;
@@ -945,6 +1106,7 @@ a.fun.bsubjectlink { background:url("images/5-8/Home_Screen/bfun.png") no-repeat
   border:solid 4px #FFFFFF;
   box-shadow: 5px 5px 5px #000000;
 }
+
 .face.back {
   display: block;
   -webkit-transform: rotateY(180deg);

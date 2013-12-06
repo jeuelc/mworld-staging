@@ -30,12 +30,201 @@
   <script type="text/javascript" src="js/jquery.session.js"></script>
 </head> 
 <body> 
-  <div data-role="page">
+  <div data-role="page" id="indexpage">
+    <div id="indexlogo"></div>
     <!--<div style="width:50%; float:left;margin-top:100px;text-align:center;"><a id="home2link" href="game-iw3.html" data-transition="slide"><img src="css/images/stud2.png"></a></div>-->
-    <div style="width:50%; float:left;margin-top:100px;text-align:center;"><a href="home.html" id="home2link" data-transition="slide" data-prefetch><img src="css/images/stud2.png"></a></div>
+    <!--<div style="width:50%; float:left;margin-top:100px;text-align:center;"><a href="home.html" id="home2link" data-transition="slide" data-prefetch><img src="css/images/stud2.png"></a></div>-->
+    <div id="exploreworldlink"><span>EXPLORE WORLD</span></div>
+    <div id="buildworldlink"><span>BUILD WORLD</span></div>
+    <div id="flippingcardsholder">
+      <div class="topiclink" id="animalslink">
+        <div class="frontpic"></div>
+        <div class="backpic"></div>
+      </div>
+      <div class="topiclink" id="artmusiclink">
+        <div class="frontpic"></div>
+        <div class="backpic"></div>
+      </div>
+      <div class="topiclink" id="earlycivilisationslink">
+        <div class="frontpic"></div>
+        <div class="backpic"></div>
+      </div>
+      <div class="topiclink" id="humanbodylink">
+        <div class="frontpic"></div>
+        <div class="backpic"></div>
+      </div>
+      <div class="topiclink" id="languageculturelink">
+        <div class="frontpic"></div>
+        <div class="backpic"></div>
+      </div>
+      <div class="topiclink" id="modernworldlink">
+        <div class="frontpic"></div>
+        <div class="backpic"></div>
+      </div>
+      <div class="topiclink" id="naturalworldlink">
+        <div class="frontpic"></div>
+        <div class="backpic"></div>
+      </div>
+      <div class="topiclink" id="peopleplaceslink">
+        <div class="frontpic"></div>
+        <div class="backpic"></div>
+      </div>
+      <div class="topiclink" id="spacelink">
+        <div class="frontpic"></div>
+        <div class="backpic"></div>
+      </div>
+      <div class="topiclink" id="wondersofsciencelink">
+        <div class="frontpic"></div>
+        <div class="backpic"></div>
+      </div>
+      <div class="topiclink2" id="signinsignoutlink"><span>SIGN IN</span></div>
+    </div>
+    <div class="poweredby">Powered by<br><b>Monash University</b></div>
+    <div class="supportedby">Proudly supported by<br><b>Partner partner</b></div>
   <script>
     //$('#home2link').on('tap', function() { naturalsoundbg.play(); });
-    $('#home2link').on('tap', function() { mainaudiobg.play(); });
+    //$('#home2link').on('tap', function() { mainaudiobg.play(); });
+    $('#exploreworldlink').on('tap', function() {
+      mainaudiobg.play();
+      $('#exploreworldlink').animate({'left':'74px', 'top':'174px', 'width':'698px', 'height':'522px'}, 1000,
+        function() {
+          $('#exploreworldlink').animate({'opacity':0}, 300, showLinks() );
+        }
+      );
+      $('#exploreworldlink span').animate({'line-height':'522px'}, 1000);
+      $('#buildworldlink').animate({'left':'782px', 'top':'174px', 'width':'168px', 'height':'522px'}, 1000);
+      $('#buildworldlink span').animate({'line-height':'522px'}, 1000);
+    });
+    
+    function displayCards(btnNum) {
+        $('#animalslink .backpic').css('background', 'url(css/images/9-12/Entry_Screen/animals'+btnNum+'.png)');
+        $('#artmusiclink .backpic').css('background', 'url(css/images/9-12/Entry_Screen/artmusic'+btnNum+'.png)');
+        $('#earlycivilisationslink .backpic').css('background', 'url(css/images/9-12/Entry_Screen/earlyciv'+btnNum+'.png)');
+        $('#humanbodylink .backpic').css('background', 'url(css/images/9-12/Entry_Screen/humanbody'+btnNum+'.png)');
+        $('#languageculturelink .backpic').css('background', 'url(css/images/9-12/Entry_Screen/languageculture'+btnNum+'.png)');
+        $('#modernworldlink .backpic').css('background', 'url(css/images/9-12/Entry_Screen/modernworld'+btnNum+'.png)');
+        $('#naturalworldlink .backpic').css('background', 'url(css/images/9-12/Entry_Screen/naturalworld'+btnNum+'.png)');
+        $('#peopleplaceslink .backpic').css('background', 'url(css/images/9-12/Entry_Screen/peopleplaces'+btnNum+'.png)');
+        $('#spacelink .backpic').css('background', 'url(css/images/9-12/Entry_Screen/space'+btnNum+'.png)');
+        $('#wondersofsciencelink .backpic').css('background', 'url(css/images/9-12/Entry_Screen/wondersofscience'+btnNum+'.png)');
+        
+        setTimeout(function() {
+            $('#spacelink').css({"-webkit-transform": "rotateY(180deg)"});
+            $('#spacelink').css({"transform": "rotateY(180deg)"});
+            showFront('spacelink');
+          }, 2000);
+          
+        setTimeout(function() {
+            $('#naturalworldlink').css({"-webkit-transform": "rotateY(180deg)"});
+            $('#naturalworldlink').css({"transform": "rotateY(180deg)"});
+            showFront('naturalworldlink');
+          }, 2500);
+        
+        setTimeout(function() {
+            $('#earlycivilisationslink').css({"-webkit-transform": "rotateY(180deg)"});
+            $('#earlycivilisationslink').css({"transform": "rotateY(180deg)"});
+            showFront('earlycivilisationslink');
+          }, 3000);
+        
+        setTimeout(function() {
+            $('#modernworldlink').css({"-webkit-transform": "rotateY(180deg)"});
+            $('#modernworldlink').css({"transform": "rotateY(180deg)"});
+            showFront('modernworldlink');
+          }, 3500);
+          
+        setTimeout(function() {
+            $('#animalslink').css({"-webkit-transform": "rotateY(180deg)"});
+            $('#animalslink').css({"transform": "rotateY(180deg)"});
+            showFront('animalslink');
+          }, 4000);
+        
+        setTimeout(function() {
+            $('#peopleplaceslink').css({"-webkit-transform": "rotateY(180deg)"});
+            $('#peopleplaceslink').css({"transform": "rotateY(180deg)"});
+            showFront('peopleplaceslink');
+          }, 4500);
+        
+        setTimeout(function() {
+            $('#humanbodylink').css({"-webkit-transform": "rotateY(180deg)"});
+            $('#humanbodylink').css({"transform": "rotateY(180deg)"});
+            showFront('humanbodylink');
+          }, 5000);
+          
+        setTimeout(function() {
+            $('#wondersofsciencelink').css({"-webkit-transform": "rotateY(180deg)"});
+            $('#wondersofsciencelink').css({"transform": "rotateY(180deg)"});
+            showFront('wondersofsciencelink');
+          }, 5500);
+        
+          setTimeout(function() {
+            $('#languageculturelink').css({"-webkit-transform": "rotateY(180deg)"});
+            $('#languageculturelink').css({"transform": "rotateY(180deg)"});
+            showFront('languageculturelink');
+          }, 6000);
+        
+        setTimeout(function() {
+            $('#artmusiclink').css({"-webkit-transform": "rotateY(180deg)"});
+            $('#artmusiclink').css({"transform": "rotateY(180deg)"});
+            showFront('artmusiclink');
+          }, 6500);
+    }
+    
+    function showLinks() {
+      $('#flippingcardsholder').fadeIn(300, function() {
+        displayCards(2);
+        setInterval(function() {
+          var numImage = Math.floor(Math.random() * 6) + 2;
+          displayCards(numImage);
+        }, 20000);
+      });
+    }
+    function showFront(linkid) {
+      setTimeout(function() {
+        $('#'+linkid).css({"-webkit-transform": "rotateY(0deg)"});
+        $('#'+linkid).css({"transform": "rotateY(0deg)"});
+      }, 10000);
+    }
+    
+    $('#animalslink').on('tap', function() {
+      animalsoundbg.play(); mainaudiobg.pause(); mainaudiobg.currentTime = 0;
+      $.mobile.changePage( "sub-animals.html", { transition: "flip" });
+    });
+    $('#artmusiclink').on('tap', function() {
+      artmusicsoundbg.play(); mainaudiobg.pause(); mainaudiobg.currentTime = 0;
+      $.mobile.changePage( "sub-artmusic.html", { transition: "flip" });
+    });
+    $('#earlycivilisationslink').on('tap', function() {
+      ancientsoundbg.play(); mainaudiobg.pause(); mainaudiobg.currentTime = 0;
+      $.mobile.changePage( "sub-ancient.html", { transition: "flip" });
+    });
+    $('#humanbodylink').on('tap', function() {
+      humanbodysoundbg.play(); mainaudiobg.pause(); mainaudiobg.currentTime = 0;
+      $.mobile.changePage( "sub-humanbody.html", { transition: "flip" });
+    });
+    $('#languageculturelink').on('tap', function() {
+      langcultsoundbg.play(); mainaudiobg.pause(); mainaudiobg.currentTime = 0;
+      $.mobile.changePage( "sub-languageculture.html", { transition: "flip" });
+    });
+    $('#modernworldlink').on('tap', function() {
+      modernsoundbg.play(); mainaudiobg.pause(); mainaudiobg.currentTime = 0;
+      $.mobile.changePage( "sub-modernworld.html", { transition: "flip" });
+    });
+    $('#wondersofsciencelink').on('tap', function() {
+      sciencesoundbg.play(); mainaudiobg.pause(); mainaudiobg.currentTime = 0;
+      $.mobile.changePage( "sub-wonderscience.html", { transition: "flip" });
+    });
+    $('#spacelink').on('tap', function() {
+      spacesoundbg.play(); mainaudiobg.pause(); mainaudiobg.currentTime = 0;
+      $.mobile.changePage( "sub-space.html", { transition: "flip" });
+    });
+    $('#peopleplaceslink').on('tap', function() {
+      peopleplacessoundbg.play(); mainaudiobg.pause(); mainaudiobg.currentTime = 0;
+      $.mobile.changePage( "sub-peopleplaces.html", { transition: "flip" });
+    });
+    $('#naturalworldlink').on('tap', function() {
+      naturalsoundbg.play(); mainaudiobg.pause(); mainaudiobg.currentTime = 0;
+      $.mobile.changePage( "sub-naturalworld.html", { transition: "flip" });
+    });
   </script>
  </div><!-- /page -->
 </body>
